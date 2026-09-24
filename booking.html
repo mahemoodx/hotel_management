@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Royal Pearl Hyderabad — Book Now</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root{--navy:#0b1830;--navy-2:#0f1f3d;--gold:#d4a24a;--gold-2:#e0b766;--bg:#f5f6f8;--text:#1a1f2c;--muted:#6b7280;--border:#e6e8ec;--shadow:0 8px 24px rgba(15,31,61,.08)}
+*{box-sizing:border-box}
+html,body{margin:0;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text)}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.nav{background:var(--navy);position:sticky;top:0;z-index:50}
+.nav-inner{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px;color:#fff}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{width:38px;height:38px;border:1.5px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-weight:700;border-radius:4px}
+.brand-text{display:flex;flex-direction:column;line-height:1.1}
+.brand-text strong{font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:1px}
+.brand-text small{font-family:'Cormorant Garamond',serif;font-size:11px;color:var(--gold);letter-spacing:2px}
+.brand-text em{font-style:normal;font-size:8px;letter-spacing:2px;color:#c9ccd2;margin-top:3px}
+.nav-links{display:flex;gap:28px;margin-left:auto;font-size:14px}
+.nav-links a{color:#fff;opacity:.85}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold)}
+.nav-links a.active{border-bottom:2px solid var(--gold);padding-bottom:4px}
+.nav-cta{display:flex;gap:10px}
+.nav-toggle{display:none;width:42px;height:42px;border:1px solid rgba(212,162,74,.55);background:transparent;color:var(--gold);border-radius:4px;place-items:center;font-size:18px;cursor:pointer}
+.mobile-menu{display:none;background:var(--navy-2);border-top:1px solid rgba(255,255,255,.08);padding:12px 24px;gap:4px;flex-direction:column}
+.mobile-menu a{color:#fff;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px}
+.mobile-menu a.active,.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu.open{display:flex}
+.btn{border:0;padding:10px 18px;font-weight:600;font-size:13px;border-radius:4px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:.2s}
+.btn-gold{background:var(--gold);color:#1a1300}.btn-gold:hover{background:var(--gold-2)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-outline{background:#fff;border:1px solid var(--border);color:var(--text)}
+.page-hero{position:relative;height:240px;background:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80') center/cover no-repeat;color:#fff;display:flex;align-items:center}
+.page-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,24,48,.85),rgba(11,24,48,.4))}
+.page-hero-inner{position:relative;max-width:1200px;margin:0 auto;padding:0 24px;z-index:2}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:44px;margin:0 0 6px;font-weight:600}
+.page-hero p{margin:0;opacity:.9}
+.book-wrap{display:grid;grid-template-columns:2fr 1fr;gap:24px;margin-top:-44px;position:relative;z-index:5}
+.card{background:#fff;border-radius:6px;box-shadow:var(--shadow);padding:26px}
+.card h2{font-family:'Cormorant Garamond',serif;font-size:24px;margin:0 0 18px;font-weight:600}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label{font-size:12px;color:var(--muted);font-weight:500}
+.field input,.field select,.field textarea{padding:10px 12px;border:1px solid var(--border);border-radius:4px;font-size:14px;font-family:inherit;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}
+.summary-row{display:flex;justify-content:space-between;padding:8px 0;font-size:14px;border-bottom:1px dashed var(--border)}
+.summary-row.total{border:0;font-weight:700;color:var(--gold);font-size:18px;padding-top:14px;margin-top:6px;border-top:1px solid var(--border)}
+.footer{background:var(--navy-2);color:#cfd3da;padding:50px 0 22px;margin-top:60px;text-align:center;font-size:13px}
+.footer a:hover{color:var(--gold)}
+.success{display:none;text-align:center;padding:30px 0}
+.success.show{display:block}
+.success i{font-size:54px;color:var(--gold);margin-bottom:14px}
+@media(max-width:900px){.book-wrap{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}.nav-links{display:none}.nav-toggle{display:grid;margin-left:auto;order:3}.nav-cta{order:2}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="home" class="brand">
+      <div class="brand-mark">RP</div>
+      <div class="brand-text"><strong>ROYAL PEARL</strong><small>HYDERABAD</small><em>LUXURY HOTEL &amp; RESTAURANT</em></div>
+    </a>
+    <div class="nav-links">
+      <a href="home">Home</a>
+      <a href="rooms">Rooms</a>
+      <a href="restaurant">Restaurant</a>
+      <a href="gallery">Gallery</a>
+      <a href="about">About Us</a>
+      <a href="contact">Contact Us</a>
+    </div>
+    <div class="nav-cta">
+      <button type="button" data-login class="btn btn-ghost"><i class="fa-regular fa-user"></i> Login</button>
+      <a href="booking" class="btn btn-gold active">Book Now</a>
+    </div>
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile menu">
+    <a href="home">Home</a>
+    <a href="rooms">Rooms</a>
+    <a href="restaurant">Restaurant</a>
+    <a href="gallery">Gallery</a>
+    <a href="about">About Us</a>
+    <a href="contact">Contact Us</a>
+    <a href="booking" class="active">Book Now</a>
+  </nav>
+</nav>
+
+<script>
+(function(){var btn=document.querySelector('.nav-toggle');var menu=document.getElementById('mobileMenu');if(!btn||!menu)return;function close(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');}btn.addEventListener('click',function(e){e.stopPropagation();var open=menu.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');});menu.addEventListener('click',function(e){if(e.target.tagName==='A')close();});document.addEventListener('click',function(e){if(menu.classList.contains('open')&&!menu.contains(e.target)&&!btn.contains(e.target))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});})();
+</script>
+
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <h1>Book Your Stay</h1>
+    <p>Reserve your room at Royal Pearl Hyderabad in just a few clicks.</p>
+  </div>
+</header>
+
+<main class="container">
+  <div class="book-wrap">
+    <section class="card" id="formCard">
+      <h2>Guest & Stay Details</h2>
+      <form id="bookForm">
+        <div class="grid-2">
+          <div class="field"><label>Full Name *</label><input required name="fullName" placeholder="John Doe" /></div>
+          <div class="field"><label>Email *</label><input required type="email" name="email" placeholder="you@example.com" /></div>
+          <div class="field"><label>Phone *</label><input required name="phone" placeholder="+91 ..." /></div>
+          <div class="field"><label>Room Type *</label>
+            <select name="roomName" id="roomSel" required>
+              <option value="">Select a room</option>
+              <option data-price="8999">Deluxe Room — ₹8,999</option>
+              <option data-price="12999">Executive Suite — ₹12,999</option>
+              <option data-price="18999">Royal Suite — ₹18,999</option>
+              <option data-price="24999">Presidential Suite — ₹24,999</option>
+              <option data-price="6999">Standard Room — ₹6,999</option>
+              <option data-price="14999">Honeymoon Suite — ₹14,999</option>
+            </select>
+          </div>
+          <div class="field"><label>Check-In *</label><input required type="date" name="checkIn" id="ci" /></div>
+          <div class="field"><label>Check-Out *</label><input required type="date" name="checkOut" id="co" /></div>
+          <div class="field"><label>Guests *</label>
+            <select name="guests" required><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+          </div>
+          <div class="field"><label>Arrival Time</label><input type="time" name="arrival" value="14:00" /></div>
+        </div>
+        <div class="field"><label>Special Requests</label><textarea name="notes" rows="3" placeholder="Any preferences..."></textarea></div>
+        <button class="btn btn-gold" type="submit"><i class="fa-solid fa-check"></i> Confirm Booking</button>
+      </form>
+
+      <div class="success" id="success">
+        <i class="fa-solid fa-circle-check"></i>
+        <h2 style="color:var(--gold)">Booking Confirmed!</h2>
+        <p>Your reservation reference: <strong id="refOut"></strong></p>
+        <p style="color:var(--muted)">A confirmation has been sent to your email.</p>
+        <div style="display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap">
+          <button class="btn btn-gold" onclick="downloadPDF()"><i class="fa-solid fa-download"></i> Download Receipt</button>
+          <button class="btn btn-outline" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
+          <a class="btn btn-outline" href="home">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+    <aside class="card">
+      <h2>Booking Summary</h2>
+      <div class="summary-row"><span>Room</span><span id="sRoom">—</span></div>
+      <div class="summary-row"><span>Check-In</span><span id="sIn">—</span></div>
+      <div class="summary-row"><span>Check-Out</span><span id="sOut">—</span></div>
+      <div class="summary-row"><span>Nights</span><span id="sNights">0</span></div>
+      <div class="summary-row"><span>Rate / Night</span><span id="sRate">₹0</span></div>
+      <div class="summary-row total"><span>Total</span><span id="sTotal">₹0</span></div>
+      <p style="font-size:12px;color:var(--muted);margin-top:14px"><i class="fa-solid fa-shield-halved" style="color:var(--gold)"></i> Secure booking · Free cancellation up to 48hrs.</p>
+    </aside>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    © 2026 Royal Pearl Hyderabad. All Rights Reserved. · <a href="home">Home</a> · <a href="rooms">Rooms</a>
+  </div>
+</footer>
+
+<script>
+const $=s=>document.querySelector(s);
+const ci=$('#ci'),co=$('#co'),sel=$('#roomSel');
+const today=new Date().toISOString().split('T')[0];
+ci.min=today;
+function update(){
+  const opt=sel.selectedOptions[0];
+  const price=opt&&opt.dataset.price?+opt.dataset.price:0;
+  const inD=ci.value,outD=co.value;
+  let nights=0;
+  if(inD&&outD){nights=Math.max(0,Math.round((new Date(outD)-new Date(inD))/86400000))}
+  $('#sRoom').textContent=opt&&opt.value?opt.text.split(' — ')[0]:'—';
+  $('#sIn').textContent=inD||'—';
+  $('#sOut').textContent=outD||'—';
+  $('#sNights').textContent=nights;
+  $('#sRate').textContent='₹'+price.toLocaleString();
+  $('#sTotal').textContent='₹'+(price*nights).toLocaleString();
+  if(inD){co.min=inD}
+}
+['change','input'].forEach(e=>document.getElementById('bookForm').addEventListener(e,update));
+
+let lastBooking=null;
+$('#bookForm').addEventListener('submit',async ev=>{
+  ev.preventDefault();
+  const fd=new FormData(ev.target);
+  const opt=sel.selectedOptions[0];
+  const price=+opt.dataset.price;
+  const nights=+$('#sNights').textContent||1;
+  const data=Object.fromEntries(fd);
+  const ref='RP'+Date.now().toString().slice(-7);
+  lastBooking={ref,data,price,nights,total:price*nights};
+  try{const arr=JSON.parse(localStorage.getItem('rp_bookings')||'[]');arr.push(lastBooking);localStorage.setItem('rp_bookings',JSON.stringify(arr))}catch(e){}
+  // Save to backend so admin sees it
+  if(window.RP_API){
+    try{
+      await RP_API.insert('bookings',{
+        full_name:data.fullName,email:data.email,phone:data.phone,
+        room_name:data.roomName,check_in:data.checkIn||null,check_out:data.checkOut||null,
+        guests:data.guests?parseInt(data.guests):null,arrival:data.arrival||null,
+        notes:(data.notes||'')+'\nRef: '+ref+' | Total: ₹'+(price*nights)
+      });
+    }catch(e){console.warn('Backend save failed:',e.message);}
+  }
+  $('#formCard').querySelector('form').style.display='none';
+  $('#success').classList.add('show');
+  $('#refOut').textContent=ref;
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+function downloadPDF(){
+  if(!lastBooking)return;
+  const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:'pt',format:'a4'});
+  const W=doc.internal.pageSize.getWidth();
+  doc.setFillColor(11,24,48);doc.rect(0,0,W,110,'F');
+  doc.setFillColor(212,162,74);doc.rect(0,110,W,4,'F');
+  doc.setTextColor(212,162,74);doc.setFont('times','bold');doc.setFontSize(22);
+  doc.text('ROYAL PEARL',W/2,50,{align:'center'});
+  doc.setTextColor(255,255,255);doc.setFontSize(10);doc.setFont('helvetica','normal');
+  doc.text('HYDERABAD • LUXURY HOTEL',W/2,68,{align:'center'});
+  doc.setTextColor(212,162,74);doc.setFontSize(14);doc.setFont('helvetica','bold');
+  doc.text('BOOKING RECEIPT',W/2,95,{align:'center'});
+  let y=150;doc.setTextColor(26,31,44);doc.setFontSize(11);
+  const rows=[['Reference',lastBooking.ref],['Name',lastBooking.data.fullName],['Email',lastBooking.data.email],['Phone',lastBooking.data.phone],['Room',lastBooking.data.roomName.split(' — ')[0]],['Guests',lastBooking.data.guests],['Check-In',lastBooking.data.checkIn+' '+lastBooking.data.arrival],['Check-Out',lastBooking.data.checkOut],['Nights',String(lastBooking.nights)],['Rate/Night','Rs. '+lastBooking.price.toLocaleString()]];
+  rows.forEach(r=>{doc.setFont('helvetica','normal');doc.text(r[0],55,y);doc.setFont('helvetica','bold');doc.text(String(r[1]),W-55,y,{align:'right'});y+=22});
+  y+=10;doc.setFillColor(212,162,74);doc.rect(40,y,W-80,38,'F');doc.setTextColor(26,19,0);doc.setFontSize(14);
+  doc.text('TOTAL PAYABLE',55,y+24);doc.text('Rs. '+lastBooking.total.toLocaleString(),W-55,y+24,{align:'right'});
+  doc.setTextColor(107,114,128);doc.setFontSize(9);
+  doc.text('Banjara Hills, Hyderabad • +91 8179469535 • restaurant@royalpearlhyderabad.com',W/2,y+70,{align:'center'});
+  doc.save('royal-pearl-receipt-'+lastBooking.ref+'.pdf');
+}
+</script>
+<script src="assets/api.js"></script>
+<script src="assets/login-modal.js" defer></script>
+</body>
+</html>
+

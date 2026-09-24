@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Start Hotel Server",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/server.js",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [],
+      "env": {},
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "http://localhost:(55593)",
+        "uriFormat": "http://localhost:%s"
+      }
+    }
+  ],
+  "compounds": []
+}

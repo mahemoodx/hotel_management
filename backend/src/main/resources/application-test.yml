@@ -1,0 +1,19 @@
+# =============================================================================
+# Royal Pearl – Test profile (used by Testcontainers integration tests)
+# =============================================================================
+
+spring:
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: validate    # Flyway owns schema in tests too
+
+  flyway:
+    enabled: true
+    validate-on-migrate: true
+
+logging:
+  level:
+    root: WARN
+    com.royalpearl.hotel: INFO
+    org.flywaydb: INFO

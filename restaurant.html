@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Royal Pearl Hyderabad — Restaurant | Hyderabadi Dum Biryani & Online Order</title>
+<meta name="description" content="Authentic Hyderabadi Dum Biryani, Mutton Biryani & multi-cuisine menu at Royal Pearl Hyderabad. Veg & non-veg. Dine-in or order on Zomato.">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<style>
+:root{
+  --navy:#0b1830; --navy-2:#0f1f3d;
+  --gold:#d4a24a; --gold-2:#e0b766;
+  --bg:#f5f6f8; --card:#fff;
+  --text:#1a1f2c; --muted:#6b7280;
+  --border:#e6e8ec;
+  --green:#16a34a; --red:#dc2626;
+  --zomato:#e23744;
+  --shadow:0 8px 24px rgba(15,31,61,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section{margin-top:64px}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px;text-align:center;margin:0 0 32px;position:relative}
+.section-title::after{content:"";display:block;width:60px;height:2px;background:var(--gold);margin:10px auto 0}
+.eyebrow{text-align:center;color:var(--gold);font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+
+/* NAV */
+.nav{background:var(--navy);position:sticky;top:0;z-index:50}
+.nav-inner{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px;color:#fff}
+.brand{display:flex;flex-direction:column;line-height:1.15}
+.brand strong{font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:2px;color:#fff}
+.brand small{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--gold);letter-spacing:3px;margin-top:2px}
+.brand em{font-style:normal;font-size:9px;letter-spacing:2px;color:#c9ccd2;margin-top:3px}
+.nav-links{display:flex;gap:28px;margin-left:auto;font-size:14px}
+.nav-links a{opacity:.85;color:#fff}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold)}
+.nav-links a.active{border-bottom:2px solid var(--gold);padding-bottom:4px}
+.nav-cta{display:flex;gap:10px}
+.nav-toggle{display:none;width:42px;height:42px;border:1px solid rgba(212,162,74,.55);background:transparent;color:var(--gold);border-radius:4px;place-items:center;font-size:18px;cursor:pointer}
+.mobile-menu{display:none;background:var(--navy-2);border-top:1px solid rgba(255,255,255,.08);padding:12px 24px;gap:4px;flex-direction:column}
+.mobile-menu a{color:#fff;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px}
+.mobile-menu a.active,.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu.open{display:flex}
+
+/* BUTTONS */
+.btn{border:0;padding:10px 18px;font-weight:600;font-size:13px;border-radius:4px;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-gold{background:var(--gold);color:#1a1300}
+.btn-gold:hover{background:var(--gold-2)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-outline{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-zomato{background:var(--zomato);color:#fff}
+.btn-zomato:hover{background:#cb2431}
+.btn-sm{padding:7px 12px;font-size:12px}
+
+/* HERO */
+.hero{position:relative;height:480px;background:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1800&q=80') center/cover no-repeat;color:#fff;display:flex;align-items:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,24,48,.85) 0%,rgba(11,24,48,.45) 100%)}
+.hero-content{position:relative;max-width:1200px;margin:0 auto;padding:0 24px;width:100%}
+.hero-eyebrow{color:var(--gold);font-size:14px;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px}
+.hero-content h1{font-family:'Cormorant Garamond',serif;font-size:64px;margin:0 0 14px;font-weight:600;line-height:1.05}
+.hero-content h1 span{color:var(--gold);display:block}
+.hero-content p{max-width:540px;margin:0 0 26px;opacity:.92;font-size:16px;line-height:1.6}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+
+/* QUICK CHECK (table) */
+.search-card{background:#fff;border-radius:6px;box-shadow:var(--shadow);padding:18px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:16px;align-items:end;margin-top:-44px;position:relative;z-index:5}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12px;color:var(--muted);font-weight:500}
+.field input,.field select{padding:10px 12px;border:1px solid var(--border);border-radius:4px;font-size:14px;background:#fff;outline:none}
+.field input:focus,.field select:focus{border-color:var(--gold)}
+.btn-search{height:42px;padding:0 26px}
+
+/* WELCOME */
+.welcome-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
+.welcome-grid h2{font-family:'Cormorant Garamond',serif;font-size:36px;margin:6px 0 16px;font-weight:600;line-height:1.15}
+.welcome-grid p{color:var(--muted);font-size:14.5px;line-height:1.8;margin:0 0 18px}
+.welcome-feats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.wf{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:6px;padding:14px}
+.wf i{color:var(--gold);font-size:20px;margin-top:2px}
+.wf strong{display:block;font-size:14px;margin-bottom:2px}
+.wf small{color:var(--muted);font-size:12px;line-height:1.5}
+.welcome-img{aspect-ratio:5/4;background:url('https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=1000&q=80') center/cover;border-radius:6px;box-shadow:var(--shadow)}
+
+/* CUISINE TABS */
+.cuisine-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:30px}
+.cuisine-tabs button{background:#fff;border:1px solid var(--border);color:var(--text);padding:10px 18px;border-radius:30px;font-size:13px;font-weight:600;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:8px}
+.cuisine-tabs button:hover{border-color:var(--gold);color:var(--gold)}
+.cuisine-tabs button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.cuisine-tabs button.active i{color:var(--gold)}
+.cuisine-tabs button i{color:var(--gold)}
+
+/* MENU CONTROLS */
+.menu-controls{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:22px}
+.veg-toggle{display:inline-flex;background:#fff;border:1px solid var(--border);border-radius:30px;padding:4px;gap:4px}
+.veg-toggle button{background:transparent;border:0;color:var(--muted);padding:8px 16px;border-radius:30px;font-size:12px;font-weight:600;letter-spacing:.5px;cursor:pointer;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;transition:.2s}
+.veg-toggle button.active{background:var(--navy);color:#fff}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.dot-veg{background:var(--green)}
+.dot-nonveg{background:var(--red)}
+.menu-count{color:var(--muted);font-size:13px}
+
+/* CART FAB */
+.cart-fab{position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;border:0;border-radius:50px;padding:14px 22px;font-weight:600;font-size:14px;cursor:pointer;box-shadow:0 12px 30px rgba(15,31,61,.35);display:inline-flex;align-items:center;gap:10px;z-index:60;transition:.2s}
+.cart-fab:hover{background:#142a4d;transform:translateY(-2px)}
+.cart-fab i{color:var(--gold);font-size:18px}
+.cart-fab .badge{background:var(--gold);color:#1a1300;font-size:12px;font-weight:700;padding:2px 8px;border-radius:20px;min-width:22px;text-align:center}
+
+/* CART DRAWER */
+.cart-overlay{position:fixed;inset:0;background:rgba(15,31,61,.55);opacity:0;visibility:hidden;transition:.25s;z-index:99}
+.cart-overlay.open{opacity:1;visibility:visible}
+.cart-drawer{position:fixed;top:0;right:0;height:100%;width:420px;max-width:100%;background:#fff;box-shadow:-12px 0 40px rgba(0,0,0,.18);transform:translateX(100%);transition:.3s;z-index:100;display:flex;flex-direction:column}
+.cart-drawer.open{transform:translateX(0)}
+.cart-head{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--navy);color:#fff}
+.cart-head h3{margin:0;font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff}
+.cart-close{background:transparent;border:0;color:#fff;font-size:22px;cursor:pointer;padding:4px 8px}
+.cart-body{flex:1;overflow-y:auto;padding:16px 20px}
+.cart-empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.cart-empty i{font-size:48px;color:var(--border);display:block;margin-bottom:14px}
+.cart-line{display:flex;gap:12px;padding:14px 0;border-bottom:1px dashed var(--border)}
+.cart-line .thumb{width:60px;height:60px;border-radius:6px;background-size:cover;background-position:center;flex-shrink:0}
+.cart-line .info{flex:1;min-width:0}
+.cart-line h5{margin:0 0 4px;font-size:14px;font-weight:600}
+.cart-line .price{color:var(--navy);font-weight:700;font-size:13px}
+.cart-line .qty{display:inline-flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:2px 4px;margin-top:6px}
+.cart-line .qty button{background:transparent;border:0;width:24px;height:24px;border-radius:50%;cursor:pointer;font-weight:700;color:var(--navy)}
+.cart-line .qty button:hover{background:var(--gold);color:#1a1300}
+.cart-line .qty span{min-width:18px;text-align:center;font-size:13px;font-weight:600}
+.cart-line .rm{background:transparent;border:0;color:var(--red);cursor:pointer;font-size:12px;margin-left:auto}
+.cart-foot{border-top:1px solid var(--border);padding:18px 20px;background:#fafbfc}
+.cart-totals{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px;color:var(--muted)}
+.cart-totals.grand{font-size:18px;font-weight:700;color:var(--text);margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.cart-form{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.cart-form label{font-size:12px;font-weight:500;color:var(--muted)}
+.cart-form input,.cart-form textarea,.cart-form select{padding:10px 12px;border:1px solid var(--border);border-radius:4px;font-size:14px;outline:none;font-family:inherit;width:100%}
+.cart-form input:focus,.cart-form textarea:focus,.cart-form select:focus{border-color:var(--gold)}
+.cart-form textarea{resize:vertical;min-height:60px}
+.cart-form .err{color:var(--red);font-size:12px;display:none}
+.cart-form .err.show{display:block}
+.cart-form .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cart-submit{width:100%;justify-content:center;margin-top:6px;padding:13px}
+
+.add-btn{background:var(--navy);color:#fff}
+.add-btn:hover{background:var(--gold);color:#1a1300}
+.qty-pill{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;border-radius:30px;padding:4px 6px}
+.qty-pill button{background:transparent;border:0;color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;font-weight:700;font-size:14px}
+.qty-pill button:hover{background:var(--gold);color:#1a1300}
+.qty-pill span{min-width:18px;text-align:center;font-size:13px;font-weight:600}
+
+@media (max-width:600px){
+  .cart-drawer{width:100%}
+  .cart-fab{bottom:16px;right:16px;padding:12px 18px;font-size:13px}
+}
+
+/* CONFIRM MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(15,31,61,.6);opacity:0;visibility:hidden;transition:.2s;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal{background:#fff;border-radius:8px;max-width:520px;width:100%;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;transform:translateY(20px);transition:.25s;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-head{padding:22px 24px;background:linear-gradient(135deg,var(--navy),#142a4d);color:#fff;text-align:center;position:relative}
+.modal-head .check{width:60px;height:60px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:28px;margin:0 auto 12px;box-shadow:0 0 0 6px rgba(22,163,74,.18)}
+.modal-head h3{margin:0;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600}
+.modal-head p{margin:6px 0 0;font-size:13px;opacity:.85}
+.modal-close{position:absolute;top:12px;right:14px;background:transparent;border:0;color:#fff;font-size:20px;cursor:pointer;opacity:.7}
+.modal-close:hover{opacity:1}
+.modal-body{padding:20px 24px;overflow-y:auto;flex:1}
+.modal-body .ord-id{text-align:center;font-size:13px;color:var(--muted);margin-bottom:14px}
+.modal-body .ord-id strong{color:var(--navy);font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:1px}
+.preview-wrap{position:relative;margin-bottom:14px}
+.preview-label{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.preview-box{background:#dcf8c6;border:1px solid #c5e7ad;border-radius:8px;padding:14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.55;color:#0d2818;white-space:pre-wrap;word-break:break-word;max-height:260px;overflow-y:auto}
+.copy-btn{background:var(--bg);border:1px solid var(--border);color:var(--navy);padding:6px 12px;border-radius:4px;font-size:11px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:.2s}
+.copy-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.copy-btn.copied{background:var(--green);color:#fff;border-color:var(--green)}
+.modal-foot{padding:16px 24px 20px;border-top:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap}
+.modal-foot .btn{flex:1;justify-content:center;min-width:140px}
+.btn-wa{background:#25d366;color:#fff}
+.btn-wa:hover{background:#1ebe57}
+
+/* DISH CARDS */
+.dish-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.dish-card{background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:.25s;position:relative}
+.dish-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(15,31,61,.12);border-color:var(--gold)}
+.dish-img{height:190px;background-size:cover;background-position:center;position:relative}
+.dish-badge{position:absolute;top:10px;left:10px;background:var(--gold);color:#1a1300;font-size:10px;font-weight:700;padding:5px 10px;border-radius:3px;letter-spacing:1px}
+.veg-mark{position:absolute;top:10px;right:10px;width:22px;height:22px;background:#fff;border:2px solid;border-radius:3px;display:grid;place-items:center}
+.veg-mark::after{content:"";width:9px;height:9px;border-radius:50%;background:currentColor}
+.veg-mark.v{color:var(--green)}
+.veg-mark.nv{color:var(--red)}
+.dish-body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.dish-body h4{margin:0;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--text)}
+.dish-meta{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}
+.stars{color:var(--gold)}
+.dish-body p{margin:0;color:var(--muted);font-size:13px;line-height:1.55;flex:1}
+.dish-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.dish-price{color:var(--navy);font-weight:700;font-size:20px;font-family:'Cormorant Garamond',serif}
+
+/* EXP STRIP */
+.exp{background:var(--navy);color:#fff;padding:60px 0;margin-top:64px}
+.exp .container{display:grid;grid-template-columns:1fr 1.3fr;gap:36px;align-items:center}
+.exp h2{font-family:'Cormorant Garamond',serif;font-size:34px;margin:0 0 18px;color:#fff}
+.exp h2 span{color:var(--gold)}
+.exp ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.exp ul li{display:flex;align-items:center;gap:10px;color:#cbd1de;font-size:14px}
+.exp ul li i{color:var(--gold);width:18px}
+.exp-imgs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.exp-imgs div{aspect-ratio:1/1;background-size:cover;background-position:center;border-radius:6px}
+
+/* SPECIAL + BOOK */
+.special-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.special-card,.book-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:28px;box-shadow:var(--shadow)}
+.special-card h3,.book-card h3{font-family:'Cormorant Garamond',serif;font-size:24px;margin:0 0 18px;font-weight:600;display:flex;align-items:center;gap:10px}
+.special-card h3 i,.book-card h3 i{color:var(--gold)}
+.special-item{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px dashed var(--border)}
+.special-item:last-child{border:0}
+.special-item .thumb{width:64px;height:64px;border-radius:6px;background-size:cover;background-position:center;flex-shrink:0}
+.special-item .info{flex:1}
+.special-item h5{margin:0 0 3px;font-size:14px;font-weight:600}
+.special-item p{margin:0;font-size:12px;color:var(--muted);line-height:1.4}
+.special-item .pr{color:var(--navy);font-weight:700;font-family:'Cormorant Garamond',serif;font-size:18px}
+.book-card{background:var(--navy) url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80') right/cover no-repeat;color:#fff;position:relative;overflow:hidden}
+.book-card::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,24,48,.95) 35%,rgba(11,24,48,.6))}
+.book-card>*{position:relative;z-index:2}
+.book-card h3{color:#fff}
+.book-card h3 i{color:var(--gold)}
+.book-card p{color:#cbd1de;font-size:14px;line-height:1.6;margin:0 0 22px;max-width:340px}
+.book-card .call{margin-top:18px;display:flex;align-items:center;gap:12px;color:#cbd1de;font-size:13px}
+.book-card .call i{color:var(--gold);width:34px;height:34px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center}
+.book-card .call strong{color:#fff}
+
+/* TESTIMONIALS */
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi{background:#fff;border-radius:6px;padding:24px;box-shadow:var(--shadow)}
+.testi .stars{color:var(--gold);font-size:12px;margin-bottom:10px}
+.testi p{font-size:13px;color:var(--text);line-height:1.6;margin:0 0 18px;font-style:italic}
+.testi-user{display:flex;align-items:center;gap:12px}
+.avatar{width:46px;height:46px;border-radius:50%;background-size:cover;background-position:center}
+.testi-user strong{display:block;font-size:13px}
+.testi-user small{color:var(--muted);font-size:11px}
+
+/* FOOTER */
+.footer{background:var(--navy);color:#cbd1de;padding:50px 0 0;margin-top:64px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1.3fr;gap:32px}
+.footer h4{color:var(--gold);font-size:15px;font-weight:600;margin:0 0 18px;font-family:'Cormorant Garamond',serif;letter-spacing:1px}
+.footer ul{list-style:none;padding:0;margin:0;font-size:13px;display:flex;flex-direction:column;gap:10px}
+.footer ul.contact li{display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+.footer ul.contact i{color:var(--gold);margin-top:3px}
+.footer a:hover{color:var(--gold)}
+.muted{color:#9aa3b8;font-size:13px;line-height:1.7}
+.socials{display:flex;gap:10px;margin-top:14px}
+.socials a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;color:var(--gold);transition:.2s}
+.socials a:hover{background:var(--gold);color:#1a1300;border-color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;font-size:12px;color:#9aa3b8;padding:22px 0;margin-top:36px;border-top:1px solid rgba(255,255,255,.08)}
+
+@media (max-width:1024px){
+  .nav-links{display:none}
+  .nav-toggle{display:grid;margin-left:auto;order:3}.nav-cta{order:2}
+  .hero-content h1{font-size:46px}
+  .search-card{grid-template-columns:1fr 1fr;gap:12px}
+  .welcome-grid,.special-grid,.exp .container{grid-template-columns:1fr}
+  .dish-grid,.testimonials{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .hero{height:420px}
+  .hero-content h1{font-size:34px}
+  .search-card{grid-template-columns:1fr}
+  .dish-grid,.testimonials,.exp-imgs,.welcome-feats,.exp ul{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="home" class="brand">
+      <strong>ROYAL PEARL</strong>
+      <small>HYDERABAD</small>
+      <em>LUXURY HOTEL & RESTAURANT</em>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="home">Home</a>
+      <a href="rooms">Rooms</a>
+      <a href="restaurant" class="active">Restaurant</a>
+      <a href="gallery">Gallery</a>
+      <a href="about">About Us</a>
+      <a href="contact">Contact Us</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://www.zomato.com" target="_blank" rel="noopener" class="btn btn-zomato btn-sm"><i class="fa-solid fa-bag-shopping"></i> Zomato</a>
+      <button type="button" data-login class="btn btn-ghost btn-sm"><i class="fa-solid fa-user"></i> Login</button>
+      <a href="#reserve" class="btn btn-gold btn-sm"><i class="fa-regular fa-calendar"></i> Reserve</a>
+    </div>
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile menu">
+    <a href="home">Home</a>
+    <a href="rooms">Rooms</a>
+    <a href="restaurant" class="active">Restaurant</a>
+    <a href="gallery">Gallery</a>
+    <a href="about">About Us</a>
+    <a href="contact">Contact Us</a>
+  </nav>
+</header>
+
+<script>
+(function(){var btn=document.querySelector('.nav-toggle');var menu=document.getElementById('mobileMenu');if(!btn||!menu)return;function close(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');}btn.addEventListener('click',function(e){e.stopPropagation();var open=menu.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');});menu.addEventListener('click',function(e){if(e.target.tagName==='A')close();});document.addEventListener('click',function(e){if(menu.classList.contains('open')&&!menu.contains(e.target)&&!btn.contains(e.target))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});})();
+</script>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Fine Dining Experience</div>
+    <h1>Authentic Hyderabadi<span>Dum Biryani & More</span></h1>
+    <p>Savor legendary slow-cooked biryanis, Nizami delicacies and multi-cuisine favourites — dine-in at our luxury rooftop or order home delivery on Zomato across Hyderabad.</p>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn btn-gold"><i class="fa-solid fa-utensils"></i> View Full Menu</a>
+      <a href="https://www.zomato.com" target="_blank" rel="noopener" class="btn btn-zomato"><i class="fa-solid fa-motorcycle"></i> Order on Zomato</a>
+      <a href="#reserve" class="btn btn-ghost"><i class="fa-regular fa-calendar"></i> Reserve a Table</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK CHECK -->
+<div class="container">
+  <div class="search-card">
+    <div class="field"><label>Date</label><input type="date" id="avDate"></div>
+    <div class="field"><label>Time</label>
+      <select><option>7:00 PM</option><option>7:30 PM</option><option>8:00 PM</option><option>8:30 PM</option><option>9:00 PM</option></select>
+    </div>
+    <div class="field"><label>Guests</label>
+      <select><option>2 Guests</option><option>3 Guests</option><option>4 Guests</option><option>5 Guests</option><option>6+ Guests</option></select>
+    </div>
+    <div class="field"><label>Section</label>
+      <select><option>Indoor Dining</option><option>Rooftop Lounge</option><option>Private Dining</option><option>Garden View</option></select>
+    </div>
+    <button class="btn btn-gold btn-search" onclick="alert('Table available! Scroll down to reserve.')">Check</button>
+  </div>
+</div>
+
+<!-- WELCOME -->
+<section class="section">
+  <div class="container">
+    <div class="welcome-grid">
+      <div>
+        <div class="eyebrow" style="text-align:left">Welcome to</div>
+        <h2>Royal Pearl Restaurant</h2>
+        <p>Home of the legendary <strong>Hyderabadi Dum Biryani</strong> and <strong>Mutton Biryani Special</strong> — slow-cooked in sealed handis with saffron, rose water and a 7-spice royal masala passed down through generations.</p>
+        <p>Our master chefs blend Nizami tradition with North Indian, Chinese, Continental and Italian favourites — all freshly prepared, hygienically packed and available for online delivery across Hyderabad on Zomato.</p>
+        <div class="welcome-feats">
+          <div class="wf"><i class="fa-solid fa-utensils"></i><div><strong>40+ Signature Dishes</strong><small>Multi-cuisine kitchen</small></div></div>
+          <div class="wf"><i class="fa-solid fa-leaf"></i><div><strong>Veg & Non-Veg</strong><small>Pure veg kitchen separated</small></div></div>
+          <div class="wf"><i class="fa-solid fa-motorcycle"></i><div><strong>Zomato Delivery</strong><small>Across Hyderabad</small></div></div>
+          <div class="wf"><i class="fa-solid fa-award"></i><div><strong>4.8★ Rated</strong><small>2,400+ reviews</small></div></div>
+        </div>
+      </div>
+      <div class="welcome-img"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="section" id="menu">
+  <div class="container">
+    <div class="eyebrow">Our Menu</div>
+    <h2 class="section-title">Explore Our Dishes</h2>
+
+    <div class="cuisine-tabs" id="cuisineTabs">
+      <button class="active" data-cuisine="all"><i class="fa-solid fa-bowl-food"></i> All</button>
+      <button data-cuisine="biryani"><i class="fa-solid fa-mosque"></i> Biryani</button>
+      <button data-cuisine="hyderabadi"><i class="fa-solid fa-star"></i> Hyderabadi</button>
+      <button data-cuisine="starters"><i class="fa-solid fa-pepper-hot"></i> Starters</button>
+      <button data-cuisine="north"><i class="fa-solid fa-drumstick-bite"></i> North Indian</button>
+      <button data-cuisine="chinese"><i class="fa-solid fa-bowl-rice"></i> Chinese</button>
+      <button data-cuisine="tandoor"><i class="fa-solid fa-fire"></i> Tandoor</button>
+      <button data-cuisine="breads"><i class="fa-solid fa-bread-slice"></i> Breads</button>
+      <button data-cuisine="continental"><i class="fa-solid fa-cheese"></i> Continental</button>
+      <button data-cuisine="italian"><i class="fa-solid fa-pizza-slice"></i> Italian</button>
+      <button data-cuisine="desserts"><i class="fa-solid fa-ice-cream"></i> Desserts</button>
+      <button data-cuisine="drinks"><i class="fa-solid fa-martini-glass"></i> Drinks</button>
+    </div>
+
+    <div class="menu-controls">
+      <div class="veg-toggle" id="vegToggle">
+        <button class="active" data-veg="all">All</button>
+        <button data-veg="veg"><span class="dot dot-veg"></span> Veg</button>
+        <button data-veg="nonveg"><span class="dot dot-nonveg"></span> Non-Veg</button>
+      </div>
+      <span class="menu-count" id="menuCount"></span>
+      <a href="https://www.zomato.com" target="_blank" rel="noopener" class="btn btn-zomato"><i class="fa-solid fa-bag-shopping"></i> Order All on Zomato</a>
+    </div>
+
+    <div class="dish-grid" id="dishGrid"></div>
+  </div>
+</section>
+
+<!-- EXP -->
+<section class="exp">
+  <div class="container">
+    <div>
+      <div class="eyebrow" style="text-align:left">Why Dine With Us</div>
+      <h2>A True Royal <span>Dining Experience</span></h2>
+      <ul>
+        <li><i class="fa-solid fa-check"></i> Authentic Nizami recipes</li>
+        <li><i class="fa-solid fa-check"></i> Rooftop city view</li>
+        <li><i class="fa-solid fa-check"></i> Live ghazal every evening</li>
+        <li><i class="fa-solid fa-check"></i> Private dining halls</li>
+        <li><i class="fa-solid fa-check"></i> Family friendly seating</li>
+        <li><i class="fa-solid fa-check"></i> Complimentary valet</li>
+        <li><i class="fa-solid fa-check"></i> FSSAI certified kitchen</li>
+        <li><i class="fa-solid fa-check"></i> Express Zomato delivery</li>
+      </ul>
+    </div>
+    <div class="exp-imgs">
+      <div style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&q=70')"></div>
+      <div style="background-image:url('https://images.unsplash.com/photo-1551218808-94e220e084d2?w=500&q=70')"></div>
+      <div style="background-image:url('https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=500&q=70')"></div>
+      <div style="background-image:url('https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&q=70')"></div>
+      <div style="background-image:url('https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&q=70')"></div>
+      <div style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=70')"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIAL + BOOK -->
+<section class="section" id="reserve">
+  <div class="container">
+    <div class="special-grid">
+      <div class="special-card">
+        <h3><i class="fa-solid fa-crown"></i> Today's Chef Specials</h3>
+        <div class="special-item">
+          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=200&q=70')"></div>
+          <div class="info"><h5>Hyderabadi Dum Biryani</h5><p>Slow-cooked mutton with saffron rice</p></div>
+          <span class="pr">₹599</span>
+        </div>
+        <div class="special-item">
+          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=200&q=70')"></div>
+          <div class="info"><h5>Mutton Biryani Special</h5><p>Master chef's signature handi recipe</p></div>
+          <span class="pr">₹649</span>
+        </div>
+        <div class="special-item">
+          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=200&q=70')"></div>
+          <div class="info"><h5>Paneer Tikka Platter</h5><p>Chargrilled paneer with mint chutney</p></div>
+          <span class="pr">₹449</span>
+        </div>
+        <div class="special-item">
+          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1551024506-0bccd828d307?w=200&q=70')"></div>
+          <div class="info"><h5>Qubani Ka Meetha</h5><p>Royal apricot dessert with rabri</p></div>
+          <span class="pr">₹249</span>
+        </div>
+      </div>
+      <div class="book-card">
+        <h3><i class="fa-regular fa-calendar"></i> Book Your Table</h3>
+        <p>Make your dining experience memorable. Reserve a table at our rooftop or order your favourites online on Zomato — delivered hot across Hyderabad.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="/booking" class="btn btn-gold"><i class="fa-regular fa-calendar"></i> Reserve a Table</a>
+          <a href="https://www.zomato.com" target="_blank" rel="noopener" class="btn btn-zomato"><i class="fa-solid fa-motorcycle"></i> Order on Zomato</a>
+        </div>
+        <div class="call">
+          <i class="fa-solid fa-phone"></i>
+          <div>Call to reserve: <strong>+91 8179469535</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Guest Reviews</div>
+    <h2 class="section-title">What Our Diners Say</h2>
+    <div class="testimonials">
+      <div class="testi">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>"The Hyderabadi Dum Biryani is legendary — the mutton falls off the bone and the saffron rice is perfect. Best biryani in the city, hands down!"</p>
+        <div class="testi-user"><div class="avatar" style="background-image:url('https://i.pravatar.cc/100?img=12')"></div><div><strong>Rahul Sharma</strong><small>New Delhi</small></div></div>
+      </div>
+      <div class="testi">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>"Ordered the Mutton Biryani on Zomato — arrived hot, perfectly packed and tasted exactly like dining in. Royal Pearl is now my go-to."</p>
+        <div class="testi-user"><div class="avatar" style="background-image:url('https://i.pravatar.cc/100?img=47')"></div><div><strong>Priya Mehta</strong><small>Mumbai</small></div></div>
+      </div>
+      <div class="testi">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>"Stunning rooftop ambience, attentive service and authentic Nizami flavours. The Paneer Tikka and Shahi Tukda were divine."</p>
+        <div class="testi-user"><div class="avatar" style="background-image:url('https://i.pravatar.cc/100?img=33')"></div><div><strong>Anirudh Rao</strong><small>Hyderabad</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CART FAB -->
+<button class="cart-fab" id="cartFab" onclick="openCart()">
+  <i class="fa-solid fa-bag-shopping"></i>
+  <span>Cart</span>
+  <span class="badge" id="cartBadge">0</span>
+</button>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Your order cart">
+  <div class="cart-head">
+    <h3><i class="fa-solid fa-bag-shopping" style="color:var(--gold);margin-right:8px"></i> Your Order</h3>
+    <button class="cart-close" onclick="closeCart()" aria-label="Close cart"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="cart-totals"><span>Subtotal</span><span id="ctSub">₹0</span></div>
+    <div class="cart-totals"><span>Delivery</span><span id="ctDel">₹49</span></div>
+    <div class="cart-totals"><span>Taxes (5%)</span><span id="ctTax">₹0</span></div>
+    <div class="cart-totals grand"><span>Total</span><span id="ctTotal">₹0</span></div>
+    <form class="cart-form" id="orderForm" novalidate>
+      <div>
+        <label for="cf-name">Your Name *</label>
+        <input id="cf-name" name="name" type="text" maxlength="60" required placeholder="Full name">
+        <div class="err" id="err-name">Please enter your name (2-60 characters).</div>
+      </div>
+      <div>
+        <label for="cf-phone">Phone Number *</label>
+        <input id="cf-phone" name="phone" type="tel" maxlength="15" required placeholder="10-digit mobile number" inputmode="numeric">
+        <div class="err" id="err-phone">Please enter a valid 10-digit Indian mobile number.</div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="cf-type">Order Type</label>
+          <select id="cf-type" name="type">
+            <option value="Delivery">Home Delivery</option>
+            <option value="Pickup">Self Pickup</option>
+          </select>
+        </div>
+        <div>
+          <label for="cf-time">Preferred Time</label>
+          <select id="cf-time" name="time">
+            <option>As soon as possible</option>
+            <option>Within 1 hour</option>
+            <option>In 2 hours</option>
+            <option>Schedule for later</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label for="cf-addr">Delivery Address</label>
+        <textarea id="cf-addr" name="address" maxlength="250" placeholder="Flat / Street / Landmark (skip for pickup)"></textarea>
+      </div>
+      <div>
+        <label for="cf-notes">Special Instructions</label>
+        <textarea id="cf-notes" name="notes" maxlength="200" placeholder="Less spicy, extra raita, etc."></textarea>
+      </div>
+      <button type="submit" class="btn btn-gold cart-submit"><i class="fa-brands fa-whatsapp"></i> Place Order on WhatsApp</button>
+      <p style="font-size:11px;color:var(--muted);margin:4px 0 0;text-align:center">Your order opens in WhatsApp — confirm to send.</p>
+    </form>
+  </div>
+</aside>
+
+<!-- CONFIRMATION MODAL -->
+<div class="modal-overlay" id="confirmModal" onclick="if(event.target===this)closeConfirm()">
+  <div class="modal" role="dialog" aria-labelledby="confTitle" aria-modal="true">
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeConfirm()" aria-label="Close">✕</button>
+      <div class="check"><i class="fa-solid fa-check"></i></div>
+      <h3 id="confTitle">Order Ready to Send!</h3>
+      <p>Review your order and send it to us on WhatsApp</p>
+    </div>
+    <div class="modal-body">
+      <div class="ord-id">Order ID: <strong id="confOrderId">—</strong></div>
+      <div class="preview-wrap">
+        <div class="preview-label">
+          <span><i class="fa-brands fa-whatsapp" style="color:#25d366"></i> WhatsApp Message Preview</span>
+          <button type="button" class="copy-btn" id="copyBtn" onclick="copyPreview()"><i class="fa-regular fa-copy"></i> <span>Copy</span></button>
+        </div>
+        <pre class="preview-box" id="previewBox"></pre>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button type="button" class="btn btn-outline" onclick="closeConfirm()">Edit Order</button>
+      <a id="confWaLink" href="#" target="_blank" rel="noopener" class="btn btn-wa" onclick="afterSend()"><i class="fa-brands fa-whatsapp"></i> Send on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px"><strong style="color:#fff">ROYAL PEARL</strong><small style="color:var(--gold)">HYDERABAD</small></div>
+        <p class="muted">Experience unmatched luxury and premium hospitality in the heart of Hyderabad.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home">Home</a></li>
+          <li><a href="rooms">Rooms</a></li>
+          <li><a href="restaurant">Restaurant</a></li>
+          <li><a href="gallery">Gallery</a></li>
+          <li><a href="about">About Us</a></li>
+          <li><a href="contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Our Restaurant</h4>
+        <ul>
+          <li><a href="#menu">Full Menu</a></li>
+          <li><a href="#reserve">Reserve a Table</a></li>
+          <li><a href="https://www.zomato.com" target="_blank" rel="noopener">Order on Zomato</a></li>
+          <li>Private Dining</li>
+          <li>Events & Catering</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <ul class="contact">
+          <li><i class="fa-solid fa-location-dot"></i> Banjara Hills, Hyderabad, Telangana - 500034</li>
+          <li><i class="fa-solid fa-phone"></i> <a href="tel:+918179469535">+91 8179469535</a></li>
+          <li><i class="fa-solid fa-envelope"></i> <a href="mailto:restaurant@royalpearlhyderabad.com">restaurant@royalpearlhyderabad.com</a></li>
+          <li><i class="fa-regular fa-clock"></i> Open Daily 11:00 AM – 11:30 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Royal Pearl Hyderabad. All Rights Reserved.</span>
+      <span><a href="#">Privacy</a> | <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const ZOMATO_URL = 'https://www.zomato.com';
+
+const dishes = [
+  // ===== BIRYANI (signature) =====
+  {name:'Hyderabadi Dum Biryani', cuisine:'biryani', type:'nonveg', price:599, rating:4.9, badge:'Most Famous', desc:'Slow-cooked tender mutton layered with saffron basmati, sealed and dum-cooked in a traditional handi.', img:'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&q=75'},
+  {name:'Mutton Biryani Special', cuisine:'biryani', type:'nonveg', price:649, rating:4.9, badge:'Chef Signature', desc:'Master chef\u2019s royal recipe — succulent mutton with aromatic spices and long-grain basmati.', img:'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=75'},
+  {name:'Chicken Dum Biryani', cuisine:'biryani', type:'nonveg', price:499, rating:4.8, badge:'Best Seller', desc:'Marinated chicken in fragrant saffron rice with caramelised onions and fresh mint.', img:'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&q=75'},
+  {name:'Prawn Biryani', cuisine:'biryani', type:'nonveg', price:599, rating:4.7, desc:'Plump tiger prawns layered with spiced basmati and a touch of coconut.', img:'https://images.unsplash.com/photo-1633504581786-316c8002b1b9?w=600&q=75'},
+  {name:'Fish Biryani', cuisine:'biryani', type:'nonveg', price:549, rating:4.6, desc:'Andhra-spiced fish chunks dum-cooked with fragrant basmati.', img:'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&q=75'},
+  {name:'Veg Dum Biryani', cuisine:'biryani', type:'veg', price:399, rating:4.7, desc:'Seasonal vegetables, paneer and cashews dum-cooked in saffron basmati.', img:'https://images.unsplash.com/photo-1642821373181-696a54913e93?w=600&q=75'},
+  {name:'Paneer Biryani', cuisine:'biryani', type:'veg', price:449, rating:4.6, desc:'Marinated paneer cubes dum-cooked with caramelised onions and saffron rice.', img:'https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?w=600&q=75'},
+
+  // ===== HYDERABADI =====
+  {name:'Haleem (Seasonal)', cuisine:'hyderabadi', type:'nonveg', price:349, rating:4.8, badge:'Seasonal', desc:'Slow-cooked lentils, wheat and tender mutton — Hyderabad\u2019s royal Ramadan delicacy.', img:'https://images.unsplash.com/photo-1574484284002-952d92456975?w=600&q=75'},
+  {name:'Mirchi Ka Salan', cuisine:'hyderabadi', type:'veg', price:249, rating:4.6, desc:'Traditional Hyderabadi curry of long green chillies in tangy peanut-sesame gravy.', img:'https://images.unsplash.com/photo-1562962230-16e4623d36e6?w=600&q=75'},
+  {name:'Bagara Baingan', cuisine:'hyderabadi', type:'veg', price:279, rating:4.5, desc:'Baby brinjals simmered in a rich Hyderabadi peanut, sesame and tamarind gravy.', img:'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=75'},
+  {name:'Nihari Gosht', cuisine:'hyderabadi', type:'nonveg', price:499, rating:4.7, desc:'Overnight slow-cooked lamb shank stew with aromatic spices.', img:'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=75'},
+  {name:'Pathar Ka Gosht', cuisine:'hyderabadi', type:'nonveg', price:529, rating:4.8, badge:'Royal', desc:'Lamb cooked on hot granite stones — a centuries-old Nizami delicacy.', img:'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=75'},
+
+  // ===== STARTERS =====
+  {name:'Chicken 65', cuisine:'starters', type:'nonveg', price:299, rating:4.8, badge:'Spicy', desc:'Hyderabad-style crispy fried chicken tossed in spicy red sauce and curry leaves.', img:'https://images.unsplash.com/photo-1606851094291-6efae152bb87?w=600&q=75'},
+  {name:'Apollo Fish', cuisine:'starters', type:'nonveg', price:349, rating:4.7, desc:'Crispy boneless fish chunks tossed in tangy Indo-Chinese sauce.', img:'https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?w=600&q=75'},
+  {name:'Gobi 65', cuisine:'starters', type:'veg', price:229, rating:4.5, desc:'Crispy cauliflower florets spiced South-Indian style.', img:'https://images.unsplash.com/photo-1606902965551-dce093cda6e7?w=600&q=75'},
+  {name:'Paneer 65', cuisine:'starters', type:'veg', price:259, rating:4.5, desc:'Cottage cheese cubes fried crisp and tossed with chillies and curry leaves.', img:'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=75'},
+  {name:'Mutton Seekh Kebab', cuisine:'starters', type:'nonveg', price:399, rating:4.7, desc:'Hand-minced lamb kebabs char-grilled on skewers.', img:'https://images.unsplash.com/photo-1606851094291-6efae152bb87?w=600&q=75'},
+
+  // ===== TANDOOR =====
+  {name:'Tandoori Chicken (Full)', cuisine:'tandoor', type:'nonveg', price:599, rating:4.8, desc:'Yogurt-marinated whole chicken char-grilled in a clay tandoor.', img:'https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&q=75'},
+  {name:'Murgh Malai Tikka', cuisine:'tandoor', type:'nonveg', price:429, rating:4.7, desc:'Creamy yogurt-marinated chicken tikka with cardamom.', img:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=75'},
+  {name:'Paneer Tikka', cuisine:'tandoor', type:'veg', price:329, rating:4.7, desc:'Chargrilled paneer cubes with bell peppers and onions.', img:'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&q=75'},
+  {name:'Tandoori Prawns', cuisine:'tandoor', type:'nonveg', price:599, rating:4.7, desc:'Tiger prawns marinated in spiced yogurt and clay-roasted.', img:'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=600&q=75'},
+
+  // ===== NORTH INDIAN =====
+  {name:'Butter Chicken Royale', cuisine:'north', type:'nonveg', price:449, rating:4.8, badge:'Popular', desc:'Tandoor-roasted chicken in velvety tomato-butter gravy finished with cream.', img:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600&q=75'},
+  {name:'Paneer Tikka Masala', cuisine:'north', type:'veg', price:349, rating:4.7, desc:'Chargrilled paneer cubes simmered in a rich onion-tomato gravy.', img:'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&q=75'},
+  {name:'Dal Makhani', cuisine:'north', type:'veg', price:299, rating:4.7, desc:'Black lentils simmered overnight with cream, butter and spices.', img:'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&q=75'},
+  {name:'Kadai Chicken', cuisine:'north', type:'nonveg', price:399, rating:4.6, desc:'Wok-tossed chicken with crushed coriander, bell peppers and onions.', img:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600&q=75'},
+  {name:'Palak Paneer', cuisine:'north', type:'veg', price:299, rating:4.6, desc:'Soft paneer cubes in a creamy spinach gravy with garlic and cumin.', img:'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&q=75'},
+  {name:'Rogan Josh', cuisine:'north', type:'nonveg', price:479, rating:4.7, desc:'Aromatic Kashmiri lamb curry with fennel and Kashmiri chillies.', img:'https://images.unsplash.com/photo-1585937421612-70e8b31bbf7e?w=600&q=75'},
+
+  // ===== BREADS =====
+  {name:'Butter Naan', cuisine:'breads', type:'veg', price:69, rating:4.7, desc:'Soft tandoor-baked naan brushed with butter.', img:'https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=600&q=75'},
+  {name:'Garlic Naan', cuisine:'breads', type:'veg', price:89, rating:4.7, desc:'Naan topped with garlic, coriander and butter.', img:'https://images.unsplash.com/photo-1619365712544-47de2c05b6a6?w=600&q=75'},
+  {name:'Tandoori Roti', cuisine:'breads', type:'veg', price:49, rating:4.5, desc:'Whole wheat flatbread baked in the tandoor.', img:'https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=600&q=75'},
+  {name:'Lachha Paratha', cuisine:'breads', type:'veg', price:79, rating:4.6, desc:'Multi-layered flaky paratha baked in the clay oven.', img:'https://images.unsplash.com/photo-1600659139412-b589a2c8f0de?w=600&q=75'},
+
+  // ===== CHINESE =====
+  {name:'Veg Hakka Noodles', cuisine:'chinese', type:'veg', price:249, rating:4.5, desc:'Wok-tossed noodles with crunchy vegetables and Indo-Chinese sauces.', img:'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600&q=75'},
+  {name:'Chicken Hakka Noodles', cuisine:'chinese', type:'nonveg', price:299, rating:4.6, desc:'Stir-fried noodles with chicken, scallions and house sauce.', img:'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=600&q=75'},
+  {name:'Chilli Paneer', cuisine:'chinese', type:'veg', price:299, rating:4.6, desc:'Cottage cheese cubes tossed with bell peppers in spicy-sweet sauce.', img:'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=75'},
+  {name:'Chilli Chicken', cuisine:'chinese', type:'nonveg', price:349, rating:4.7, desc:'Crispy chicken tossed with capsicum in a fiery soy-chilli glaze.', img:'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&q=75'},
+  {name:'Veg Manchurian', cuisine:'chinese', type:'veg', price:269, rating:4.5, desc:'Crispy veg dumplings in tangy Indo-Chinese gravy.', img:'https://images.unsplash.com/photo-1626074353765-517a7b1c1e91?w=600&q=75'},
+  {name:'Schezwan Fried Rice', cuisine:'chinese', type:'veg', price:259, rating:4.5, desc:'Wok-tossed rice with fiery Schezwan sauce and vegetables.', img:'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&q=75'},
+
+  // ===== CONTINENTAL =====
+  {name:'Grilled Fish Steak', cuisine:'continental', type:'nonveg', price:599, rating:4.7, desc:'Pan-seared seabass with lemon butter, sautéed greens and herbed potatoes.', img:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=75'},
+  {name:'Grilled Chicken Steak', cuisine:'continental', type:'nonveg', price:549, rating:4.6, desc:'Herb-marinated chicken breast with mushroom sauce and veggies.', img:'https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=600&q=75'},
+  {name:'Creamy Mushroom Soup', cuisine:'continental', type:'veg', price:199, rating:4.5, desc:'Velvety button mushroom soup with cream and thyme.', img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=75'},
+
+  // ===== ITALIAN =====
+  {name:'Margherita Pizza', cuisine:'italian', type:'veg', price:349, rating:4.6, desc:'Wood-fired thin crust with san marzano tomato, mozzarella and basil.', img:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=75'},
+  {name:'Chicken Pepperoni Pizza', cuisine:'italian', type:'nonveg', price:499, rating:4.7, desc:'Wood-fired pizza with spicy chicken pepperoni and mozzarella.', img:'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600&q=75'},
+  {name:'Penne Arrabbiata', cuisine:'italian', type:'veg', price:329, rating:4.5, desc:'Al dente penne in spicy tomato sauce with garlic, chilli and parmesan.', img:'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&q=75'},
+  {name:'Chicken Alfredo Pasta', cuisine:'italian', type:'nonveg', price:399, rating:4.6, desc:'Fettuccine in creamy parmesan sauce with grilled chicken.', img:'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=600&q=75'},
+
+  // ===== DESSERTS =====
+  {name:'Qubani Ka Meetha', cuisine:'desserts', type:'veg', price:249, rating:4.8, badge:'Heritage', desc:'Traditional Hyderabadi apricot dessert topped with malai and almonds.', img:'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&q=75'},
+  {name:'Double Ka Meetha', cuisine:'desserts', type:'veg', price:229, rating:4.7, desc:'Hyderababi bread pudding soaked in saffron syrup and rabri.', img:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=75'},
+  {name:'Shahi Tukda', cuisine:'desserts', type:'veg', price:219, rating:4.7, desc:'Fried bread soaked in saffron milk topped with rabri and pistachio.', img:'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=75'},
+  {name:'Gulab Jamun', cuisine:'desserts', type:'veg', price:149, rating:4.6, desc:'Warm milk dumplings soaked in cardamom-rose syrup.', img:'https://images.unsplash.com/photo-1593560704563-f176a2eb61db?w=600&q=75'},
+  {name:'Kulfi Falooda', cuisine:'desserts', type:'veg', price:179, rating:4.6, desc:'Traditional saffron-pistachio kulfi with rose falooda.', img:'https://images.unsplash.com/photo-1560008581-09b41fc36f79?w=600&q=75'},
+
+  // ===== DRINKS =====
+  {name:'Royal Pearl Mocktail', cuisine:'drinks', type:'veg', price:199, rating:4.6, badge:'House Special', desc:'Signature mocktail with pineapple, mint, rose and a splash of lime.', img:'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=600&q=75'},
+  {name:'Masala Chai', cuisine:'drinks', type:'veg', price:99, rating:4.7, desc:'Aromatic Indian tea brewed with cardamom, ginger and fresh milk.', img:'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?w=600&q=75'},
+  {name:'Sweet Lassi', cuisine:'drinks', type:'veg', price:129, rating:4.6, desc:'Chilled yogurt drink with sugar and a hint of cardamom.', img:'https://images.unsplash.com/photo-1587589823882-e397438f5ee7?w=600&q=75'},
+  {name:'Mango Lassi', cuisine:'drinks', type:'veg', price:149, rating:4.7, desc:'Creamy yogurt blended with sweet Alphonso mango pulp.', img:'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&q=75'},
+  {name:'Fresh Lime Soda', cuisine:'drinks', type:'veg', price:99, rating:4.5, desc:'Sweet, salt or mixed — chilled and refreshing.', img:'https://images.unsplash.com/photo-1523677011781-c91d1bbe2f9d?w=600&q=75'},
+];
+
+let activeVeg = 'all';
+let activeCuisine = 'all';
+const grid = document.getElementById('dishGrid');
+const countEl = document.getElementById('menuCount');
+
+function cuisineLabel(c){
+  return {biryani:'Biryani',hyderabadi:'Hyderabadi',starters:'Starters',tandoor:'Tandoor',north:'North Indian',breads:'Breads',chinese:'Chinese',continental:'Continental',italian:'Italian',desserts:'Desserts',drinks:'Drinks'}[c] || c;
+}
+
+function render(){
+  const items = dishes.filter(d=>{
+    if(activeVeg!=='all' && d.type!==activeVeg) return false;
+    if(activeCuisine!=='all' && d.cuisine!==activeCuisine) return false;
+    return true;
+  });
+  countEl.textContent = items.length + ' dishes';
+  if(items.length===0){
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--muted);padding:40px">No dishes match your filter.</div>';
+    return;
+  }
+  grid.innerHTML = items.map(d=>`
+    <article class="dish-card">
+      <div class="dish-img" style="background-image:url('${d.img}')">
+        ${d.badge?`<span class="dish-badge">${d.badge}</span>`:''}
+        <span class="veg-mark ${d.type==='veg'?'v':'nv'}" aria-label="${d.type==='veg'?'Veg':'Non-Veg'}"></span>
+      </div>
+      <div class="dish-body">
+        <h4>${d.name}</h4>
+        <div class="dish-meta">
+          <span class="stars"><i class="fa-solid fa-star"></i> ${d.rating}</span>
+          <span>•</span>
+          <span>${cuisineLabel(d.cuisine)}</span>
+        </div>
+        <p>${d.desc}</p>
+        <div class="dish-foot">
+          <span class="dish-price">₹${d.price}</span>
+          ${cartCtl(d)}
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+document.getElementById('vegToggle').addEventListener('click',e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#vegToggle button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  activeVeg = b.dataset.veg;
+  render();
+});
+
+document.getElementById('cuisineTabs').addEventListener('click',e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#cuisineTabs button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  activeCuisine = b.dataset.cuisine;
+  render();
+});
+
+document.getElementById('avDate').valueAsDate = new Date();
+
+/* ===== CART ===== */
+const RESTAURANT_PHONE = '918179469535'; // WhatsApp business number
+const DELIVERY_FEE = 49;
+const TAX_RATE = 0.05;
+const cart = {}; // {dishName: qty}
+
+function cartCtl(d){
+  const q = cart[d.name] || 0;
+  if(q===0) return `<button class="btn btn-sm add-btn" onclick="addToCart('${escapeJs(d.name)}')"><i class="fa-solid fa-plus"></i> Add</button>`;
+  return `<span class="qty-pill"><button onclick="changeQty('${escapeJs(d.name)}',-1)" aria-label="Decrease">−</button><span>${q}</span><button onclick="changeQty('${escapeJs(d.name)}',1)" aria-label="Increase">+</button></span>`;
+}
+function escapeJs(s){return s.replace(/'/g,"\\'")}
+function findDish(name){return dishes.find(d=>d.name===name)}
+
+function addToCart(name){ cart[name] = (cart[name]||0) + 1; updateCart(); }
+function changeQty(name,delta){
+  cart[name] = (cart[name]||0) + delta;
+  if(cart[name] <= 0) delete cart[name];
+  updateCart();
+}
+function removeFromCart(name){ delete cart[name]; updateCart(); }
+
+function updateCart(){
+  const entries = Object.entries(cart);
+  const totalQty = entries.reduce((s,[,q])=>s+q,0);
+  document.getElementById('cartBadge').textContent = totalQty;
+
+  const body = document.getElementById('cartBody');
+  const foot = document.getElementById('cartFoot');
+  if(entries.length===0){
+    body.innerHTML = '<div class="cart-empty"><i class="fa-solid fa-bag-shopping"></i><p>Your cart is empty.<br><small>Add dishes from the menu to start your order.</small></p></div>';
+    foot.style.display = 'none';
+  } else {
+    body.innerHTML = entries.map(([name,qty])=>{
+      const d = findDish(name); if(!d) return '';
+      return `<div class="cart-line">
+        <div class="thumb" style="background-image:url('${d.img}')"></div>
+        <div class="info">
+          <h5>${d.name}</h5>
+          <div class="price">₹${d.price} × ${qty} = <strong>₹${d.price*qty}</strong></div>
+          <div class="qty">
+            <button onclick="changeQty('${escapeJs(name)}',-1)" aria-label="Decrease">−</button>
+            <span>${qty}</span>
+            <button onclick="changeQty('${escapeJs(name)}',1)" aria-label="Increase">+</button>
+            <button class="rm" onclick="removeFromCart('${escapeJs(name)}')" aria-label="Remove">Remove</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+    foot.style.display = 'block';
+    const sub = entries.reduce((s,[name,qty])=>s + findDish(name).price*qty, 0);
+    const tax = Math.round(sub * TAX_RATE);
+    const total = sub + tax + DELIVERY_FEE;
+    document.getElementById('ctSub').textContent = '₹' + sub;
+    document.getElementById('ctTax').textContent = '₹' + tax;
+    document.getElementById('ctTotal').textContent = '₹' + total;
+  }
+  render(); // refresh dish buttons
+}
+
+function openCart(){ document.getElementById('cartDrawer').classList.add('open'); document.getElementById('cartOverlay').classList.add('open'); }
+function closeCart(){ document.getElementById('cartDrawer').classList.remove('open'); document.getElementById('cartOverlay').classList.remove('open'); }
+
+/* Validate + submit -> WhatsApp */
+document.getElementById('orderForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('cf-name').value.trim();
+  const phone = document.getElementById('cf-phone').value.trim();
+  const type = document.getElementById('cf-type').value;
+  const time = document.getElementById('cf-time').value;
+  const addr = document.getElementById('cf-addr').value.trim();
+  const notes = document.getElementById('cf-notes').value.trim();
+
+  let ok = true;
+  const nameOk = name.length>=2 && name.length<=60 && /^[a-zA-Z\s.'-]+$/.test(name);
+  document.getElementById('err-name').classList.toggle('show', !nameOk); if(!nameOk) ok=false;
+  const phoneDigits = phone.replace(/\D/g,'');
+  const phoneOk = /^[6-9]\d{9}$/.test(phoneDigits);
+  document.getElementById('err-phone').classList.toggle('show', !phoneOk); if(!phoneOk) ok=false;
+  if(Object.keys(cart).length===0){ alert('Your cart is empty.'); return; }
+  if(!ok) return;
+
+  const entries = Object.entries(cart);
+  const sub = entries.reduce((s,[n,q])=>s + findDish(n).price*q, 0);
+  const tax = Math.round(sub * TAX_RATE);
+  const total = sub + tax + DELIVERY_FEE;
+
+  const orderId = 'RP-' + Date.now().toString(36).toUpperCase().slice(-6);
+  const lines = [
+    '*New Order — Royal Pearl Hyderabad*',
+    `Order ID: ${orderId}`,
+    '',
+    `*Name:* ${name}`,
+    `*Phone:* ${phoneDigits}`,
+    `*Order Type:* ${type}`,
+    `*Preferred Time:* ${time}`,
+    (type==='Delivery' && addr) ? `*Address:* ${addr}` : '',
+    notes ? `*Notes:* ${notes}` : '',
+    '',
+    '*Items:*',
+    ...entries.map(([n,q])=>`• ${n} × ${q} = ₹${findDish(n).price*q}`),
+    '',
+    `Subtotal: ₹${sub}`,
+    `Delivery: ₹${DELIVERY_FEE}`,
+    `Taxes (5%): ₹${tax}`,
+    `*Total: ₹${total}*`,
+  ].filter(Boolean).join('\n');
+
+  const url = `https://wa.me/${RESTAURANT_PHONE}?text=${encodeURIComponent(lines)}`;
+  // Save order to backend (admin dashboard)
+  if(window.RP_API){
+    RP_API.insert('table_reservations',{
+      name:name,phone:phoneDigits,order_type:type,preferred_time:time,
+      address:addr||null,notes:notes||null,
+      items:entries.map(([n,q])=>({name:n,qty:q,price:findDish(n).price})),
+      total:total
+    }).catch(err=>console.warn('Backend save failed:',err.message));
+  }
+  openConfirm(orderId, lines, url);
+});
+
+let lastPreview = '';
+function openConfirm(id, message, waUrl){
+  lastPreview = message;
+  document.getElementById('confOrderId').textContent = id;
+  document.getElementById('previewBox').textContent = message;
+  document.getElementById('confWaLink').href = waUrl;
+  const btn = document.getElementById('copyBtn');
+  btn.classList.remove('copied');
+  btn.querySelector('span').textContent = 'Copy';
+  document.getElementById('confirmModal').classList.add('open');
+  closeCart();
+}
+function closeConfirm(){ document.getElementById('confirmModal').classList.remove('open'); }
+function afterSend(){
+  setTimeout(()=>{
+    for(const k of Object.keys(cart)) delete cart[k];
+    updateCart();
+    closeConfirm();
+  }, 500);
+}
+async function copyPreview(){
+  const btn = document.getElementById('copyBtn');
+  const label = btn.querySelector('span');
+  try{
+    if(navigator.clipboard && window.isSecureContext){
+      await navigator.clipboard.writeText(lastPreview);
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = lastPreview; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    btn.classList.add('copied');
+    label.textContent = 'Copied!';
+    setTimeout(()=>{ btn.classList.remove('copied'); label.textContent='Copy'; }, 2000);
+  } catch(err){
+    label.textContent = 'Failed';
+  }a
+}
+
+render();
+updateCart();
+</script>
+<script src="assets/login-modal.js" defer></script>
+<script src="assets/api.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

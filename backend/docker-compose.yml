@@ -1,0 +1,83 @@
+# =============================================================================
+# Royal Pearl Hyderabad – Docker Compose
+# Starts: PostgreSQL 16 + Spring Boot API
+#
+# Usage:
+#   cp .env.example .env          # fill in your values
+#   docker compose up --build -d  # first run
+#   docker compose logs -f api    # tail logs
+#   docker compose down -v        # stop + remove volumes
+# =============================================================================
+
+version: "3.9"
+
+services:
+
+  # --------------------------------------------------------------------------
+  # PostgreSQL 16
+  # --------------------------------------------------------------------------
+  postgres:
+    image: postgres:16-alpine
+    container_name: royalpearl-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB:       ${DB_NAME:-royalpearl}
+      POSTGRES_USER:     ${DB_USERNAME:-royalpearl}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-royalpearl}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-royalpearl} -d ${DB_NAME:-royalpearl}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - royalpearl-net
+
+  # --------------------------------------------------------------------------
+  # Spring Boot API
+  # --------------------------------------------------------------------------
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: royalpearl-api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      # Override DB_URL to use the compose service name
+      DB_URL: jdbc:postgresql://postgres:5432/${DB_NAME:-royalpearl}
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-dev}
+    ports:
+      - "${API_PORT:-8080}:8080"
+    healthcheck:
+      test: ["CMD-SHELL",
+             "wget -qO- http://localhost:8080/actuator/health | grep -q '\"status\":\"UP\"'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    networks:
+      - royalpearl-net
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  postgres_data:
+    name: royalpearl_postgres_data
+
+networks:
+  royalpearl-net:
+    name: royalpearl-network
+    driver: bridge

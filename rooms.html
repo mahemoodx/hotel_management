@@ -1,0 +1,1062 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Royal Pearl Hyderabad — Rooms & Suites</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root{
+  --navy:#0b1830; --navy-2:#0f1f3d;
+  --gold:#d4a24a; --gold-2:#e0b766;
+  --bg:#f5f6f8; --card:#fff;
+  --text:#1a1f2c; --muted:#6b7280;
+  --border:#e6e8ec;
+  --green:#22c55e; --red:#ef4444;
+  --shadow:0 8px 24px rgba(15,31,61,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:absolute;top:-100px;left:8px;background:var(--gold);color:#1a1300;padding:10px 16px;border-radius:4px;font-weight:600;z-index:100;transition:top .2s}
+.skip-link:focus{top:8px}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section{margin-top:64px}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px;text-align:center;margin:0 0 32px}
+.section-title::after{content:"";display:block;width:60px;height:2px;background:var(--gold);margin:10px auto 0}
+.eyebrow{text-align:center;color:var(--gold);font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+
+/* NAV - identical to home */
+.nav{background:var(--navy);position:sticky;top:0;z-index:50}
+.nav-inner{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px;color:#fff}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{width:38px;height:38px;border:1.5px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-weight:700;border-radius:4px}
+.brand-text{display:flex;flex-direction:column;line-height:1.1}
+.brand-text strong{font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:1px}
+.brand-text small{font-family:'Cormorant Garamond',serif;font-size:11px;color:var(--gold);letter-spacing:2px}
+.brand-text em{font-style:normal;font-size:8px;letter-spacing:2px;color:#c9ccd2;margin-top:3px}
+.nav-links{display:flex;gap:28px;margin-left:auto;font-size:14px}
+.nav-links a{opacity:.85}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold)}
+.nav-links a.active{border-bottom:2px solid var(--gold);padding-bottom:4px}
+.nav-cta{display:flex;gap:10px}
+.nav-toggle{display:none;width:42px;height:42px;border:1px solid rgba(212,162,74,.55);background:transparent;color:var(--gold);border-radius:4px;place-items:center;font-size:18px;cursor:pointer}
+.mobile-menu{display:none;background:var(--navy-2);border-top:1px solid rgba(255,255,255,.08);padding:12px 24px;gap:4px;flex-direction:column}
+.mobile-menu a{color:#fff;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px}
+.mobile-menu a.active,.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu.open{display:flex}
+
+/* BUTTONS */
+.btn{border:0;padding:10px 18px;font-weight:600;font-size:13px;border-radius:4px;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-gold{background:var(--gold);color:#1a1300}
+.btn-gold:hover{background:var(--gold-2)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-outline-light{background:transparent;color:#fff;border:1px solid #fff}
+.btn-outline-light:hover{background:#fff;color:var(--navy)}
+.btn-outline{background:#fff;border:1px solid var(--border);color:var(--text)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-sm{padding:7px 14px;font-size:12px}
+
+/* PAGE HEADER */
+.page-hero{position:relative;height:280px;background:url('https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1600&q=80') center/cover no-repeat;color:#fff;display:flex;align-items:center}
+.page-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,24,48,.85),rgba(11,24,48,.4))}
+.page-hero-inner{position:relative;max-width:1200px;margin:0 auto;padding:0 24px;z-index:2}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:48px;margin:0 0 8px;font-weight:600}
+.page-hero p{margin:0 0 12px;opacity:.9}
+.crumb a{color:var(--gold)}
+.crumb span{margin:0 6px;opacity:.7}
+
+/* SEARCH */
+.search-card{background:#fff;border-radius:6px;box-shadow:var(--shadow);padding:18px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:16px;align-items:end;margin-top:-44px;position:relative;z-index:5}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12px;color:var(--muted);font-weight:500}
+.field input,.field select{padding:10px 12px;border:1px solid var(--border);border-radius:4px;font-size:14px;background:#fff;color:var(--text);outline:none}
+.field select option{background:#fff;color:var(--text)}
+.field input:focus,.field select:focus{border-color:var(--gold)}
+.btn-search{height:42px;padding:0 26px}
+
+/* FILTER BAR */
+.filter-bar{background:var(--navy);color:#fff;border-radius:6px;margin-top:16px;padding:18px 22px;display:grid;grid-template-columns:1.4fr 2fr 1fr;gap:30px;align-items:center}
+.filter-block label.lbl{display:block;font-size:12px;color:#c9ccd2;margin-bottom:10px;font-weight:500}
+.range{position:relative;height:30px}
+.range input[type=range]{width:100%;-webkit-appearance:none;background:transparent;height:4px}
+.range input[type=range]::-webkit-slider-runnable-track{height:4px;background:rgba(255,255,255,.2);border-radius:2px}
+.range input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--gold);border:2px solid #fff;margin-top:-6px;cursor:pointer}
+.range-labels{display:flex;justify-content:space-between;font-size:12px;color:#c9ccd2;margin-top:4px}
+.amenities{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 16px;font-size:13px}
+.amenities label{display:flex;align-items:center;gap:6px;color:#fff;cursor:pointer}
+.amenities input{accent-color:var(--gold)}
+.sort{width:100%;padding:8px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff;font-size:13px}
+
+/* CARDS */
+.featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.feat-card{background:#fff;border-radius:6px;overflow:hidden;box-shadow:var(--shadow);transition:.25s}
+.feat-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(15,31,61,.14)}
+.feat-img{position:relative;height:200px;background-size:cover;background-position:center}
+.badge{position:absolute;top:12px;left:12px;background:var(--gold);color:#1a1300;padding:5px 12px;font-size:11px;font-weight:700;border-radius:3px}
+.price-tag{position:absolute;bottom:12px;right:12px;background:var(--gold);color:#1a1300;padding:6px 12px;font-weight:700;border-radius:3px;font-size:14px}
+.feat-body{padding:16px}
+.feat-body h3{margin:0 0 8px;font-family:'Cormorant Garamond',serif;font-size:20px}
+.feat-meta{display:flex;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:12px;margin:0 0 12px;padding:0;list-style:none}
+.feat-meta i{color:var(--gold);margin-right:4px}
+
+/* ROOMS GRID */
+.rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.room-card{background:#fff;border-radius:6px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:.25s}
+.room-card:hover{transform:translateY(-3px)}
+.room-img{position:relative;height:180px;background-size:cover;background-position:center}
+.room-body{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.room-body h4{margin:0;font-family:'Cormorant Garamond',serif;font-size:18px}
+.stars{color:var(--gold);font-size:12px}
+.room-meta{display:flex;gap:10px;color:var(--muted);font-size:12px;flex-wrap:wrap;list-style:none;padding:0;margin:0}
+.room-meta i{color:var(--gold);margin-right:3px}
+.room-price{color:var(--gold);font-weight:700;font-size:16px}
+.room-actions{display:flex;gap:8px;margin-top:auto;padding-top:8px}
+.room-actions .btn{flex:1;justify-content:center}
+
+/* AMENITIES */
+.amenity-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.amenity-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:22px 8px;text-align:center;transition:.25s}
+.amenity-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+.amenity-card i{font-size:28px;color:var(--gold);margin-bottom:10px;display:block}
+.amenity-card span{font-size:12px;font-weight:500}
+
+/* TABLE */
+.table-wrap{background:#fff;border-radius:6px;overflow:hidden;box-shadow:var(--shadow);overflow-x:auto}
+.compare{width:100%;border-collapse:collapse;font-size:13px;min-width:700px}
+.compare th,.compare td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--border)}
+.compare th{background:#fafbfc;font-weight:600;font-size:12px}
+.compare td.y{color:var(--green);font-weight:700}
+.compare td.n{color:var(--red);font-weight:700}
+
+/* OFFERS */
+.offers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.offer-card{background:#fff;border-radius:6px;overflow:hidden;box-shadow:var(--shadow);display:flex}
+.offer-img{width:140px;flex-shrink:0;background-size:cover;background-position:center}
+.offer-body{padding:16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.offer-body h4{margin:0;font-family:'Cormorant Garamond',serif;font-size:18px}
+.offer-body p{margin:0;font-size:13px;color:var(--muted);line-height:1.5}
+.offer-discount{color:var(--gold);font-weight:700;margin-top:4px}
+.offer-body .btn{margin-top:8px;align-self:flex-start}
+
+/* GALLERY PROMO */
+.gallery-promo{display:grid;grid-template-columns:1.1fr 1fr;background:var(--navy);color:#fff;border-radius:8px;overflow:hidden;box-shadow:var(--shadow);transition:.25s}
+.gallery-promo:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(15,31,61,.18)}
+.gp-thumbs{display:grid;grid-template-columns:1fr 1fr;gap:2px;min-height:240px}
+.gp-thumbs span{background-size:cover;background-position:center;transition:.4s}
+.gallery-promo:hover .gp-thumbs span{transform:scale(1.05)}
+.gp-content{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.gp-content h3{font-family:'Cormorant Garamond',serif;font-size:26px;margin:0;font-weight:600}
+.gp-content p{margin:0;color:#c9ccd2;font-size:14px;line-height:1.6}
+.gp-content .btn{align-self:flex-start;margin-top:12px}
+@media (max-width:768px){.gallery-promo{grid-template-columns:1fr}.gp-thumbs{min-height:180px}}
+
+/* TESTIMONIALS */
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi{background:#fff;border-radius:6px;padding:22px;box-shadow:var(--shadow);position:relative}
+.testi .tstars{color:var(--gold);font-size:12px;margin-bottom:8px}
+.testi p{font-size:13px;line-height:1.6;margin:0 0 16px;font-style:italic}
+.testi-user{display:flex;align-items:center;gap:10px}
+.avatar{width:42px;height:42px;border-radius:50%;background-size:cover;background-position:center}
+.testi-user strong{font-size:13px;display:block}
+.testi-user small{font-size:11px;color:var(--muted)}
+
+/* CTA */
+.cta-banner{position:relative;margin-top:80px;background:url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=80') center/cover no-repeat;color:#fff}
+.cta-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,24,48,.92),rgba(11,24,48,.7))}
+.cta-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:48px 24px;gap:24px;flex-wrap:wrap}
+.cta-inner h2{font-family:'Cormorant Garamond',serif;font-size:32px;margin:0 0 6px;font-weight:600}
+.cta-inner p{margin:0;opacity:.85}
+.cta-buttons{display:flex;gap:12px}
+
+/* FOOTER */
+.footer{background:var(--navy-2);color:#cfd3da;padding:60px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr 1.2fr;gap:32px}
+.footer h4{color:#fff;font-size:15px;font-weight:600;margin:0 0 16px;font-family:'Cormorant Garamond',serif}
+.footer ul{list-style:none;padding:0;margin:0;font-size:13px;display:flex;flex-direction:column;gap:10px}
+.footer ul.contact li{display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+.footer ul.contact i{color:var(--gold);margin-top:3px}
+.footer a:hover{color:var(--gold)}
+.muted{color:#9ca3af;font-size:13px;line-height:1.6}
+.socials{display:flex;gap:10px;margin-top:14px}
+.socials a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);display:grid;place-items:center;color:#cfd3da;font-size:13px;transition:.2s}
+.socials a:hover{background:var(--gold);color:#1a1300}
+.newsletter{display:flex;margin-top:8px;background:#fff;border-radius:4px;overflow:hidden}
+.newsletter input{flex:1;border:0;padding:10px 12px;font-size:13px;outline:none;color:#000}
+.newsletter button{background:var(--gold);border:0;padding:0 14px;cursor:pointer;color:#1a1300}
+.footer-bottom{display:flex;justify-content:space-between;font-size:12px;color:#9ca3af;padding:22px 0;margin-top:36px;border-top:1px solid rgba(255,255,255,.08)}
+
+@media (max-width:1024px){
+  .nav-links{display:none}
+  .nav-toggle{display:grid;margin-left:auto;order:3}.nav-cta{order:2}
+  .search-card{grid-template-columns:1fr 1fr}
+  .filter-bar{grid-template-columns:1fr}
+  .featured-grid,.testimonials,.offers-grid{grid-template-columns:1fr 1fr}
+  .rooms-grid{grid-template-columns:repeat(2,1fr)}
+  .amenity-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .page-hero h1{font-size:34px}
+  .search-card,.featured-grid,.rooms-grid,.testimonials,.offers-grid{grid-template-columns:1fr}
+  .amenity-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr}
+  .nav-cta .btn-ghost{display:none}
+}
+
+/* MODAL */
+.modal-backdrop{position:fixed;inset:0;background:rgba(11,24,48,.65);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px;backdrop-filter:blur(4px)}
+.modal-backdrop.open{display:flex;animation:fadein .2s ease}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.modal{background:#fff;border-radius:8px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.3);animation:slideup .25s ease}
+@keyframes slideup{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-head{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:12px;background:var(--navy);color:#fff;border-radius:8px 8px 0 0}
+.modal-head h3{margin:0;font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600}
+.modal-head .room-pill{display:inline-block;margin-top:6px;background:var(--gold);color:#1a1300;padding:3px 10px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:1px}
+.modal-close{background:transparent;border:0;color:#fff;font-size:24px;cursor:pointer;padding:0;line-height:1;opacity:.8}
+.modal-close:hover{opacity:1;color:var(--gold)}
+.modal-body{padding:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:12px;font-weight:600;color:var(--text)}
+.form-group input,.form-group select,.form-group textarea{padding:10px 12px;border:1px solid var(--border);border-radius:4px;font-size:14px;font-family:inherit;background:#fff;color:var(--text);outline:none;transition:.15s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,162,74,.15)}
+.form-group textarea{resize:vertical;min-height:70px}
+.form-error{color:var(--red);font-size:12px;margin-top:4px;display:none}
+.form-group.error input,.form-group.error select{border-color:var(--red)}
+.form-group.error .form-error{display:block}
+.modal-summary{background:#fafbfc;border:1px solid var(--border);border-radius:4px;padding:12px 14px;margin-bottom:14px;font-size:13px;display:flex;justify-content:space-between;align-items:center}
+.modal-summary strong{color:var(--gold);font-size:16px;font-family:'Cormorant Garamond',serif}
+.modal-foot{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end;background:#fafbfc;border-radius:0 0 8px 8px}
+.modal-success{text-align:center;padding:30px 20px}
+.modal-success i{font-size:54px;color:var(--green);margin-bottom:14px;display:block}
+.modal-success h4{font-family:'Cormorant Garamond',serif;font-size:24px;margin:0 0 8px;color:var(--text)}
+.modal-success p{color:var(--muted);margin:0 0 8px;font-size:14px;line-height:1.6}
+.modal-success .ref{display:inline-block;background:var(--navy);color:var(--gold);font-family:monospace;padding:6px 14px;border-radius:4px;font-weight:700;letter-spacing:1px;margin-top:8px}
+@media (max-width:600px){
+  .form-row{grid-template-columns:1fr}
+  .modal-head h3{font-size:20px}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="home" class="brand">
+      <div class="brand-text">
+        <strong>ROYAL PEARL</strong>
+        <small>HYDERABAD</small>
+        <em>LUXURY HOTEL & RESTAURANT</em>
+      </div>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="home">Home</a>
+      <a href="rooms" class="active">Rooms</a>
+      <a href="restaurant">Restaurant</a>
+      <a href="gallery">Gallery</a>
+      <a href="about">About Us</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <div class="nav-cta">
+      <button type="button" data-login class="btn btn-ghost"><i class="fa-solid fa-user"></i> Login</button>
+      <a href="/booking" class="btn btn-gold">Book Now</a>
+    </div>
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile menu">
+    <a href="home">Home</a>
+    <a href="rooms" class="active">Rooms</a>
+    <a href="restaurant">Restaurant</a>
+    <a href="gallery">Gallery</a>
+    <a href="about">About Us</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+</header>
+
+<script>
+(function(){var btn=document.querySelector('.nav-toggle');var menu=document.getElementById('mobileMenu');if(!btn||!menu)return;function close(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');}btn.addEventListener('click',function(e){e.stopPropagation();var open=menu.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');});menu.addEventListener('click',function(e){if(e.target.tagName==='A')close();});document.addEventListener('click',function(e){if(menu.classList.contains('open')&&!menu.contains(e.target)&&!btn.contains(e.target))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});})();
+</script>
+
+<main id="main">
+  <section class="page-hero" aria-label="Rooms & Suites">
+    <div class="page-hero-inner">
+      <h1>Rooms & Suites</h1>
+      <p>Choose the perfect stay for your comfort and luxury.</p>
+      <div class="crumb"><a href="home">Home</a><span>›</span>Rooms</div>
+    </div>
+  </section>
+
+  <div class="container">
+    <form class="search-card" id="searchForm" role="search" aria-label="Check availability">
+      <div class="field"><label for="q">Search</label><input id="q" type="search" placeholder="Search by name or description..."></div>
+      <div class="field"><label for="g">Guests</label>
+        <select id="g"><option value="0">Any</option><option value="1">1+ Guest</option><option value="2">2+ Guests</option><option value="3">3+ Guests</option><option value="4">4+ Guests</option><option value="6">6+ Guests</option></select>
+      </div>
+      <div class="field"><label for="rt">Room Type</label>
+        <select id="rt">
+          <option value="">All Room Types</option>
+          <option>Deluxe</option><option>Executive</option><option>Suite</option><option>Family</option><option>Garden</option><option>Penthouse</option><option>Presidential</option>
+        </select>
+      </div>
+      <div class="field"><label for="sort">Sort By</label>
+        <select id="sort">
+          <option value="recommended">Recommended</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Rating</option>
+          <option value="name">Name (A–Z)</option>
+        </select>
+      </div>
+      <button class="btn btn-gold btn-search" type="button" id="resetBtn">Reset</button>
+    </form>
+
+    <div class="filter-bar" role="region" aria-label="Filter rooms">
+      <div class="filter-block">
+        <label class="lbl" for="price">Max Price Per Night</label>
+        <div class="range"><input id="price" type="range" min="1500" max="30000" step="500" value="30000"></div>
+        <div class="range-labels"><span>₹1,500</span><span id="pv">Up to ₹30,000</span></div>
+      </div>
+      <div class="filter-block">
+        <label class="lbl">Minimum Rating</label>
+        <div class="amenities" id="ratingFilter" style="grid-template-columns:repeat(4,1fr)">
+          <label><input type="radio" name="rating" value="0" checked> Any</label>
+          <label><input type="radio" name="rating" value="3"> 3★+</label>
+          <label><input type="radio" name="rating" value="4"> 4★+</label>
+          <label><input type="radio" name="rating" value="5"> 5★</label>
+        </div>
+      </div>
+      <div class="filter-block">
+        <label class="lbl">Results</label>
+        <div id="resultCount" style="font-size:18px;font-family:'Cormorant Garamond',serif;color:var(--gold)">— rooms</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section container">
+    <div class="eyebrow">Premium Picks</div>
+    <h2 class="section-title">Featured Luxury Suites</h2>
+    <div class="featured-grid" id="featured">
+      <article class="feat-card">
+        <div class="feat-img" role="img" aria-label="Presidential Suite" style="background-image:url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80')">
+          <span class="badge">Best Seller</span>
+          <span class="price-tag">₹24,999</span>
+        </div>
+        <div class="feat-body">
+          <h3>Presidential Suite</h3>
+          <ul class="feat-meta"><li><i class="fa-solid fa-check"></i>4 Guests</li><li><i class="fa-solid fa-check"></i>2 King Beds</li><li><i class="fa-solid fa-check"></i>Panoramic View</li></ul>
+          <a href="/booking" class="btn btn-gold">Book Now</a>
+        </div>
+      </article>
+      <article class="feat-card">
+        <div class="feat-img" role="img" aria-label="Nizami Royal Suite" style="background-image:url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80')">
+          <span class="badge">Heritage</span>
+          <span class="price-tag">₹15,999</span>
+        </div>
+        <div class="feat-body">
+          <h3>Nizami Royal Suite</h3>
+          <ul class="feat-meta"><li><i class="fa-solid fa-check"></i>4 Guests</li><li><i class="fa-solid fa-check"></i>2 Grand Beds</li><li><i class="fa-solid fa-check"></i>Heritage View</li></ul>
+          <a href="/booking" class="btn btn-gold">Book Now</a>
+        </div>
+      </article>
+      <article class="feat-card">
+        <div class="feat-img" role="img" aria-label="Imperial Pearl Suite" style="background-image:url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80')">
+          <span class="badge">Premium</span>
+          <span class="price-tag">₹21,999</span>
+        </div>
+        <div class="feat-body">
+          <h3>Imperial Pearl Suite</h3>
+          <ul class="feat-meta"><li><i class="fa-solid fa-check"></i>2 Guests</li><li><i class="fa-solid fa-check"></i>Ultra King</li><li><i class="fa-solid fa-check"></i>Panoramic</li></ul>
+          <a href="/booking" class="btn btn-gold">Book Now</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="eyebrow">Explore</div>
+    <h2 class="section-title">All Rooms & Suites</h2>
+    <div class="rooms-grid" id="rooms">
+      <article class="room-card">
+        <div class="room-img" role="img" aria-label="Deluxe Room" style="background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80')"></div>
+        <div class="room-body">
+          <h4>Deluxe Room</h4><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p style="margin:0;font-size:12px;color:var(--muted);line-height:1.5">Cozy king-bed retreat with panoramic city views, smart TV and rainfall shower.</p>
+          <ul class="room-meta"><li><i class="fa-solid fa-circle-check"></i>2 Guests</li><li><i class="fa-solid fa-circle-check"></i>King Bed</li><li><i class="fa-solid fa-circle-check"></i>City View</li></ul>
+          <div class="room-price">₹3,999<small style="color:var(--muted);font-weight:400;font-size:11px"> /night</small></div>
+          <div class="room-actions"><a href="/booking" class="btn btn-gold btn-sm">Book Now</a><a href="#" class="btn btn-outline btn-sm">Details</a></div>
+        </div>
+      </article>
+      <article class="room-card">
+        <div class="room-img" role="img" aria-label="Executive Room" style="background-image:url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&q=80')"></div>
+        <div class="room-body">
+          <h4>Executive Room</h4><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p style="margin:0;font-size:12px;color:var(--muted);line-height:1.5">Spacious executive stay with private balcony, work desk and lounge access.</p>
+          <ul class="room-meta"><li><i class="fa-solid fa-circle-check"></i>2 Guests</li><li><i class="fa-solid fa-circle-check"></i>King Bed</li><li><i class="fa-solid fa-circle-check"></i>Balcony</li></ul>
+          <div class="room-price">₹6,499<small style="color:var(--muted);font-weight:400;font-size:11px"> /night</small></div>
+          <div class="room-actions"><a href="/booking" class="btn btn-gold btn-sm">Book Now</a><a href="#" class="btn btn-outline btn-sm">Details</a></div>
+        </div>
+      </article>
+      <article class="room-card">
+        <div class="room-img" role="img" aria-label="Luxury Suite" style="background-image:url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80')"></div>
+        <div class="room-body">
+          <h4>Luxury Suite</h4><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p style="margin:0;font-size:12px;color:var(--muted);line-height:1.5">Elegant suite featuring a separate living area, jacuzzi and premium amenities.</p>
+          <ul class="room-meta"><li><i class="fa-solid fa-circle-check"></i>2 Guests</li><li><i class="fa-solid fa-circle-check"></i>King Bed</li><li><i class="fa-solid fa-circle-check"></i>Suite</li></ul>
+          <div class="room-price">₹10,999<small style="color:var(--muted);font-weight:400;font-size:11px"> /night</small></div>
+          <div class="room-actions"><a href="/booking" class="btn btn-gold btn-sm">Book Now</a><a href="#" class="btn btn-outline btn-sm">Details</a></div>
+        </div>
+      </article>
+      <article class="room-card">
+        <div class="room-img" role="img" aria-label="Family Room" style="background-image:url('https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800&q=80')"></div>
+        <div class="room-body">
+          <h4>Family Room</h4><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p style="margin:0;font-size:12px;color:var(--muted);line-height:1.5">Roomy family layout with two queen beds, kid-friendly setup and city outlook.</p>
+          <ul class="room-meta"><li><i class="fa-solid fa-circle-check"></i>4 Guests</li><li><i class="fa-solid fa-circle-check"></i>2 Beds</li><li><i class="fa-solid fa-circle-check"></i>City View</li></ul>
+          <div class="room-price">₹8,499<small style="color:var(--muted);font-weight:400;font-size:11px"> /night</small></div>
+          <div class="room-actions"><a href="/booking" class="btn btn-gold btn-sm">Book Now</a><a href="#" class="btn btn-outline btn-sm">Details</a></div>
+        </div>
+      </article>
+      <article class="room-card">
+        <div class="room-img" role="img" aria-label="Garden View Room" style="background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&q=80')"></div>
+        <div class="room-body">
+          <h4>Garden View Room</h4><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p style="margin:0;font-size:12px;color:var(--muted);line-height:1.5">Peaceful retreat overlooking lush gardens with a private patio and queen bed.</p>
+          <ul class="room-meta"><li><i class="fa-solid fa-circle-check"></i>2 Guests</li><li><i class="fa-solid fa-circle-check"></i>Queen Bed</li><li><i class="fa-solid fa-circle-check"></i>Garden</li></ul>
+          <div class="room-price">₹5,499<small style="color:var(--muted);font-weight:400;font-size:11px"> /night</small></div>
+          <div class="room-actions"><a href="/booking" class="btn btn-gold btn-sm">Book Now</a><a href="#" class="btn btn-outline btn-sm">Details</a></div>
+        </div>
+      </article>
+      <article class="room-card">
+        <div class="room-img" role="img" aria-label="Penthouse" style="background-image:url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&q=80')"></div>
+        <div class="room-body">
+          <h4>Penthouse</h4><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p style="margin:0;font-size:12px;color:var(--muted);line-height:1.5">Top-floor penthouse with rooftop terrace, three bedrooms and 360° skyline.</p>
+          <ul class="room-meta"><li><i class="fa-solid fa-circle-check"></i>6 Guests</li><li><i class="fa-solid fa-circle-check"></i>3 Beds</li><li><i class="fa-solid fa-circle-check"></i>Rooftop</li></ul>
+          <div class="room-price">₹29,999<small style="color:var(--muted);font-weight:400;font-size:11px"> /night</small></div>
+          <div class="room-actions"><a href="/booking" class="btn btn-gold btn-sm">Book Now</a><a href="#" class="btn btn-outline btn-sm">Details</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section container" aria-label="Gallery promo">
+    <a href="gallery" class="gallery-promo">
+      <div class="gp-thumbs">
+        <span style="background-image:url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=70')"></span>
+        <span style="background-image:url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=400&q=70')"></span>
+        <span style="background-image:url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400&q=70')"></span>
+        <span style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=70')"></span>
+      </div>
+      <div class="gp-content">
+        <div class="eyebrow" style="text-align:left;margin-bottom:4px">Visual Journey</div>
+        <h3>Explore Our Photo Gallery</h3>
+        <p>See every suite, dining hall, pool, spa and event space in stunning detail.</p>
+        <span class="btn btn-gold"><i class="fa-solid fa-images"></i> Open Gallery <i class="fa-solid fa-arrow-right" style="margin-left:4px"></i></span>
+      </div>
+    </a>
+  </section>
+
+
+
+  <section class="section container">
+    <div class="eyebrow">World Class</div>
+    <h2 class="section-title">Enjoy World Class Amenities</h2>
+    <div class="amenity-grid">
+      <div class="amenity-card"><i class="fa-solid fa-wifi"></i><span>Free Wi-Fi</span></div>
+      <div class="amenity-card"><i class="fa-solid fa-utensils"></i><span>Breakfast</span></div>
+      <div class="amenity-card"><i class="fa-solid fa-snowflake"></i><span>AC</span></div>
+      <div class="amenity-card"><i class="fa-solid fa-tv"></i><span>Smart TV</span></div>
+      <div class="amenity-card"><i class="fa-solid fa-martini-glass"></i><span>Mini Bar</span></div>
+      <div class="amenity-card"><i class="fa-solid fa-bell-concierge"></i><span>Room Service</span></div>
+      <div class="amenity-card"><i class="fa-solid fa-person-swimming"></i><span>Pool</span></div>
+      <div class="amenity-card"><i class="fa-solid fa-dumbbell"></i><span>Gym</span></div>
+      <div class="amenity-card"><i class="fa-solid fa-spa"></i><span>Spa</span></div>
+      <div class="amenity-card"><i class="fa-solid fa-car"></i><span>Parking</span></div>
+      <div class="amenity-card"><i class="fa-solid fa-plane"></i><span>Airport Transfer</span></div>
+      <div class="amenity-card"><i class="fa-solid fa-users"></i><span>Conference</span></div>
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="eyebrow">Compare</div>
+    <h2 class="section-title">Compare Our Rooms</h2>
+    <div class="table-wrap">
+      <table class="compare">
+        <thead><tr><th>Room Type</th><th>Price / Night</th><th>Capacity</th><th>View Type</th><th>Breakfast</th><th>Wi-Fi</th><th>Balcony</th><th>Suite Access</th></tr></thead>
+        <tbody>
+          <tr><td>Deluxe Room</td><td>₹3,999</td><td>2 Guests</td><td>City View</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td></tr>
+          <tr><td>Executive Room</td><td>₹6,499</td><td>2 Guests</td><td>City View</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td></tr>
+          <tr><td>Luxury Suite</td><td>₹10,999</td><td>2 Guests</td><td>City View</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+          <tr><td>Presidential Suite</td><td>₹24,999</td><td>4 Guests</td><td>Panoramic</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="eyebrow">Limited Time</div>
+    <h2 class="section-title">Special Offers for You</h2>
+    <div class="offers-grid" id="offers">
+      <article class="offer-card"><div class="offer-img" role="img" aria-label="Weekend Getaway" style="background-image:url('https://images.unsplash.com/photo-1455587734955-081b22074882?w=600&q=80')"></div><div class="offer-body"><h4>Weekend Getaway</h4><p>Stay 2 nights and get the 3rd night absolutely free.</p><span class="offer-discount">30% OFF</span><a href="/booking" class="btn btn-gold btn-sm">Claim Offer</a></div></article>
+      <article class="offer-card"><div class="offer-img" role="img" aria-label="Honeymoon Special" style="background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80')"></div><div class="offer-body"><h4>Honeymoon Special</h4><p>Romantic dinner, spa treatment & deluxe suite stay.</p><span class="offer-discount">25% OFF</span><a href="/booking" class="btn btn-gold btn-sm">Claim Offer</a></div></article>
+      <article class="offer-card"><div class="offer-img" role="img" aria-label="Early Bird Booking" style="background-image:url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=80')"></div><div class="offer-body"><h4>Early Bird Booking</h4><p>Book 30 days in advance and save big on suites.</p><span class="offer-discount">20% OFF</span><a href="/booking" class="btn btn-gold btn-sm">Claim Offer</a></div></article>
+      <article class="offer-card"><div class="offer-img" role="img" aria-label="Festive Package" style="background-image:url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80')"></div><div class="offer-body"><h4>Festive Package</h4><p>Includes breakfast, dinner & complimentary spa access.</p><span class="offer-discount">15% OFF</span><a href="/booking" class="btn btn-gold btn-sm">Claim Offer</a></div></article>
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="eyebrow">Reviews</div>
+    <h2 class="section-title">What Our Guests Say</h2>
+    <div class="testimonials" id="testimonials">
+      <figure class="testi"><div class="tstars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>"Excellent rooms, delicious food, and outstanding service. One of the best hotel experiences in Hyderabad."</p><figcaption class="testi-user"><div class="avatar" role="img" aria-label="Rahul Sharma" style="background-image:url('https://i.pravatar.cc/100?img=12')"></div><div><strong>Rahul Sharma</strong><small>New Delhi</small></div></figcaption></figure>
+      <figure class="testi"><div class="tstars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>"Perfect location, luxurious stay and very cooperative staff. World class hospitality."</p><figcaption class="testi-user"><div class="avatar" role="img" aria-label="Priya Mehta" style="background-image:url('https://i.pravatar.cc/100?img=47')"></div><div><strong>Priya Mehta</strong><small>Mumbai</small></div></figcaption></figure>
+      <figure class="testi"><div class="tstars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>"The dining and authentic Nizami flavors at Royal Spice are absolutely unparalleled."</p><figcaption class="testi-user"><div class="avatar" role="img" aria-label="Anirudh Rao" style="background-image:url('https://i.pravatar.cc/100?img=33')"></div><div><strong>Anirudh Rao</strong><small>Hyderabad</small></div></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="cta-banner" aria-label="Book now">
+    <div class="cta-inner">
+      <div>
+        <h2>Find Your Perfect Room Today</h2>
+        <p>Book now and experience luxury like never before.</p>
+      </div>
+      <div class="cta-buttons">
+        <a href="/booking" class="btn btn-gold">Book Now</a>
+        <a href="gallery" class="btn btn-outline-light"><i class="fa-solid fa-images"></i> View Gallery</a>
+        <a href="contact.html" class="btn btn-outline-light">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="home" class="brand" style="margin-bottom:14px">
+          <div class="brand-mark">RP</div>
+          <div class="brand-text"><strong style="color:#fff">ROYAL PEARL</strong><small>HYDERABAD</small></div>
+        </a>
+        <p class="muted">Experience unmatched luxury and premium hospitality in the heart of Hyderabad.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home">Home</a></li>
+          <li><a href="rooms">Rooms</a></li>
+          <li><a href="restaurant">Restaurant</a></li>
+          <li><a href="gallery">Gallery</a></li>
+          <li><a href="about">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Our Facilities</h4>
+        <ul>
+          <li>Swimming Pool</li><li>Spa & Wellness</li><li>Fitness Center</li>
+          <li>Business Center</li><li>Conference Hall</li><li>Airport Transfer</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <ul class="contact">
+          <li><i class="fa-solid fa-location-dot"></i> Banjara Hills, Hyderabad, Telangana - 500034</li>
+          <li><i class="fa-solid fa-phone"></i> <a href="tel:+918179469535">+91 8179469535</a></li>
+          <li><i class="fa-solid fa-envelope"></i> <a href="mailto:restaurant@royalpearlhyderabad.com">restaurant@royalpearlhyderabad.com</a></li>
+          <li><i class="fa-brands fa-instagram"></i> @royalpearlhyderabad</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p class="muted">Subscribe to get updates & exclusive offers.</p>
+        <form class="newsletter" onsubmit="event.preventDefault();alert('Subscribed!')">
+          <label for="nl" class="sr-only">Email</label>
+          <input id="nl" type="email" placeholder="Your email" required>
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Royal Pearl Hyderabad. All Rights Reserved.</span>
+      <span><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal-backdrop" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h3 id="bookingTitle">Reserve Your Stay</h3>
+        <span class="room-pill" id="mRoomBadge">—</span>
+      </div>
+      <button type="button" class="modal-close" id="mClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body" id="mBody">
+      <div class="modal-summary">
+        <span><i class="fa-solid fa-bed" style="color:var(--gold);margin-right:6px"></i><span id="mRoomName">—</span></span>
+        <strong id="mRoomPrice">—</strong>
+      </div>
+      <form id="bookingForm" novalidate>
+        <input type="hidden" name="roomName" id="mfRoom">
+        <input type="hidden" name="roomPrice" id="mfPrice">
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="mfName">Full Name *</label>
+            <input id="mfName" name="fullName" type="text" maxlength="80" required>
+            <div class="form-error">Please enter your name.</div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="mfEmail">Email *</label>
+            <input id="mfEmail" name="email" type="email" maxlength="120" required>
+            <div class="form-error">Enter a valid email.</div>
+          </div>
+          <div class="form-group">
+            <label for="mfPhone">Phone *</label>
+            <input id="mfPhone" name="phone" type="tel" maxlength="20" pattern="[0-9+\-\s]{7,20}" required>
+            <div class="form-error">Enter a valid phone number.</div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="mfCin">Check-In *</label>
+            <input id="mfCin" name="checkIn" type="date" required>
+            <div class="form-error">Pick a check-in date.</div>
+          </div>
+          <div class="form-group">
+            <label for="mfCout">Check-Out *</label>
+            <input id="mfCout" name="checkOut" type="date" required>
+            <div class="form-error">Check-out must be after check-in.</div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="mfGuests">Guests *</label>
+            <select id="mfGuests" name="guests" required>
+              <option value="1">1 Guest</option><option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option><option value="4">4 Guests</option>
+              <option value="5">5 Guests</option><option value="6">6 Guests</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mfArrival">Arrival Time</label>
+            <input id="mfArrival" name="arrival" type="time" value="14:00">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="mfNotes">Special Requests</label>
+            <textarea id="mfNotes" name="notes" maxlength="500" placeholder="Anything we should know? (optional)"></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-foot" id="mFoot">
+      <button type="button" class="btn btn-outline" id="mCancel">Cancel</button>
+      <button type="button" class="btn btn-gold" id="mSubmit"><i class="fa-solid fa-circle-check"></i> Confirm Booking</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const stars = n => '<i class="fa-solid fa-star"></i>'.repeat(n);
+
+const featured = [
+  {name:'Presidential Suite',price:'₹24,999',img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80',badge:'Best Seller',meta:['4 Guests','2 King Beds','Panoramic View']},
+  {name:'Nizami Royal Suite',price:'₹15,999',img:'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80',badge:'Heritage',meta:['4 Guests','2 Grand Beds','Heritage View']},
+  {name:'Imperial Pearl Suite',price:'₹21,999',img:'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80',badge:'Premium',meta:['2 Guests','Ultra King','Panoramic']},
+];
+
+const rooms = [
+  {name:'Deluxe Room',type:'Deluxe',price:3999,guests:2,rating:4,img:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',desc:'Cozy king-bed retreat with panoramic city views, smart TV and rainfall shower.',meta:['2 Guests','King Bed','City View']},
+  {name:'Executive Room',type:'Executive',price:6499,guests:2,rating:4,img:'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&q=80',desc:'Spacious executive stay with private balcony, work desk and lounge access.',meta:['2 Guests','King Bed','Balcony']},
+  {name:'Luxury Suite',type:'Suite',price:10999,guests:2,rating:5,img:'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80',desc:'Elegant suite featuring a separate living area, jacuzzi and premium amenities.',meta:['2 Guests','King Bed','Suite']},
+  {name:'Family Room',type:'Family',price:8499,guests:4,rating:4,img:'https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800&q=80',desc:'Roomy family layout with two queen beds, kid-friendly setup and city outlook.',meta:['4 Guests','2 Beds','City View']},
+  {name:'Garden View Room',type:'Garden',price:5499,guests:2,rating:4,img:'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&q=80',desc:'Peaceful retreat overlooking lush gardens with a private patio and queen bed.',meta:['2 Guests','Queen Bed','Garden']},
+  {name:'Penthouse',type:'Penthouse',price:29999,guests:6,rating:5,img:'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&q=80',desc:'Top-floor penthouse with rooftop terrace, three bedrooms and 360° skyline.',meta:['6 Guests','3 Beds','Rooftop']},
+];
+
+const offers = [
+  {title:'Weekend Getaway',desc:'Stay 2 nights and get the 3rd night absolutely free.',discount:'30% OFF',img:'https://images.unsplash.com/photo-1455587734955-081b22074882?w=600&q=80'},
+  {title:'Honeymoon Special',desc:'Romantic dinner, spa treatment & deluxe suite stay.',discount:'25% OFF',img:'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80'},
+  {title:'Early Bird Booking',desc:'Book 30 days in advance and save big on suites.',discount:'20% OFF',img:'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=80'},
+  {title:'Festive Package',desc:'Includes breakfast, dinner & complimentary spa access.',discount:'15% OFF',img:'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80'},
+];
+
+const testimonials = [
+  {name:'Rahul Sharma',city:'New Delhi',text:'Excellent rooms, delicious food, and outstanding service. One of the best hotel experiences in Hyderabad.',avatar:'https://i.pravatar.cc/100?img=12'},
+  {name:'Priya Mehta',city:'Mumbai',text:'Perfect location, luxurious stay and very cooperative staff. World class hospitality.',avatar:'https://i.pravatar.cc/100?img=47'},
+  {name:'Anirudh Rao',city:'Hyderabad',text:'The dining and authentic Nizami flavors at Royal Spice are absolutely unparalleled.',avatar:'https://i.pravatar.cc/100?img=33'},
+];
+
+document.getElementById('featured').innerHTML = featured.map(r=>`
+  <article class="feat-card">
+    <div class="feat-img" role="img" aria-label="${r.name}" style="background-image:url('${r.img}')">
+      <span class="badge">${r.badge}</span>
+      <span class="price-tag">${r.price}</span>
+    </div>
+    <div class="feat-body">
+      <h3>${r.name}</h3>
+      <ul class="feat-meta">${r.meta.map(m=>`<li><i class="fa-solid fa-check"></i>${m}</li>`).join('')}</ul>
+      <button type="button" class="btn btn-gold js-book" data-room="${r.name}" data-price="${(+String(r.price).replace(/[^\d]/g,''))||0}">Book Now</button>
+    </div>
+  </article>`).join('');
+
+document.querySelectorAll('#featured .js-book').forEach(btn=>{
+  btn.addEventListener('click',()=>openBookingModal(btn.dataset.room, +btn.dataset.price));
+});
+
+document.getElementById('rooms').innerHTML = '';
+
+function renderRooms(){
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const minGuests = +document.getElementById('g').value;
+  const type = document.getElementById('rt').value;
+  const maxPrice = +document.getElementById('price').value;
+  const minRating = +document.querySelector('input[name="rating"]:checked').value;
+  const sortBy = document.getElementById('sort').value;
+
+  let list = rooms.filter(r => {
+    if(q && !(r.name.toLowerCase().includes(q) || (r.desc||'').toLowerCase().includes(q) || r.meta.join(' ').toLowerCase().includes(q) || r.type.toLowerCase().includes(q))) return false;
+    if(minGuests && r.guests < minGuests) return false;
+    if(type && r.type !== type) return false;
+    if(r.price > maxPrice) return false;
+    if(r.rating < minRating) return false;
+    return true;
+  });
+
+  if(sortBy==='price-asc') list.sort((a,b)=>a.price-b.price);
+  else if(sortBy==='price-desc') list.sort((a,b)=>b.price-a.price);
+  else if(sortBy==='rating') list.sort((a,b)=>b.rating-a.rating);
+  else if(sortBy==='name') list.sort((a,b)=>a.name.localeCompare(b.name));
+
+  document.getElementById('resultCount').textContent = list.length + ' room' + (list.length===1?'':'s');
+
+  const grid = document.getElementById('rooms');
+  if(!list.length){
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)">
+      <i class="fa-solid fa-bed" style="font-size:36px;color:var(--gold);margin-bottom:12px;display:block"></i>
+      No rooms match your filters. Try adjusting your search.</div>`;
+    return;
+  }
+  const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const hl = s => {
+    const safe = esc(s);
+    if(!q) return safe;
+    const re = new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');
+    return safe.replace(re,'<mark style="background:rgba(212,162,74,.35);color:inherit;padding:0 2px;border-radius:2px;font-weight:600">$1</mark>');
+  };
+  grid.innerHTML = list.map(r=>`
+    <article class="room-card">
+      <div class="room-img" role="img" aria-label="${r.name}" style="background-image:url('${r.img}')"></div>
+      <div class="room-body">
+        <h4>${hl(r.name)}</h4>
+        <div class="stars">${stars(r.rating)}</div>
+        <p style="margin:0;font-size:12px;color:var(--muted);line-height:1.5">${hl(r.desc||'')}</p>
+        <ul class="room-meta">${r.meta.map(m=>`<li><i class="fa-solid fa-circle-check"></i>${m}</li>`).join('')}</ul>
+        <div class="room-price">₹${r.price.toLocaleString()}<small style="color:var(--muted);font-weight:400;font-size:11px"> /night</small></div>
+        <div class="room-actions">
+          <button type="button" class="btn btn-gold btn-sm js-book" data-room="${esc(r.name)}" data-price="${r.price}">Book Now</button>
+          <a href="#" class="btn btn-outline btn-sm">Details</a>
+        </div>
+      </div>
+    </article>`).join('');
+
+  grid.querySelectorAll('.js-book').forEach(btn=>{
+    btn.addEventListener('click',()=>openBookingModal(btn.dataset.room, +btn.dataset.price));
+  });
+}
+
+
+
+
+['q','g','rt','price','sort'].forEach(id=>{
+  const el=document.getElementById(id);
+  el.addEventListener('input',renderRooms);
+  el.addEventListener('change',renderRooms);
+});
+document.querySelectorAll('input[name="rating"]').forEach(el=>el.addEventListener('change',renderRooms));
+document.getElementById('price').addEventListener('input',function(){
+  document.getElementById('pv').textContent = 'Up to ₹' + (+this.value).toLocaleString();
+});
+document.getElementById('searchForm').addEventListener('submit',e=>e.preventDefault());
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  document.getElementById('q').value='';
+  document.getElementById('g').value='0';
+  document.getElementById('rt').value='';
+  document.getElementById('price').value=30000;
+  document.getElementById('pv').textContent='Up to ₹30,000';
+  document.getElementById('sort').value='recommended';
+  document.querySelector('input[name="rating"][value="0"]').checked=true;
+  renderRooms();
+});
+renderRooms();
+
+document.getElementById('offers').innerHTML = offers.map(o=>`
+  <article class="offer-card">
+    <div class="offer-img" role="img" aria-label="${o.title}" style="background-image:url('${o.img}')"></div>
+    <div class="offer-body">
+      <h4>${o.title}</h4>
+      <p>${o.desc}</p>
+      <span class="offer-discount">${o.discount}</span>
+      <a href="/booking" class="btn btn-gold btn-sm">Claim Offer</a>
+    </div>
+  </article>`).join('');
+
+document.getElementById('testimonials').innerHTML = testimonials.map(t=>`
+  <figure class="testi">
+    <div class="tstars">${stars(5)}</div>
+    <p>"${t.text}"</p>
+    <figcaption class="testi-user">
+      <div class="avatar" role="img" aria-label="${t.name}" style="background-image:url('${t.avatar}')"></div>
+      <div><strong>${t.name}</strong><small>${t.city}</small></div>
+    </figcaption>
+  </figure>`).join('');
+
+/* ===== BOOKING MODAL LOGIC ===== */
+const modal = document.getElementById('bookingModal');
+const mBody = document.getElementById('mBody');
+const mFoot = document.getElementById('mFoot');
+const mForm = document.getElementById('bookingForm');
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('mfCin').min = today;
+document.getElementById('mfCout').min = today;
+
+function openBookingModal(roomName, roomPrice){
+  document.getElementById('mRoomBadge').textContent = roomName;
+  document.getElementById('mRoomName').textContent = roomName;
+  document.getElementById('mRoomPrice').textContent = '₹' + roomPrice.toLocaleString() + ' / night';
+  document.getElementById('mfRoom').value = roomName;
+  document.getElementById('mfPrice').value = roomPrice;
+  // reset to form view if previously showed success
+  if(!document.getElementById('bookingForm')){
+    location.reload(); return;
+  }
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(()=>document.getElementById('mfName').focus(), 50);
+}
+function closeBookingModal(){
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('mClose').addEventListener('click', closeBookingModal);
+document.getElementById('mCancel').addEventListener('click', closeBookingModal);
+modal.addEventListener('click', e => { if(e.target === modal) closeBookingModal(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && modal.classList.contains('open')) closeBookingModal(); });
+
+document.getElementById('mfCin').addEventListener('change', function(){
+  document.getElementById('mfCout').min = this.value || today;
+});
+
+function validateBooking(){
+  let ok = true;
+  const fields = [
+    {id:'mfName', test:v=>v.trim().length>=2},
+    {id:'mfEmail', test:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())},
+    {id:'mfPhone', test:v=>/^[0-9+\-\s]{7,20}$/.test(v.trim())},
+    {id:'mfCin', test:v=>!!v},
+    {id:'mfCout', test:(v,vals)=>!!v && v > vals.mfCin},
+  ];
+  const vals = {};
+  fields.forEach(f => vals[f.id] = document.getElementById(f.id).value);
+  fields.forEach(f => {
+    const el = document.getElementById(f.id);
+    const grp = el.closest('.form-group');
+    if(!f.test(vals[f.id], vals)){ grp.classList.add('error'); ok = false; }
+    else grp.classList.remove('error');
+  });
+  return ok;
+}
+
+document.getElementById('mSubmit').addEventListener('click', async () => {
+  if(!validateBooking()) return;
+  const btn = document.getElementById('mSubmit');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+
+  const data = Object.fromEntries(new FormData(mForm).entries());
+  const ref = 'RP' + Date.now().toString(36).toUpperCase();
+  const booking = { ref, ...data, createdAt: new Date().toISOString(), status: 'pending' };
+
+  try {
+    // BACKEND HOOK: replace this block with a real fetch() once Lovable Cloud is enabled.
+    // Example:
+    //   await fetch('/api/bookings', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(booking) });
+    const store = JSON.parse(localStorage.getItem('rp_bookings') || '[]');
+    store.push(booking);
+    localStorage.setItem('rp_bookings', JSON.stringify(store));
+    await new Promise(r => setTimeout(r, 600)); // simulate network
+
+    const nights = Math.max(1, Math.round((new Date(data.checkOut) - new Date(data.checkIn)) / 86400000));
+    const total = nights * (+data.roomPrice);
+    window.__lastBooking = { ref, data, nights, total };
+    mBody.innerHTML = `
+      <div class="modal-success" id="receipt">
+        <i class="fa-solid fa-circle-check"></i>
+        <h4>Booking Confirmed!</h4>
+        <p>Thank you, <strong>${data.fullName}</strong>. Your reservation for <strong>${data.roomName}</strong> is confirmed.</p>
+        <p>${nights} night${nights>1?'s':''} • ${data.guests} guest${+data.guests>1?'s':''} • Total <strong style="color:var(--gold)">₹${total.toLocaleString()}</strong></p>
+        <p>Check-In: <strong>${data.checkIn}</strong> &nbsp; Check-Out: <strong>${data.checkOut}</strong></p>
+        <p>A confirmation has been sent to <strong>${data.email}</strong>.</p>
+        <span class="ref">REF ${ref}</span>
+      </div>`;
+    mFoot.innerHTML = '<button type="button" class="btn btn-outline" onclick="downloadReceiptPDF()"><i class="fa-solid fa-file-pdf"></i> Download PDF</button>'
+      + '<button type="button" class="btn btn-outline" onclick="printReceipt()"><i class="fa-solid fa-print"></i> Print</button>'
+      + '<button type="button" class="btn btn-gold" onclick="location.reload()">Done</button>';
+  } catch(err){
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Confirm Booking';
+    alert('Sorry, something went wrong. Please try again.');
+  }
+});
+
+function printReceipt(){
+  const r = document.getElementById('receipt');
+  if(!r) return;
+  const w = window.open('', '_blank', 'width=620,height=720');
+  w.document.write(`<!doctype html><html><head><title>Royal Pearl — Booking Receipt</title>
+    <style>
+      body{font-family:Georgia,serif;color:#1a1f2c;padding:40px;max-width:520px;margin:auto}
+      h1{font-size:22px;margin:0 0 4px;color:#0b1830;letter-spacing:2px}
+      .sub{color:#d4a24a;font-size:12px;letter-spacing:3px;margin-bottom:24px}
+      hr{border:0;border-top:1px dashed #ccc;margin:20px 0}
+      h2{font-size:20px;margin:0 0 12px;color:#0b1830}
+      p{font-size:14px;line-height:1.6;margin:6px 0}
+      .ref{display:inline-block;background:#0b1830;color:#d4a24a;font-family:monospace;padding:6px 14px;border-radius:4px;font-weight:700;letter-spacing:1px;margin-top:12px}
+      .foot{margin-top:30px;font-size:11px;color:#777;text-align:center}
+    </style></head><body>
+    <h1>ROYAL PEARL</h1><div class="sub">HYDERABAD • LUXURY HOTEL</div>
+    <hr><h2>Booking Confirmation</h2>${r.innerHTML.replace(/<i [^>]*><\/i>/g,'')}
+     <hr><div class="foot">Banjara Hills, Hyderabad • +91 8179469535<br>Please present this receipt at check-in. Thank you!</div>
+</body></html>`);
+  w.document.close();
+  w.focus();
+  setTimeout(() => w.print(), 250);
+}
+
+function downloadReceiptPDF(){
+  const b = window.__lastBooking;
+  if(!b){ alert('No booking found.'); return; }
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit:'pt', format:'a4' });
+  const W = doc.internal.pageSize.getWidth();
+  const NAVY = [11,24,48], GOLD = [212,162,74], MUTED = [107,114,128], TEXT = [26,31,44];
+
+  // Header band
+  doc.setFillColor(...NAVY); doc.rect(0,0,W,110,'F');
+  // Gold accent stripe
+  doc.setFillColor(...GOLD); doc.rect(0,110,W,4,'F');
+
+  // Circular monogram logo (RP)
+  doc.setDrawColor(...GOLD); doc.setLineWidth(1.5);
+  doc.setFillColor(...NAVY);
+  doc.circle(70, 55, 26, 'FD');
+  doc.setTextColor(...GOLD); doc.setFont('times','bold'); doc.setFontSize(22);
+  doc.text('RP', 70, 63, { align:'center' });
+
+  // Brand wordmark
+  doc.setTextColor(255,255,255); doc.setFont('times','bold'); doc.setFontSize(20);
+  doc.text('ROYAL PEARL', 110, 50);
+  doc.setTextColor(...GOLD); doc.setFontSize(9); doc.setFont('helvetica','normal');
+  doc.text('H Y D E R A B A D   •   L U X U R Y   H O T E L', 110, 65);
+  doc.setTextColor(200,200,200); doc.setFontSize(7);
+  doc.text('Banjara Hills, Hyderabad, Telangana - 500034', 110, 78);
+
+  // Right side: receipt label + date
+  doc.setTextColor(...GOLD); doc.setFontSize(8); doc.setFont('helvetica','bold');
+  doc.text('BOOKING RECEIPT', W-40, 45, { align:'right' });
+  doc.setTextColor(255,255,255); doc.setFont('helvetica','normal'); doc.setFontSize(9);
+  doc.text('Issued: ' + new Date().toLocaleDateString(), W-40, 60, { align:'right' });
+  doc.text(new Date().toLocaleTimeString(), W-40, 73, { align:'right' });
+
+  // Title
+  doc.setTextColor(...TEXT); doc.setFont('helvetica','bold'); doc.setFontSize(18);
+  doc.text('Booking Confirmed', 40, 150);
+  doc.setDrawColor(...GOLD); doc.setLineWidth(1.2); doc.line(40,158,110,158);
+
+  // Reference pill
+  doc.setFillColor(...NAVY); doc.roundedRect(W-200, 130, 160, 30, 4, 4, 'F');
+  doc.setTextColor(...GOLD); doc.setFont('courier','bold'); doc.setFontSize(12);
+  doc.text('REF ' + b.ref, W-120, 150, { align:'center' });
+
+  // Guest summary
+  doc.setTextColor(...TEXT); doc.setFont('helvetica','normal'); doc.setFontSize(11);
+  doc.text(`Thank you, ${b.data.fullName}. Your reservation is confirmed.`, 40, 185);
+
+  // Details box
+  const rows = [
+    ['Room',         b.data.roomName],
+    ['Guests',       String(b.data.guests)],
+    ['Check-In',     `${b.data.checkIn}   (Arrival ${b.data.arrival || '14:00'})`],
+    ['Check-Out',    b.data.checkOut],
+    ['Nights',       String(b.nights)],
+    ['Rate / Night', 'Rs. ' + (+b.data.roomPrice).toLocaleString()],
+    ['Email',        b.data.email],
+    ['Phone',        b.data.phone],
+  ];
+  let y = 215;
+  doc.setDrawColor(230,232,236); doc.setLineWidth(0.5);
+  doc.roundedRect(40, y-15, W-80, rows.length*26+20, 4, 4);
+  rows.forEach((r,i)=>{
+    if(i>0) doc.line(50, y-7, W-50, y-7);
+    doc.setTextColor(...MUTED); doc.setFont('helvetica','normal'); doc.setFontSize(10);
+    doc.text(r[0], 55, y+8);
+    doc.setTextColor(...TEXT); doc.setFont('helvetica','bold'); doc.setFontSize(11);
+    doc.text(String(r[1]), W-55, y+8, { align:'right' });
+    y += 26;
+  });
+
+  // Special requests
+  if(b.data.notes){
+    y += 14;
+    doc.setTextColor(...MUTED); doc.setFontSize(10); doc.setFont('helvetica','normal');
+    doc.text('Special Requests:', 40, y);
+    doc.setTextColor(...TEXT);
+    const lines = doc.splitTextToSize(b.data.notes, W-80);
+    doc.text(lines, 40, y+14);
+    y += 14 + lines.length*12;
+  }
+
+  // Total band
+  y += 24;
+  doc.setFillColor(...GOLD); doc.rect(40, y, W-80, 44, 'F');
+  doc.setTextColor(26,19,0); doc.setFont('helvetica','bold'); doc.setFontSize(13);
+  doc.text('TOTAL PAYABLE', 55, y+27);
+  doc.setFontSize(18);
+  doc.text('Rs. ' + b.total.toLocaleString(), W-55, y+28, { align:'right' });
+
+  // Footer
+  doc.setTextColor(...MUTED); doc.setFont('helvetica','normal'); doc.setFontSize(9);
+  doc.text('Banjara Hills, Hyderabad, Telangana - 500034  •  +91 8179469535  •  restaurant@royalpearlhyderabad.com', W/2, 800, { align:'center' });
+  doc.text('Please present this receipt at check-in. We look forward to hosting you.', W/2, 814, { align:'center' });
+
+  doc.save(`royal-pearl-receipt-${b.ref}.pdf`);
+}
+</script>
+<script src="assets/login-modal.js" defer></script>
+</body>
+</html>

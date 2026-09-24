@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Royal Pearl Hyderabad — Luxury Hotel & Restaurant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<style>
+:root{
+  --navy:#0b1830; --navy-2:#0f1f3d;
+  --gold:#d4a24a; --gold-2:#e0b766;
+  --bg:#f5f6f8; --card:#fff;
+  --text:#1a1f2c; --muted:#6b7280;
+  --border:#e6e8ec;
+  --green:#16a34a; --red:#dc2626;
+  --shadow:0 8px 24px rgba(15,31,61,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:absolute;top:-100px;left:8px;background:var(--gold);color:#1a1300;padding:10px 16px;border-radius:4px;font-weight:600;z-index:100;transition:top .2s}
+.skip-link:focus{top:8px}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section{margin-top:64px}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px;text-align:center;margin:0 0 32px;position:relative}
+.section-title::after{content:"";display:block;width:60px;height:2px;background:var(--gold);margin:10px auto 0}
+.eyebrow{text-align:center;color:var(--gold);font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+
+/* NAV */
+.nav{background:var(--navy);position:sticky;top:0;z-index:50}
+.nav-inner{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px;color:#fff}
+.brand{display:flex;flex-direction:column;line-height:1.15}
+.brand strong{font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:2px;color:#fff}
+.brand small{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--gold);letter-spacing:3px;margin-top:2px}
+.brand em{font-style:normal;font-size:9px;letter-spacing:2px;color:#c9ccd2;margin-top:3px}
+.nav-links{display:flex;gap:28px;margin-left:auto;font-size:14px}
+.nav-links a{opacity:.85}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold)}
+.nav-links a.active{border-bottom:2px solid var(--gold);padding-bottom:4px}
+.nav-cta{display:flex;gap:10px}
+.nav-toggle{display:none;width:42px;height:42px;border:1px solid rgba(212,162,74,.55);background:transparent;color:var(--gold);border-radius:4px;place-items:center;font-size:18px;cursor:pointer}
+.mobile-menu{display:none;background:var(--navy-2);border-top:1px solid rgba(255,255,255,.08);padding:12px 24px;gap:4px;flex-direction:column}
+.mobile-menu a{color:#fff;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px}
+.mobile-menu a.active,.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu.open{display:flex}
+
+/* BUTTONS */
+.btn{border:0;padding:10px 18px;font-weight:600;font-size:13px;border-radius:4px;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-gold{background:var(--gold);color:#1a1300}
+.btn-gold:hover{background:var(--gold-2)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-outline-light{background:transparent;color:#fff;border:1px solid #fff}
+.btn-outline-light:hover{background:#fff;color:var(--navy)}
+
+/* HERO */
+.hero{position:relative;height:560px;background:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1800&q=80') center/cover no-repeat;color:#fff;display:flex;align-items:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,24,48,.85) 0%,rgba(11,24,48,.45) 100%)}
+.hero-content{position:relative;max-width:1200px;margin:0 auto;padding:0 24px;width:100%}
+.hero-eyebrow{color:var(--gold);font-size:14px;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px}
+.hero-content h1{font-family:'Cormorant Garamond',serif;font-size:70px;margin:0 0 16px;font-weight:600;line-height:1.05}
+.hero-content h1 span{color:var(--gold);display:block}
+.hero-content p{max-width:520px;margin:0 0 26px;opacity:.9;font-size:16px;line-height:1.6}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+.play-btn{width:42px;height:42px;border-radius:50%;background:var(--gold);display:inline-grid;place-items:center;color:#1a1300}
+
+/* SEARCH / QUICK CHECK */
+.search-card{background:#fff;border-radius:6px;box-shadow:var(--shadow);padding:18px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:16px;align-items:end;margin-top:-44px;position:relative;z-index:5}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12px;color:var(--muted);font-weight:500}
+.field input,.field select{padding:10px 12px;border:1px solid var(--border);border-radius:4px;font-size:14px;background:#fff;outline:none}
+.field input:focus,.field select:focus{border-color:var(--gold)}
+.btn-search{height:42px;padding:0 26px}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.feature{background:#fff;border:1px solid var(--border);border-radius:6px;padding:26px 20px;text-align:center;transition:.25s}
+.feature:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:var(--shadow)}
+.feature i{font-size:30px;color:var(--gold);margin-bottom:14px;display:block}
+.feature h3{margin:0;font-size:16px;font-weight:600}
+
+/* ROOMS */
+.featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.feat-card{background:#fff;border-radius:6px;overflow:hidden;box-shadow:var(--shadow);transition:.25s}
+.feat-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(15,31,61,.14)}
+.feat-img{position:relative;height:220px;background-size:cover;background-position:center}
+.price-tag{position:absolute;bottom:12px;right:12px;background:var(--gold);color:#1a1300;padding:6px 14px;font-weight:700;border-radius:3px;font-size:14px}
+.feat-body{padding:18px}
+.feat-body h3{margin:0 0 10px;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600}
+.feat-meta{display:flex;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:12px;margin:0 0 14px;padding:0;list-style:none}
+.feat-meta i{color:var(--gold);margin-right:4px}
+.center-btn{text-align:center;margin-top:30px}
+
+/* DINING */
+.dining-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.dish{position:relative;height:240px;background-size:cover;background-position:center;border-radius:6px;overflow:hidden}
+.dish::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.75) 100%)}
+.dish span{position:absolute;bottom:14px;left:16px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:22px;z-index:2}
+
+/* TESTIMONIALS */
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi{background:#fff;border-radius:6px;padding:24px;box-shadow:var(--shadow);position:relative}
+.testi .stars{color:var(--gold);font-size:12px;margin-bottom:10px}
+.testi p{font-size:13px;color:var(--text);line-height:1.6;margin:0 0 18px;font-style:italic}
+.testi-user{display:flex;align-items:center;gap:12px}
+.avatar{width:46px;height:46px;border-radius:50%;background-size:cover;background-position:center}
+.testi-user strong{font-size:13px;display:block}
+.testi-user small{font-size:11px;color:var(--muted)}
+
+/* BOOKING SECTION */
+.booking{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);padding:60px 0;color:#fff}
+.booking .eyebrow{color:var(--gold)}
+.booking .section-title{color:#fff}
+.booking-card{background:#fff;color:var(--text);border-radius:8px;box-shadow:0 20px 50px rgba(0,0,0,.25);padding:32px;max-width:960px;margin:0 auto}
+.booking-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+.booking-grid .full{grid-column:1/-1}
+.booking-grid .field input,.booking-grid .field select,.booking-grid .field textarea{padding:11px 12px;border:1px solid var(--border);border-radius:4px;font-size:14px;font-family:inherit;outline:none;width:100%}
+.booking-grid .field textarea{resize:vertical;min-height:80px}
+.booking-grid .field input:focus,.booking-grid .field select:focus,.booking-grid .field textarea:focus{border-color:var(--gold)}
+.booking-actions{margin-top:22px;display:flex;justify-content:center}
+.booking-msg{margin-top:18px;padding:14px 18px;border-radius:6px;font-size:14px;display:none;align-items:center;gap:10px}
+.booking-msg.show{display:flex}
+.booking-msg.success{background:rgba(22,163,74,.1);color:var(--green);border:1px solid rgba(22,163,74,.3)}
+.booking-msg.error{background:rgba(220,38,38,.1);color:var(--red);border:1px solid rgba(220,38,38,.3)}
+
+/* FOOTER */
+.footer{background:var(--navy-2);color:#cfd3da;padding:60px 0 0;margin-top:80px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr 1.2fr;gap:32px}
+.footer h4{color:#fff;font-size:15px;font-weight:600;margin:0 0 16px;font-family:'Cormorant Garamond',serif;letter-spacing:.5px}
+.footer ul{list-style:none;padding:0;margin:0;font-size:13px;display:flex;flex-direction:column;gap:10px}
+.footer ul.contact li{display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+.footer ul.contact i{color:var(--gold);margin-top:3px}
+.footer a:hover{color:var(--gold)}
+.muted{color:#9ca3af;font-size:13px;line-height:1.6}
+.socials{display:flex;gap:10px;margin-top:14px}
+.socials a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);display:grid;place-items:center;color:#cfd3da;font-size:13px;transition:.2s}
+.socials a:hover{background:var(--gold);color:#1a1300}
+.newsletter{display:flex;margin-top:8px;background:#fff;border-radius:4px;overflow:hidden}
+.newsletter input{flex:1;border:0;padding:10px 12px;font-size:13px;outline:none;color:#000}
+.newsletter button{background:var(--gold);border:0;padding:0 14px;cursor:pointer;color:#1a1300}
+.footer-bottom{display:flex;justify-content:space-between;font-size:12px;color:#9ca3af;padding:22px 0;margin-top:36px;border-top:1px solid rgba(255,255,255,.08)}
+
+@media (max-width:1024px){
+  .nav-links{display:none}
+  .nav-toggle{display:grid;margin-left:auto;order:3}.nav-cta{order:2}
+  .hero-content h1{font-size:48px}
+  .search-card{grid-template-columns:1fr 1fr}
+  .features-grid,.featured-grid,.dining-grid,.testimonials{grid-template-columns:1fr 1fr}
+  .booking-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .hero-content h1{font-size:36px}
+  .search-card,.features-grid,.featured-grid,.dining-grid,.testimonials,.booking-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .nav-cta{gap:6px}
+  .nav-cta .btn{padding:8px 10px;font-size:12px}
+  .nav-cta .btn-ghost .login-text{display:none}
+  .nav-cta .btn-ghost{padding:8px 10px}
+  .booking-card{padding:22px}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="home" class="brand" aria-label="Royal Pearl Hyderabad — Home">
+      <strong>ROYAL PEARL</strong>
+      <small>HYDERABAD</small>
+      <em>LUXURY HOTEL & RESTAURANT</em>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="home" class="active">Home</a>
+      <a href="rooms">Rooms</a>
+      <a href="restaurant">Restaurant</a>
+      <a href="gallery">Gallery</a>
+      <a href="about">About Us</a>
+      <a href="contact">Contact Us</a>
+    </nav>
+    <div class="nav-cta" id="navCta">
+      <button type="button" data-login class="btn btn-ghost" aria-label="Login"><i class="fa-solid fa-user"></i> <span class="login-text">Login</span></button>
+      <a href="#booking" class="btn btn-gold">Book Now</a>
+    </div>
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile menu">
+    <a href="home" class="active">Home</a>
+    <a href="rooms">Rooms</a>
+    <a href="restaurant">Restaurant</a>
+    <a href="gallery">Gallery</a>
+    <a href="about">About Us</a>
+    <a href="contact">Contact Us</a>
+  </nav>
+</header>
+
+<script>
+(function(){var btn=document.querySelector('.nav-toggle');var menu=document.getElementById('mobileMenu');if(!btn||!menu)return;function close(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');}btn.addEventListener('click',function(e){e.stopPropagation();var open=menu.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');});menu.addEventListener('click',function(e){if(e.target.tagName==='A')close();});document.addEventListener('click',function(e){if(menu.classList.contains('open')&&!menu.contains(e.target)&&!btn.contains(e.target))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});})();
+</script>
+
+<main id="main">
+  <section class="hero" aria-label="Welcome">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Welcome To</div>
+      <h1>Royal Pearl<span>Hyderabad</span></h1>
+      <p>Experience Luxury, Comfort & Royal Hospitality in the Heart of Hyderabad.</p>
+      <div class="hero-buttons">
+        <a href="rooms" class="btn btn-gold">Explore Rooms</a>
+        <a href="#booking" class="btn btn-outline-light"><span class="play-btn"><i class="fa-solid fa-calendar-check"></i></span> Book a Stay</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <form class="search-card" role="search" aria-label="Check availability" onsubmit="event.preventDefault();document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
+      <div class="field"><label for="cin">Check-In</label><input id="cin" type="date"></div>
+      <div class="field"><label for="cout">Check-Out</label><input id="cout" type="date"></div>
+      <div class="field"><label for="g">Guests</label>
+        <select id="g"><option>1 Guest</option><option selected>2 Guests</option><option>3 Guests</option></select>
+      </div>
+      <div class="field"><label for="rt">Room Type</label>
+        <select id="rt"><option>All Room Types</option><option>Deluxe Room</option><option>Executive Room</option></select>
+      </div>
+      <button class="btn btn-gold btn-search" type="submit">Check Availability</button>
+    </form>
+  </div>
+
+  <section class="section container">
+    <div class="eyebrow">Why Choose Us</div>
+    <h2 class="section-title">Unmatched Comfort & Endless Hospitality</h2>
+    <div class="features-grid">
+      <div class="feature"><i class="fa-solid fa-bed"></i><h3>Luxury Rooms & Suites</h3></div>
+      <div class="feature"><i class="fa-solid fa-utensils"></i><h3>Multi-Cuisine Restaurant</h3></div>
+      <div class="feature"><i class="fa-solid fa-person-swimming"></i><h3>Swimming Pool</h3></div>
+      <div class="feature"><i class="fa-solid fa-wifi"></i><h3>Free High-Speed Wi-Fi</h3></div>
+      <div class="feature"><i class="fa-solid fa-bell-concierge"></i><h3>24/7 Room Service</h3></div>
+      <div class="feature"><i class="fa-solid fa-users"></i><h3>Conference Hall</h3></div>
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="eyebrow">Our Rooms & Suites</div>
+    <h2 class="section-title">Featured Rooms</h2>
+    <div class="featured-grid" id="featured"></div>
+    <div class="center-btn"><a href="rooms" class="btn btn-gold">View All Rooms</a></div>
+  </section>
+
+  <section class="section container">
+    <div class="eyebrow">Restaurant & Dining</div>
+    <h2 class="section-title">Royal Spice Specialties</h2>
+    <div class="dining-grid">
+      <div class="dish" role="img" aria-label="Hyderabadi Biryani" style="background-image:url('https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&q=80')"><span>Hyderabadi Biryani</span></div>
+      <div class="dish" role="img" aria-label="Nizami Kebabs" style="background-image:url('https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=800&q=80')"><span>Nizami Kebabs</span></div>
+      <div class="dish" role="img" aria-label="Royal Thali" style="background-image:url('https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=800&q=80')"><span>Royal Thali</span></div>
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="eyebrow">What Our Guests Say</div>
+    <h2 class="section-title">Guest Experiences</h2>
+    <div class="testimonials" id="testimonials"></div>
+  </section>
+
+  <section id="booking" class="booking section">
+    <div class="container">
+      <div class="eyebrow">Reserve Your Stay</div>
+      <h2 class="section-title">Book Your Royal Experience</h2>
+      <form class="booking-card" id="bookingForm" novalidate aria-label="Booking form">
+        <div class="booking-grid">
+          <div class="field">
+            <label for="bName">Full Name *</label>
+            <input id="bName" name="name" type="text" placeholder="John Doe" required>
+          </div>
+          <div class="field">
+            <label for="bEmail">Email *</label>
+            <input id="bEmail" name="email" type="email" placeholder="john@example.com" required>
+          </div>
+          <div class="field">
+            <label for="bPhone">Phone *</label>
+            <input id="bPhone" name="phone" type="tel" placeholder="+91 98765 43210" required>
+          </div>
+          <div class="field">
+            <label for="bCheckin">Check-In Date *</label>
+            <input id="bCheckin" name="checkin" type="date" required>
+          </div>
+          <div class="field">
+            <label for="bCheckout">Check-Out Date *</label>
+            <input id="bCheckout" name="checkout" type="date" required>
+          </div>
+          <div class="field">
+            <label for="bGuests">Guests *</label>
+            <select id="bGuests" name="guests" required>
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5+ Guests</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="bRooms">Rooms</label>
+            <select id="bRooms" name="rooms">
+              <option value="1" selected>1 Room</option>
+              <option value="2">2 Rooms</option>
+              <option value="3">3 Rooms</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="bRoomType">Room Type *</label>
+            <select id="bRoomType" name="roomType" required>
+              <option value="">Select Room Type</option>
+              <option value="Deluxe Room">Deluxe Room — ₹3,999</option>
+              <option value="Executive Room">Executive Room — ₹5,999</option>
+              <option value="Presidential Suite">Presidential Suite — ₹9,999</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="bArrival">Arrival Time</label>
+            <input id="bArrival" name="arrival" type="time" value="14:00">
+          </div>
+          <div class="field full">
+            <label for="bNotes">Special Requests</label>
+            <textarea id="bNotes" name="notes" placeholder="Airport pickup, dietary preferences, anniversary celebration, etc."></textarea>
+          </div>
+        </div>
+        <div class="booking-actions">
+          <button class="btn btn-gold" type="submit"><i class="fa-solid fa-calendar-check"></i> Confirm Booking</button>
+        </div>
+        <div id="bookingMsg" class="booking-msg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="home" class="brand" style="margin-bottom:14px" aria-label="Royal Pearl Hyderabad — Home">
+          <strong>ROYAL PEARL</strong>
+          <small>HYDERABAD</small>
+        </a>
+        <p class="muted">Experience unmatched luxury and premium hospitality in the heart of Hyderabad.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home">Home</a></li>
+          <li><a href="rooms">Rooms</a></li>
+          <li><a href="restaurant">Restaurant</a></li>
+          <li><a href="gallery">Gallery</a></li>
+          <li><a href="about">About Us</a></li>
+          <li><a href="contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Our Facilities</h4>
+        <ul>
+          <li>Swimming Pool</li><li>Spa & Wellness</li><li>Fitness Center</li>
+          <li>Business Center</li><li>Conference Hall</li><li>Airport Transfer</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <ul class="contact">
+          <li><i class="fa-solid fa-location-dot"></i> Banjara Hills, Hyderabad, Telangana - 500034</li>
+          <li><i class="fa-solid fa-phone"></i> <a href="tel:+918179469535">+91 8179469535</a></li>
+          <li><i class="fa-solid fa-envelope"></i> <a href="mailto:restaurant@royalpearlhyderabad.com">restaurant@royalpearlhyderabad.com</a></li>
+          <li><i class="fa-brands fa-instagram"></i> @royalpearlhyderabad</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p class="muted">Subscribe to get updates & exclusive offers.</p>
+        <form class="newsletter" onsubmit="event.preventDefault();alert('Subscribed!')">
+          <label for="nl" class="sr-only">Email</label>
+          <input id="nl" type="email" placeholder="Your email" required>
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Royal Pearl Hyderabad. All Rights Reserved.</span>
+      <span><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const featured = [
+  {name:'Deluxe Room',price:'₹3,999',img:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',meta:['2 Guests','1 King Bed','City View']},
+  {name:'Executive Room',price:'₹5,999',img:'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80',meta:['2 Guests','1 King Bed','Balcony View']},
+  {name:'Presidential Suite',price:'₹9,999',img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80',meta:['4 Guests','2 King Beds','Premium View']},
+];
+const testimonials = [
+  {name:'Rahul Sharma',city:'New Delhi',text:'Excellent rooms, delicious food, and outstanding service. One of the best hotel experiences in Hyderabad.',avatar:'https://i.pravatar.cc/100?img=12'},
+  {name:'Priya Mehta',city:'Mumbai',text:'Perfect location, luxurious stay and very cooperative staff. The hospitality is completely world class.',avatar:'https://i.pravatar.cc/100?img=47'},
+  {name:'Anirudh Rao',city:'Hyderabad',text:'The dining architecture and authentic Nizami taste profiles served at Royal Spice are absolutely unparalleled.',avatar:'https://i.pravatar.cc/100?img=33'},
+];
+document.getElementById('featured').innerHTML = featured.map(r=>`
+  <article class="feat-card">
+    <div class="feat-img" role="img" aria-label="${r.name}" style="background-image:url('${r.img}')">
+      <div class="price-tag">${r.price}<small>/night</small></div>
+    </div>
+    <div class="feat-body">
+      <h3>${r.name}</h3>
+      <ul class="feat-meta">${r.meta.map(m=>`<li><i class="fa-solid fa-check"></i>${m}</li>`).join('')}</ul>
+      <a href="#booking" class="btn btn-gold">Book Now</a>
+    </div>
+  </article>`).join('');
+document.getElementById('testimonials').innerHTML = testimonials.map(t=>`
+  <figure class="testi">
+    <div class="stars">${'<i class="fa-solid fa-star"></i>'.repeat(5)}</div>
+    <p>"${t.text}"</p>
+    <figcaption class="testi-user">
+      <div class="avatar" role="img" aria-label="${t.name}" style="background-image:url('${t.avatar}')"></div>
+      <div><strong>${t.name}</strong><small>${t.city}</small></div>
+    </figcaption>
+  </figure>`).join('');
+
+// Booking form: minimum date = today, validation, confirmation message
+(function(){
+  const today = new Date().toISOString().split('T')[0];
+  const cin = document.getElementById('bCheckin');
+  const cout = document.getElementById('bCheckout');
+  cin.min = today; cout.min = today;
+  cin.addEventListener('change', () => { cout.min = cin.value || today; });
+
+  const form = document.getElementById('bookingForm');
+  const msg = document.getElementById('bookingMsg');
+
+  function showMsg(type, html){
+    msg.className = 'booking-msg show ' + type;
+    msg.innerHTML = html;
+    msg.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    if(!data.name || !data.email || !data.phone || !data.checkin || !data.checkout || !data.roomType){
+      showMsg('error', '<i class="fa-solid fa-triangle-exclamation"></i> Please fill in all required fields.');
+      return;
+    }
+    if(new Date(data.checkout) <= new Date(data.checkin)){
+      showMsg('error', '<i class="fa-solid fa-triangle-exclamation"></i> Check-out date must be after check-in.');
+      return;
+    }
+
+    const nights = Math.ceil((new Date(data.checkout) - new Date(data.checkin)) / (1000*60*60*24));
+    const ref = 'RP' + Date.now().toString().slice(-7);
+
+    showMsg('success',
+      `<i class="fa-solid fa-circle-check"></i>
+       <span><strong>Booking confirmed, ${data.name}!</strong>
+       Reference <strong>${ref}</strong> — ${data.roomType}, ${nights} night${nights>1?'s':''}, ${data.guests} guest${data.guests>1?'s':''}.
+       A confirmation has been sent to ${data.email}.</span>`
+    );
+    form.reset();
+    cin.min = today; cout.min = today;
+  });
+})();
+</script>
+
+<!-- ============ LOGIN MODAL (User) ============ -->
+<style>
+  .lm-overlay{position:fixed;inset:0;background:rgba(8,12,28,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:9999;padding:20px;font-family:'Inter',system-ui,sans-serif}
+  .lm-overlay.open{display:flex;animation:lmFadeIn .3s cubic-bezier(0.16,1,0.3,1)}
+  .lm-box{background:#fff;width:100%;max-width:420px;border-radius:20px;box-shadow:0 25px 50px -12px rgba(0,0,0,.25),0 0 0 1px rgba(0,0,0,.05);overflow:hidden;position:relative;animation:lmSlideUp .4s cubic-bezier(0.16,1,0.3,1);transform-origin:center}
+  @keyframes lmFadeIn{from{opacity:0}}@keyframes lmSlideUp{from{opacity:0;transform:translateY(24px) scale(.97)}}
+  .lm-head{background:linear-gradient(135deg,#0b1737 0%,#1a2d52 50%,#0b1737 100%);color:#fff;padding:32px 28px 28px;text-align:center;position:relative;overflow:hidden}
+  .lm-head::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(200,159,74,.08) 0%,transparent 60%);animation:lmShine 8s ease-in-out infinite}
+  @keyframes lmShine{0%,100%{transform:translate(-10%,-10%)}50%{transform:translate(10%,10%)}}
+  .lm-head>*{position:relative;z-index:1}
+  .lm-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.08);border:0;color:rgba(255,255,255,.7);font-size:20px;cursor:pointer;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:2}
+  .lm-close:hover{background:rgba(255,255,255,.15);color:#fff;transform:rotate(90deg)}
+  .lm-head h2{margin:0;font-size:26px;font-weight:600;letter-spacing:.3px;color:#f0c674;font-family:'Cormorant Garamond',Georgia,serif}
+  .lm-head p{margin:8px 0 0;font-size:14px;color:rgba(255,255,255,.65);font-weight:400}
+  .lm-body{padding:24px 28px 28px}
+  .lm-social{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+  .lm-sbtn{display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 18px;border:1.5px solid #e5e7eb;border-radius:12px;background:#fff;cursor:pointer;font-size:14.5px;font-weight:500;color:#374151;transition:all .2s;position:relative;overflow:hidden}
+  .lm-sbtn::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.02) 0%,transparent 100%);opacity:0;transition:opacity .2s}
+  .lm-sbtn:hover{border-color:#0b1737;box-shadow:0 4px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
+  .lm-sbtn:hover::before{opacity:1}
+  .lm-sbtn:active{transform:translateY(0)}
+  .lm-sbtn.google{background:linear-gradient(135deg,#fff 0%,#f8f9fa 100%)}
+  .lm-sbtn.google i{font-size:18px;background:conic-gradient(from 180deg,#ea4335,#ffbb00,#34a853,#4285f4,#ea4335);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .lm-sbtn .lm-spinner{width:18px;height:18px;border:2px solid #e5e7eb;border-top-color:#0b1737;border-radius:50%;animation:lmSpin .8s linear infinite;display:none}
+  .lm-sbtn.loading .lm-spinner{display:block}
+  .lm-sbtn.loading span,.lm-sbtn.loading i{display:none}
+  @keyframes lmSpin{to{transform:rotate(360deg)}}
+  .lm-divider{display:flex;align-items:center;gap:14px;color:#9ca3af;font-size:12.5px;font-weight:500;margin:18px 0 16px}
+  .lm-divider::before,.lm-divider::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,#e5e7eb,#transparent)}
+  .lm-field{margin-bottom:16px;position:relative}
+  .lm-field label{display:block;font-size:13px;color:#374151;margin-bottom:7px;font-weight:500}
+  .lm-field input{width:100%;padding:13px 15px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14.5px;outline:none;transition:all .2s;box-sizing:border-box;background:#fafbfc;color:#1f2937}
+  .lm-field input::placeholder{color:#9ca3af}
+  .lm-field input:focus{border-color:#c89f4a;box-shadow:0 0 0 3px rgba(200,159,74,.12),0 2px 8px rgba(0,0,0,.04);background:#fff;transform:translateY(-1px)}
+  .lm-field input:hover:not(:focus){border-color:#d1d5db}
+  .lm-field-error{font-size:12px;color:#dc2626;margin-top:6px;display:none}
+  .lm-field input:invalid:not(:placeholder-shown):not(:focus){border-color:#dc2626}
+  .lm-row{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;margin:6px 0 20px;flex-wrap:wrap;gap:8px}
+  .lm-row label{display:flex;align-items:center;gap:8px;color:#4b5563;cursor:pointer;user-select:none}
+  .lm-row input[type="checkbox"]{width:16px;height:16px;accent-color:#c89f4a;cursor:pointer}
+  .lm-row a{color:#0b1737;text-decoration:none;font-weight:600;cursor:pointer;position:relative}
+  .lm-row a::after{content:"";position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:#c89f4a;transition:width .2s}
+  .lm-row a:hover::after{width:100%}
+  .lm-submit{width:100%;padding:15px;background:linear-gradient(135deg,#c89f4a,#b8913f);color:#fff;border:0;border-radius:12px;font-size:15px;font-weight:600;letter-spacing:.3px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;box-shadow:0 4px 14px rgba(200,159,74,.35)}
+  .lm-submit::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15) 0%,transparent 50%);opacity:0;transition:opacity .2s}
+  .lm-submit:hover{filter:brightness(1.08);transform:translateY(-2px);box-shadow:0 6px 20px rgba(200,159,74,.4)}
+  .lm-submit:hover::before{opacity:1}
+  .lm-submit:active{transform:translateY(0)}
+  .lm-submit:disabled{opacity:.65;cursor:wait;transform:none;box-shadow:none}
+  .lm-submit .lm-btn-spinner{width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:lmSpin .8s linear infinite;display:none;margin:0 auto}
+  .lm-submit:disabled .lm-btn-spinner{display:block}
+  .lm-submit:disabled .lm-btn-text{opacity:0}
+  .lm-foot{text-align:center;font-size:14px;color:#6b7280;margin-top:20px}
+  .lm-foot a{color:#0b1737;font-weight:600;text-decoration:none;cursor:pointer;position:relative}
+  .lm-foot a::after{content:"";position:absolute;bottom:-1px;left:0;width:0;height:1.5px;background:#c89f4a;transition:width .2s}
+  .lm-foot a:hover::after{width:100%}
+  .lm-view{display:none;animation:lmViewFade .3s ease}
+  .lm-view.active{display:block}
+  @keyframes lmViewFade{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+  .lm-msg{margin:0 0 16px;padding:13px 15px;border-radius:10px;font-size:13.5px;display:none;align-items:flex-start;gap:10px;animation:lmShake .4s ease}
+  @keyframes lmShake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+  .lm-msg.show{display:flex}
+  .lm-msg.err{background:linear-gradient(135deg,#fef2f2,#fee2e2);color:#991b1b;border:1px solid rgba(220,38,38,.15)}
+  .lm-msg.ok{background:linear-gradient(135deg,#ecfdf5,#d1fae5);color:#065f46;border:1px solid rgba(5,150,105,.15)}
+  .lm-msg i{font-size:16px;margin-top:1px}
+  @media (max-width: 640px){
+    .lm-overlay{padding:12px;align-items:flex-start;padding-top:20px}
+    .lm-box{max-width:100%;border-radius:16px;margin-top:8px}
+    .lm-head{padding:26px 20px 24px}
+    .lm-head h2{font-size:22px}
+    .lm-head p{font-size:13px}
+    .lm-body{padding:20px 20px 24px}
+    .lm-sbtn{padding:13px 16px;font-size:14px}
+    .lm-submit{padding:14px;font-size:14.5px}
+  }
+</style>
+
+<div class="lm-overlay" id="lmOverlay" role="dialog" aria-modal="true" aria-labelledby="lmTitle">
+  <div class="lm-box">
+    <div class="lm-head">
+      <button class="lm-close" id="lmClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <h2 id="lmTitle">Welcome Back</h2>
+      <p>Sign in to manage your stay at Royal Pearl</p>
+    </div>
+    <div class="lm-body">
+      <div id="lmMsg" class="lm-msg"></div>
+      <!-- LOGIN VIEW -->
+      <div class="lm-view active" data-view="login">
+        <div class="lm-social">
+          <button type="button" class="lm-sbtn google" data-social="google">
+            <i class="fa-brands fa-google"></i>
+            <span>Continue with Google</span>
+            <div class="lm-spinner"></div>
+          </button>
+        </div>
+        <div class="lm-divider">or sign in with email</div>
+        <form id="lmLoginForm" novalidate>
+          <div class="lm-field">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="lm-field">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter your password" required minlength="6" autocomplete="current-password">
+          </div>
+          <div class="lm-row">
+            <label><input type="checkbox" name="remember"> Remember Me</label>
+            <a data-view-switch="forgot">Forgot Password?</a>
+          </div>
+          <button type="submit" class="lm-submit">
+            <span class="lm-btn-text">Sign In</span>
+            <div class="lm-btn-spinner"></div>
+          </button>
+        </form>
+        <div class="lm-foot">Don't have an account? <a data-view-switch="register">Register Here</a></div>
+      </div>
+      <!-- REGISTER VIEW -->
+      <div class="lm-view" data-view="register">
+        <div class="lm-social">
+          <button type="button" class="lm-sbtn google" data-social="google">
+            <i class="fa-brands fa-google"></i>
+            <span>Continue with Google</span>
+            <div class="lm-spinner"></div>
+          </button>
+        </div>
+        <div class="lm-divider">or create with email</div>
+        <form id="lmRegisterForm" novalidate>
+          <div class="lm-field">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="John Doe" required autocomplete="name">
+          </div>
+          <div class="lm-field">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="lm-field">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="At least 6 characters" required minlength="6" autocomplete="new-password">
+          </div>
+          <button type="submit" class="lm-submit">
+            <span class="lm-btn-text">Create Account</span>
+            <div class="lm-btn-spinner"></div>
+          </button>
+        </form>
+        <div class="lm-foot">Already have an account? <a data-view-switch="login">Login Here</a></div>
+      </div>
+      <!-- FORGOT VIEW -->
+      <div class="lm-view" data-view="forgot">
+        <form id="lmForgotForm" novalidate>
+          <p style="font-size:14px;color:#6b7280;margin:0 0 18px;line-height:1.5">Enter your registered email and we'll send you a password reset link.</p>
+          <div class="lm-field">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <button type="submit" class="lm-submit">
+            <span class="lm-btn-text">Send Reset Link</span>
+            <div class="lm-btn-spinner"></div>
+          </button>
+        </form>
+        <div class="lm-foot"><a data-view-switch="login"><i class="fa-solid fa-arrow-left"></i> Back to Login</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/api.js"></script>
+<script>
+(function(){
+  var SUPA_URL="https://blrkxhxtkqcogxispuxu.supabase.co";
+  var PKEY="sb_publishable_GyjxSxtypOVlh8dYZ0RpEQ_ZJeRIzfU";
+  var overlay=document.getElementById('lmOverlay');
+  var title=document.getElementById('lmTitle');
+
+  // Inject a small status message slot at the top of the body
+  var body=overlay.querySelector('.lm-body');
+  var msg=document.createElement('div');
+  msg.id='lmMsg';
+  body.insertBefore(msg, body.firstChild);
+  function showMsg(html,kind){
+    msg.className='lm-msg show '+(kind||'err');msg.innerHTML=html;
+  }
+  function clrMsg(){msg.className='lm-msg';msg.innerHTML='';}
+
+  function open(){clrMsg();overlay.classList.add('open');switchView('login');}
+  function close(){overlay.classList.remove('open');}
+  function switchView(name){
+    clrMsg();
+    overlay.querySelectorAll('.lm-view').forEach(function(v){v.classList.toggle('active',v.dataset.view===name);});
+    var titles={login:'Welcome Back',register:'Create Account',forgot:'Reset Password'};
+    title.textContent=titles[name]||'Welcome';
+  }
+  function greet(email){try{alert('✅ Welcome to Royal Pearl, '+email+'!');}catch(_){}}
+
+  document.getElementById('lmClose').addEventListener('click',close);
+  overlay.addEventListener('click',function(e){
+    if(e.target===overlay)close();
+    var sw=e.target.closest('[data-view-switch]');
+    if(sw){e.preventDefault();switchView(sw.dataset.viewSwitch);return;}
+    var sc=e.target.closest('[data-social]');
+    if(sc && sc.dataset.social==='google'){
+      e.preventDefault();
+      // Use Supabase's direct OAuth URL instead of custom /auth/google route
+      var supabaseUrl="https://blrkxhxtkqcogxispuxu.supabase.co";
+      var redirectTo=encodeURIComponent(location.origin+location.pathname);
+      location.href=supabaseUrl+"/auth/v1/authorize?provider=google&redirect_to="+redirectTo;
+    }
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+
+  // Real email/password login
+  var loginForm=document.getElementById('lmLoginForm');
+  if(loginForm){
+    loginForm.addEventListener('submit',async function(e){
+      e.preventDefault();
+      if(!loginForm.checkValidity()){loginForm.reportValidity();return;}
+      var btn=loginForm.querySelector('.lm-submit');
+      btn.disabled=true;var btnText=btn.querySelector('.lm-btn-text');var origText=btnText.textContent;btnText.textContent='Signing in…';clrMsg();
+      var email=loginForm.email.value.trim(),password=loginForm.password.value;
+      try{
+        await RP_API.signIn(email,password);
+        showMsg('<i class="fa-solid fa-circle-check"></i> Logged in successfully.','ok');
+        setTimeout(function(){close();greet(email);location.reload();},300);
+      }catch(err){showMsg('<i class="fa-solid fa-circle-exclamation"></i> '+(err.message||'Login failed.'),'err');}
+      finally{btn.disabled=false;btnText.textContent=origText;}
+    });
+  }
+
+  // Real registration (email auto-confirm is enabled server-side)
+  var regForm=document.getElementById('lmRegisterForm');
+  if(regForm){
+    regForm.addEventListener('submit',async function(e){
+      e.preventDefault();
+      if(!regForm.checkValidity()){regForm.reportValidity();return;}
+      var btn=regForm.querySelector('.lm-submit');
+      btn.disabled=true;var btnText=btn.querySelector('.lm-btn-text');var origText=btnText.textContent;btnText.textContent='Creating account…';clrMsg();
+      var email=regForm.email.value.trim(),password=regForm.password.value;
+      try{
+        await RP_API.signUp(email,password);
+        if(!RP_API.session()){try{await RP_API.signIn(email,password);}catch(_){}}
+        showMsg('<i class="fa-solid fa-circle-check"></i> Account created. Welcome!','ok');
+        setTimeout(function(){close();greet(email);location.reload();},300);
+      }catch(err){
+        if(/registered|exists/i.test(err.message||'')){
+          try{await RP_API.signIn(email,password);close();greet(email);location.reload();return;}
+          catch(e2){showMsg('<i class="fa-solid fa-circle-exclamation"></i> '+(e2.message||'Could not sign in.'),'err');}
+        }else{showMsg('<i class="fa-solid fa-circle-exclamation"></i> '+(err.message||'Signup failed.'),'err');}
+      }finally{btn.disabled=false;btnText.textContent=origText;}
+    });
+  }
+
+  // Forgot password
+  var forgotForm=document.getElementById('lmForgotForm');
+  if(forgotForm){
+    forgotForm.addEventListener('submit',async function(e){
+      e.preventDefault();
+      if(!forgotForm.checkValidity()){forgotForm.reportValidity();return;}
+      var btn=forgotForm.querySelector('.lm-submit');
+      btn.disabled=true;var btnText=btn.querySelector('.lm-btn-text');var origText=btnText.textContent;btnText.textContent='Sending…';clrMsg();
+      try{
+        await RP_API.sendPasswordReset(forgotForm.email.value.trim(),location.origin+'/home.html');
+        showMsg('<i class="fa-solid fa-circle-check"></i> Reset link sent. Check your inbox.','ok');
+      }catch(err){showMsg('<i class="fa-solid fa-circle-exclamation"></i> '+(err.message||'Could not send reset link.'),'err');}
+      finally{btn.disabled=false;btnText.textContent=origText;}
+    });
+  }
+
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-login]');
+    if(t){e.preventDefault();open();}
+  });
+  window.openLoginModal=open;
+
+  // Handle Google OAuth redirect back (tokens in URL hash or query params)
+  (function(){
+    var hashMatch=location.hash && location.hash.includes('access_token=');
+    var queryMatch=location.search && location.search.includes('access_token=');
+    if(hashMatch || queryMatch){
+      var p=hashMatch
+        ?new URLSearchParams(location.hash.slice(1))
+        :new URLSearchParams(location.search.slice(1));
+      var at=p.get('access_token'),rt=p.get('refresh_token'),ex=p.get('expires_in');
+      if(at && rt){
+        RP_API.setSessionFromTokens(at,rt,ex);
+        fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':PKEY,'Authorization':'Bearer '+at}})
+          .then(function(r){return r.json();}).then(function(u){
+            var raw=localStorage.getItem('sb-blrkxhxtkqcogxispuxu-auth-token');
+            if(raw){var s=JSON.parse(raw);s.user=u;localStorage.setItem('sb-blrkxhxtkqcogxispuxu-auth-token',JSON.stringify(s));}
+            if(u && u.email)greet(u.email);
+            history.replaceState(null,'',location.pathname);
+            location.reload();
+          }).catch(function(){history.replaceState(null,'',location.pathname);});
+      }
+    }
+  })();
+})();
+
+// ===== Session-aware nav (reads Lovable Cloud auth session) =====
+(function(){
+  var STORAGE_KEY='sb-blrkxhxtkqcogxispuxu-auth-token';
+  function getUser(){
+    try{
+      var raw=localStorage.getItem(STORAGE_KEY);
+      if(!raw)return null;
+      var s=JSON.parse(raw);
+      var exp=s.expires_at?s.expires_at*1000:0;
+      if(exp && Date.now()>exp)return null;
+      return s.user||null;
+    }catch(e){return null;}
+  }
+  function render(){
+    var user=getUser();
+    var cta=document.getElementById('navCta');
+    if(!cta)return;
+    if(user){
+      var name=(user.user_metadata&&(user.user_metadata.full_name||user.user_metadata.name))||user.email||'Guest';
+      var avatar=user.user_metadata&&user.user_metadata.avatar_url;
+      cta.innerHTML=''+
+        '<a href="profile" style="display:flex;align-items:center;gap:10px;color:#fff;font-family:Arial,sans-serif;text-decoration:none" title="View profile">'+
+          (avatar?'<img src="'+avatar+'" alt="" style="width:32px;height:32px;border-radius:50%;border:2px solid #c89f4a">':'<i class="fa-solid fa-user-circle" style="font-size:26px;color:#c89f4a"></i>')+
+          '<span style="font-size:14px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+name+'</span>'+
+        '</a>'+
+        '<button id="lmLogout" class="btn btn-ghost" style="padding:6px 12px;font-size:13px;color:#fff"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>'+
+        '<a href="#booking" class="btn btn-gold">Book Now</a>';
+
+      document.getElementById('lmLogout').addEventListener('click',function(){
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+      });
+    }
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render);
+  else render();
+  // Welcome banner after Google round-trip
+  if(new URLSearchParams(location.search).get('welcome')==='1'){
+    setTimeout(function(){var u=getUser();if(u)alert('Welcome, '+((u.user_metadata&&u.user_metadata.full_name)||u.email)+'!');},300);
+  }
+})();
+
+// ===== Post-login feedback popup (KAYAK-style) =====
+(function(){
+  var STORAGE_KEY='sb-blrkxhxtkqcogxispuxu-auth-token';
+  var DISMISS_KEY='rp_feedback_done';
+  function getUser(){
+    try{var raw=localStorage.getItem(STORAGE_KEY);if(!raw)return null;
+      var s=JSON.parse(raw);var exp=s.expires_at?s.expires_at*1000:0;
+      if(exp&&Date.now()>exp)return null;return s.user||null;}catch(e){return null;}
+  }
+  function injectCss(){
+    if(document.getElementById('rpFbCss'))return;
+    var css=document.createElement('style');css.id='rpFbCss';
+    css.textContent='\
+      #rpFb{position:fixed;left:20px;bottom:20px;width:340px;background:#0f172a;color:#fff;border-radius:14px;padding:20px 22px;box-shadow:0 20px 50px rgba(0,0,0,.4);font-family:Arial,sans-serif;z-index:9999;animation:rpFbIn .35s ease-out}\
+      @keyframes rpFbIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}\
+      #rpFb .rpFbHd{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}\
+      #rpFb h4{margin:0;font-size:17px;font-weight:700}\
+      #rpFb .rpX{background:none;border:none;color:#cbd5e1;font-size:20px;cursor:pointer;line-height:1;padding:4px}\
+      #rpFb .rpQ{font-size:14px;color:#e2e8f0;margin:8px 0 14px;line-height:1.4}\
+      #rpFb .rpScale{display:flex;gap:6px;margin-bottom:8px}\
+      #rpFb .rpScale button{flex:1;aspect-ratio:1;background:#f8fafc;color:#0f172a;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:14px;transition:.15s}\
+      #rpFb .rpScale button:hover{background:#c89f4a;color:#fff;transform:translateY(-2px)}\
+      #rpFb .rpLab{display:flex;justify-content:space-between;font-size:11px;color:#94a3b8}\
+      #rpFb .rpThanks{text-align:center;padding:18px 0;font-size:15px;color:#c89f4a;font-weight:600}\
+    ';document.head.appendChild(css);
+  }
+  function logoutAndPromptLogin(){
+    try{localStorage.removeItem(STORAGE_KEY);}catch(e){}
+    if(window.openLoginModal)window.openLoginModal();
+    else location.reload();
+  }
+  function show(){
+    if(document.getElementById('rpFb'))return;
+    injectCss();
+    var box=document.createElement('div');box.id='rpFb';
+    box.innerHTML='<div class="rpFbHd"><h4>Share feedback? 👋</h4><button class="rpX" aria-label="Close">×</button></div>'+
+      '<div class="rpQ"><b>Royal Pearl</b> makes it easy to find what I am looking for.</div>'+
+      '<div class="rpScale">'+[1,2,3,4,5,6,7].map(function(n){return '<button data-r="'+n+'">'+n+'</button>';}).join('')+'</div>'+
+      '<div class="rpLab"><span>Strongly disagree</span><span>Strongly agree</span></div>';
+    document.body.appendChild(box);
+    box.querySelector('.rpX').addEventListener('click',function(){
+      box.remove();
+      logoutAndPromptLogin();
+    });
+    box.querySelectorAll('.rpScale button').forEach(function(b){
+      b.addEventListener('click',function(){
+        var rating=b.dataset.r;
+        try{localStorage.setItem(DISMISS_KEY,JSON.stringify({rating:rating,at:Date.now()}));}catch(e){}
+        box.innerHTML='<div class="rpFbHd"><h4>Thank you! 🙏</h4><button class="rpX" aria-label="Close">×</button></div>'+
+          '<div class="rpThanks">Your feedback helps us improve.</div>';
+        box.querySelector('.rpX').addEventListener('click',function(){box.remove();});
+        setTimeout(function(){if(box.parentNode)box.remove();},2500);
+      });
+    });
+  }
+  function maybeShow(){
+    if(!getUser())return;
+    if(localStorage.getItem(DISMISS_KEY))return;
+    setTimeout(show,1500);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',maybeShow);
+  else maybeShow();
+})();
+</script>
+</body>
+</html>

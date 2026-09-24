@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Royal Pearl Hyderabad — Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<style>
+:root{
+  --navy:#0b1830; --navy-2:#0f1f3d;
+  --gold:#d4a24a; --gold-2:#e0b766;
+  --bg:#f5f6f8; --card:#fff;
+  --text:#1a1f2c; --muted:#6b7280;
+  --border:#e6e8ec;
+  --shadow:0 8px 24px rgba(15,31,61,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:absolute;top:-100px;left:8px;background:var(--gold);color:#1a1300;padding:10px 16px;border-radius:4px;font-weight:600;z-index:100;transition:top .2s}
+.skip-link:focus{top:8px}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section{margin-top:64px}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px;text-align:center;margin:0 0 32px}
+.section-title::after{content:"";display:block;width:60px;height:2px;background:var(--gold);margin:10px auto 0}
+.eyebrow{text-align:center;color:var(--gold);font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+
+/* NAV */
+.nav{background:var(--navy);position:sticky;top:0;z-index:50}
+.nav-inner{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px;color:#fff}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{width:38px;height:38px;border:1.5px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-weight:700;border-radius:4px}
+.brand-text{display:flex;flex-direction:column;line-height:1.1}
+.brand-text strong{font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:1px}
+.brand-text small{font-family:'Cormorant Garamond',serif;font-size:11px;color:var(--gold);letter-spacing:2px}
+.brand-text em{font-style:normal;font-size:8px;letter-spacing:2px;color:#c9ccd2;margin-top:3px}
+.nav-links{display:flex;gap:28px;margin-left:auto;font-size:14px}
+.nav-links a{opacity:.85}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold)}
+.nav-links a.active{border-bottom:2px solid var(--gold);padding-bottom:4px}
+.nav-cta{display:flex;gap:10px}
+.nav-toggle{display:none;width:42px;height:42px;border:1px solid rgba(212,162,74,.55);background:transparent;color:var(--gold);border-radius:4px;place-items:center;font-size:18px;cursor:pointer}
+.mobile-menu{display:none;background:var(--navy-2);border-top:1px solid rgba(255,255,255,.08);padding:12px 24px;gap:4px;flex-direction:column}
+.mobile-menu a{color:#fff;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px}
+.mobile-menu a.active,.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu.open{display:flex}
+
+/* BUTTONS */
+.btn{border:0;padding:10px 18px;font-weight:600;font-size:13px;border-radius:4px;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-gold{background:var(--gold);color:#1a1300}
+.btn-gold:hover{background:var(--gold-2)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-outline-light{background:transparent;color:#fff;border:1px solid #fff}
+.btn-outline-light:hover{background:#fff;color:var(--navy)}
+
+/* PAGE HEADER */
+.page-hero{position:relative;height:280px;background:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80') center/cover no-repeat;color:#fff;display:flex;align-items:center}
+.page-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,24,48,.85),rgba(11,24,48,.4))}
+.page-hero-inner{position:relative;max-width:1200px;margin:0 auto;padding:0 24px;z-index:2}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:48px;margin:0 0 8px;font-weight:600}
+.page-hero p{margin:0 0 12px;opacity:.9}
+.crumb a{color:var(--gold)}
+.crumb span{margin:0 6px;opacity:.7}
+
+/* FILTER TABS */
+.tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:32px 0 28px}
+.tab{background:#fff;border:1px solid var(--border);color:var(--text);padding:9px 20px;border-radius:30px;font-size:13px;font-weight:500;cursor:pointer;transition:.2s}
+.tab:hover{border-color:var(--gold);color:var(--gold)}
+.tab.active{background:var(--gold);color:#1a1300;border-color:var(--gold)}
+
+/* MASONRY GALLERY */
+.gallery{column-count:3;column-gap:18px}
+.g-item{position:relative;break-inside:avoid;margin-bottom:18px;border-radius:6px;overflow:hidden;cursor:pointer;box-shadow:var(--shadow);background:#000}
+.g-item img{width:100%;height:auto;display:block;transition:.4s ease;opacity:.95}
+.g-item:hover img{transform:scale(1.06);opacity:1}
+.g-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(11,24,48,.85));opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;color:#fff}
+.g-item:hover .g-overlay{opacity:1}
+.g-overlay span{color:var(--gold);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.g-overlay h4{margin:0;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600}
+.g-zoom{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);display:grid;place-items:center;color:#fff;opacity:0;transition:.3s}
+.g-item:hover .g-zoom{opacity:1}
+
+/* VIDEO TOUR */
+.video-section{background:var(--navy);color:#fff;padding:60px 0;margin-top:80px}
+.video-section .section-title{color:#fff}
+.video-wrap{max-width:900px;margin:0 auto;position:relative;border-radius:8px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4);aspect-ratio:16/9;background:url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1200&q=80') center/cover}
+.video-wrap::after{content:"";position:absolute;inset:0;background:rgba(11,24,48,.5)}
+.play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:50%;background:var(--gold);border:0;color:#1a1300;font-size:26px;cursor:pointer;z-index:2;display:grid;place-items:center;box-shadow:0 0 0 0 rgba(212,162,74,.7);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(212,162,74,.7)}70%{box-shadow:0 0 0 24px rgba(212,162,74,0)}100%{box-shadow:0 0 0 0 rgba(212,162,74,0)}}
+
+/* CTA */
+.cta-banner{position:relative;margin-top:80px;background:url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=80') center/cover no-repeat;color:#fff}
+.cta-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,24,48,.92),rgba(11,24,48,.7))}
+.cta-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:48px 24px;gap:24px;flex-wrap:wrap}
+.cta-inner h2{font-family:'Cormorant Garamond',serif;font-size:32px;margin:0 0 6px;font-weight:600}
+.cta-inner p{margin:0;opacity:.85}
+.cta-buttons{display:flex;gap:12px}
+
+/* FOOTER */
+.footer{background:var(--navy-2);color:#cfd3da;padding:60px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr 1.2fr;gap:32px}
+.footer h4{color:#fff;font-size:15px;font-weight:600;margin:0 0 16px;font-family:'Cormorant Garamond',serif}
+.footer ul{list-style:none;padding:0;margin:0;font-size:13px;display:flex;flex-direction:column;gap:10px}
+.footer ul.contact li{display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+.footer ul.contact i{color:var(--gold);margin-top:3px}
+.footer a:hover{color:var(--gold)}
+.muted{color:#9ca3af;font-size:13px;line-height:1.6}
+.socials{display:flex;gap:10px;margin-top:14px}
+.socials a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);display:grid;place-items:center;color:#cfd3da;font-size:13px;transition:.2s}
+.socials a:hover{background:var(--gold);color:#1a1300}
+.newsletter{display:flex;margin-top:8px;background:#fff;border-radius:4px;overflow:hidden}
+.newsletter input{flex:1;border:0;padding:10px 12px;font-size:13px;outline:none;color:#000}
+.newsletter button{background:var(--gold);border:0;padding:0 14px;cursor:pointer;color:#1a1300}
+.footer-bottom{display:flex;justify-content:space-between;font-size:12px;color:#9ca3af;padding:22px 0;margin-top:36px;border-top:1px solid rgba(255,255,255,.08)}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:none;align-items:center;justify-content:center;padding:30px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.lb-close,.lb-prev,.lb-next{position:absolute;background:rgba(255,255,255,.1);border:0;color:#fff;width:46px;height:46px;border-radius:50%;cursor:pointer;font-size:18px;display:grid;place-items:center;transition:.2s}
+.lb-close:hover,.lb-prev:hover,.lb-next:hover{background:var(--gold);color:#1a1300}
+.lb-close{top:24px;right:24px}
+.lb-prev{left:24px;top:50%;transform:translateY(-50%)}
+.lb-next{right:24px;top:50%;transform:translateY(-50%)}
+.lb-caption{position:absolute;bottom:30px;left:0;right:0;text-align:center;color:#fff}
+.lb-caption span{color:var(--gold);font-size:11px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:6px}
+.lb-caption h4{margin:0;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600}
+
+@media (max-width:1024px){
+  .nav-links{display:none}
+  .nav-toggle{display:grid;margin-left:auto;order:3}.nav-cta{order:2}
+  .gallery{column-count:2}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .page-hero h1{font-size:34px}
+  .gallery{column-count:1}
+  .footer-grid{grid-template-columns:1fr}
+  .nav-cta .btn-ghost{display:none}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="home" class="brand">
+      <div class="brand-text">
+        <strong>ROYAL PEARL</strong>
+        <small>HYDERABAD</small>
+        <em>LUXURY HOTEL & RESTAURANT</em>
+      </div>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="home">Home</a>
+      <a href="rooms">Rooms</a>
+      <a href="restaurant">Restaurant</a>
+      <a href="gallery" class="active">Gallery</a>
+      <a href="about">About Us</a>
+      <a href="contact">Contact Us</a>
+    </nav>
+    <div class="nav-cta">
+      <button type="button" data-login class="btn btn-ghost"><i class="fa-solid fa-user"></i> Login</button>
+      <a href="/booking" class="btn btn-gold">Book Now</a>
+    </div>
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile menu">
+    <a href="home">Home</a>
+    <a href="rooms">Rooms</a>
+    <a href="restaurant">Restaurant</a>
+    <a href="gallery" class="active">Gallery</a>
+    <a href="about">About Us</a>
+    <a href="contact">Contact Us</a>
+  </nav>
+</header>
+
+<script>
+(function(){var btn=document.querySelector('.nav-toggle');var menu=document.getElementById('mobileMenu');if(!btn||!menu)return;function close(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');}btn.addEventListener('click',function(e){e.stopPropagation();var open=menu.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');});menu.addEventListener('click',function(e){if(e.target.tagName==='A')close();});document.addEventListener('click',function(e){if(menu.classList.contains('open')&&!menu.contains(e.target)&&!btn.contains(e.target))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});})();
+</script>
+
+<main id="main">
+  <section class="page-hero" aria-label="Gallery">
+    <div class="page-hero-inner">
+      <h1>Our Gallery</h1>
+      <p>A glimpse into the world of Royal Pearl — luxury captured in every frame.</p>
+      <div class="crumb"><a href="home">Home</a><span>›</span>Gallery</div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="section" style="margin-top:48px">
+      <div class="eyebrow">Visual Journey</div>
+      <h2 class="section-title">Moments of Elegance</h2>
+
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-filter="all">All</button>
+        <button class="tab" data-filter="rooms">Rooms & Suites</button>
+        <button class="tab" data-filter="dining">Dining</button>
+        <button class="tab" data-filter="amenities">Amenities</button>
+        <button class="tab" data-filter="events">Events</button>
+        <button class="tab" data-filter="exterior">Exterior</button>
+      </div>
+
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </div>
+
+  <section class="video-section">
+    <div class="container">
+      <div class="eyebrow" style="color:var(--gold)">Virtual Tour</div>
+      <h2 class="section-title">Step Inside Royal Pearl</h2>
+      <div class="video-wrap">
+        <button class="play-btn" aria-label="Play video" onclick="alert('Virtual tour coming soon!')">
+          <i class="fa-solid fa-play"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="cta-inner">
+      <div>
+        <h2>Experience Royal Pearl In Person</h2>
+        <p>Book your stay and create your own memories of luxury.</p>
+      </div>
+      <div class="cta-buttons">
+        <a href="/booking" class="btn btn-gold">Book Now</a>
+        <a href="contact" class="btn btn-outline-light">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="home" class="brand" style="margin-bottom:14px">
+          <div class="brand-mark">RP</div>
+          <div class="brand-text"><strong style="color:#fff">ROYAL PEARL</strong><small>HYDERABAD</small></div>
+        </a>
+        <p class="muted">Experience unmatched luxury and premium hospitality in the heart of Hyderabad.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home">Home</a></li>
+          <li><a href="rooms">Rooms</a></li>
+          <li><a href="restaurant">Restaurant</a></li>
+          <li><a href="gallery">Gallery</a></li>
+          <li><a href="about">About Us</a></li>
+          <li><a href="contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Our Facilities</h4>
+        <ul>
+          <li>Swimming Pool</li><li>Spa & Wellness</li><li>Fitness Center</li>
+          <li>Business Center</li><li>Conference Hall</li><li>Airport Transfer</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <ul class="contact">
+          <li><i class="fa-solid fa-location-dot"></i> Banjara Hills, Hyderabad, Telangana - 500034</li>
+          <li><i class="fa-solid fa-phone"></i> <a href="tel:+918179469535">+91 8179469535</a></li>
+          <li><i class="fa-solid fa-envelope"></i> <a href="mailto:restaurant@royalpearlhyderabad.com">restaurant@royalpearlhyderabad.com</a></li>
+          <li><i class="fa-brands fa-instagram"></i> @royalpearlhyderabad</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p class="muted">Subscribe to get updates & exclusive offers.</p>
+        <form class="newsletter" onsubmit="event.preventDefault();alert('Subscribed!')">
+          <label for="nl" class="sr-only">Email</label>
+          <input id="nl" type="email" placeholder="Your email" required>
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Royal Pearl Hyderabad. All Rights Reserved.</span>
+      <span><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+  <button class="lb-prev" id="lbPrev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-next" id="lbNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+  <div class="lb-caption"><span id="lbCat"></span><h4 id="lbTitle"></h4></div>
+</div>
+
+<script>
+const images = [
+  // ===== ROOMS & SUITES (luxury bedrooms) =====
+  {cat:'rooms',     title:'Presidential Suite',        src:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1000&q=80'},
+  {cat:'rooms',     title:'Royal King Bedroom',        src:'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1000&q=80'},
+  {cat:'rooms',     title:'Luxury Suite with City View',src:'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=1000&q=80'},
+  {cat:'rooms',     title:'Deluxe Twin Room',          src:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1000&q=80'},
+  {cat:'rooms',     title:'Nizami Heritage Suite',     src:'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1000&q=80'},
+  {cat:'rooms',     title:'Executive Bedroom',         src:'https://images.unsplash.com/photo-1591088398332-8a7791972843?w=1000&q=80'},
+  {cat:'rooms',     title:'Premium Family Room',       src:'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1000&q=80'},
+  {cat:'rooms',     title:'Master Bedroom Suite',      src:'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1000&q=80'},
+  {cat:'rooms',     title:'Marble Luxury Bathroom',    src:'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1000&q=80'},
+
+  // ===== AMENITIES (Pools, Gym, Spa) =====
+  {cat:'amenities', title:'Infinity Rooftop Pool',     src:'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1000&q=80'},
+  {cat:'amenities', title:'Heated Indoor Pool',        src:'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1000&q=80'},
+  {cat:'amenities', title:'Poolside Cabanas',          src:'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1000&q=80'},
+  {cat:'amenities', title:'Night Pool Lounge',         src:'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1000&q=80'},
+  {cat:'amenities', title:'State-of-the-Art Gym',      src:'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1000&q=80'},
+  {cat:'amenities', title:'Cardio Fitness Studio',     src:'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=1000&q=80'},
+  {cat:'amenities', title:'Strength Training Zone',    src:'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1000&q=80'},
+  {cat:'amenities', title:'Yoga & Pilates Studio',     src:'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1000&q=80'},
+  {cat:'amenities', title:'Wellness Spa',              src:'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1000&q=80'},
+  {cat:'amenities', title:'Couples Massage Suite',     src:'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1000&q=80'},
+  {cat:'amenities', title:'Sauna & Steam Room',        src:'https://images.unsplash.com/photo-1583416750470-965b2707b355?w=1000&q=80'},
+  {cat:'amenities', title:'Grand Lobby Lounge',        src:'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1000&q=80'},
+
+  // ===== DINING =====
+  {cat:'dining',    title:'Fine Dining Hall',          src:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=80'},
+  {cat:'dining',    title:'Chef\u2019s Signature Plate',src:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1000&q=80'},
+  {cat:'dining',    title:'Rooftop Lounge',            src:'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1000&q=80'},
+  {cat:'dining',    title:'Hyderabadi Dum Biryani',    src:'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=1000&q=80'},
+  {cat:'dining',    title:'Buffet Spread',             src:'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=1000&q=80'},
+  {cat:'dining',    title:'Private Dining Room',       src:'https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=1000&q=80'},
+  {cat:'dining',    title:'Cocktail Bar',              src:'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1000&q=80'},
+  {cat:'dining',    title:'Mutton Biryani Platter',    src:'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=1000&q=80'},
+  {cat:'dining',    title:'Tandoori Grill Selection',  src:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=1000&q=80'},
+  {cat:'dining',    title:'Authentic Haleem',          src:'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=1000&q=80'},
+  {cat:'dining',    title:'Royal Thali Experience',    src:'https://images.unsplash.com/photo-1567337710282-00832b415979?w=1000&q=80'},
+  {cat:'dining',    title:'Dessert & Sweets Counter',  src:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1000&q=80'},
+  {cat:'dining',    title:'High Tea Lounge',           src:'https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1000&q=80'},
+  {cat:'dining',    title:'Wine Cellar',               src:'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1000&q=80'},
+  {cat:'dining',    title:'Open-Kitchen Theatre',      src:'https://images.unsplash.com/photo-1552566626-52f8b828add9?w=1000&q=80'},
+
+  // ===== EVENTS =====
+  {cat:'events',    title:'Grand Ballroom',            src:'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1000&q=80'},
+  {cat:'events',    title:'Wedding Reception',         src:'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1000&q=80'},
+  {cat:'events',    title:'Conference Hall',           src:'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1000&q=80'},
+  {cat:'events',    title:'Floral Mandap Setup',       src:'https://images.unsplash.com/photo-1530023367847-a683933f4172?w=1000&q=80'},
+  {cat:'events',    title:'Cocktail Soirée',           src:'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1000&q=80'},
+  {cat:'events',    title:'Candlelit Banquet',         src:'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1000&q=80'},
+  {cat:'events',    title:'Sangeet Night',             src:'https://images.unsplash.com/photo-1529636798458-92182e662485?w=1000&q=80'},
+  {cat:'events',    title:'Corporate Gala',            src:'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1000&q=80'},
+  {cat:'events',    title:'Birthday Celebration',      src:'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1000&q=80'},
+  {cat:'events',    title:'Outdoor Lawn Wedding',      src:'https://images.unsplash.com/photo-1519741497674-611481863552?w=1000&q=80'},
+  {cat:'events',    title:'Stage & Lighting Design',   src:'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1000&q=80'},
+  {cat:'events',    title:'Bridal Reception Setup',    src:'https://images.unsplash.com/photo-1519741497674-611481863552?w=1000&q=80'},
+
+  // ===== EXTERIOR =====
+  {cat:'exterior',  title:'Hotel Facade by Night',     src:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1000&q=80'},
+  {cat:'exterior',  title:'Illuminated Entrance',      src:'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1000&q=80'},
+  {cat:'exterior',  title:'Lush Garden Courtyard',     src:'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1000&q=80'},
+  {cat:'exterior',  title:'Skyline Terrace',           src:'https://images.unsplash.com/photo-1455587734955-081b22074882?w=1000&q=80'},
+  {cat:'exterior',  title:'Heritage Architecture',     src:'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1000&q=80'},
+  {cat:'exterior',  title:'Porte-Cochère Arrival',     src:'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1000&q=80'},
+  {cat:'exterior',  title:'Fountain Plaza',            src:'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1000&q=80'},
+  {cat:'exterior',  title:'Palm-Lined Driveway',       src:'https://images.unsplash.com/photo-1549294413-26f195200c16?w=1000&q=80'},
+  {cat:'exterior',  title:'Sunset Over Royal Pearl',   src:'https://images.unsplash.com/photo-1535827841776-24afc1e255ac?w=1000&q=80'},
+  {cat:'exterior',  title:'Rooftop Skyline View',      src:'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=1000&q=80'},
+
+];
+const catLabel = {rooms:'Rooms & Suites',dining:'Dining',amenities:'Pools, Gym & Spa',events:'Events & Weddings',exterior:'Exterior'};
+
+const gallery = document.getElementById('gallery');
+let current = [...images];
+
+function render(filter){
+  current = filter==='all' ? [...images] : images.filter(i=>i.cat===filter);
+  gallery.innerHTML = current.map((i,idx)=>`
+    <div class="g-item" data-idx="${idx}">
+      <img src="${i.src}" alt="${i.title}" loading="lazy">
+      <div class="g-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      <div class="g-overlay">
+        <span>${catLabel[i.cat]}</span>
+        <h4>${i.title}</h4>
+      </div>
+    </div>
+  `).join('');
+  gallery.querySelectorAll('.g-item').forEach(el=>{
+    el.addEventListener('click',()=>openLB(+el.dataset.idx));
+  });
+}
+
+document.getElementById('tabs').addEventListener('click',e=>{
+  const t = e.target.closest('.tab'); if(!t) return;
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  render(t.dataset.filter);
+});
+
+// LIGHTBOX
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbTitle = document.getElementById('lbTitle');
+const lbCat = document.getElementById('lbCat');
+let lbIdx = 0;
+
+function openLB(i){
+  lbIdx = i; updateLB();
+  lb.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function updateLB(){
+  const item = current[lbIdx];
+  lbImg.src = item.src; lbImg.alt = item.title;
+  lbTitle.textContent = item.title;
+  lbCat.textContent = catLabel[item.cat];
+}
+function closeLB(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+function nextLB(){ lbIdx = (lbIdx+1) % current.length; updateLB(); }
+function prevLB(){ lbIdx = (lbIdx-1+current.length) % current.length; updateLB(); }
+
+document.getElementById('lbClose').addEventListener('click',closeLB);
+document.getElementById('lbNext').addEventListener('click',nextLB);
+document.getElementById('lbPrev').addEventListener('click',prevLB);
+lb.addEventListener('click',e=>{ if(e.target===lb) closeLB(); });
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open')) return;
+  if(e.key==='Escape') closeLB();
+  if(e.key==='ArrowRight') nextLB();
+  if(e.key==='ArrowLeft') prevLB();
+});
+
+render('all');
+</script>
+<script src="assets/login-modal.js" defer></script>
+</body>
+</html>
+

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Dashboard — Royal Pearl Hyderabad</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root{--navy:#0b1737;--navy-2:#152a5c;--gold:#c89f4a;--gold-2:#a07a2c;--bg:#f4f6fb;--ink:#1a2238;--muted:#6b7388;--border:#e3e6ee;--ok:#16a34a;--warn:#d97706;--bad:#dc2626}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Inter',Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  a{color:inherit}
+  /* ===== LOGIN ===== */
+  .auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 20% 20%,#152a5c,#070b1d 70%);padding:24px}
+  .auth-card{width:100%;max-width:420px;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .auth-head{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;padding:32px 28px 24px;text-align:center}
+  .auth-head .badge{width:62px;height:62px;border-radius:50%;border:2px solid var(--gold);background:rgba(200,159,74,.15);color:var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:24px}
+  .auth-head h1{margin:0;font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);letter-spacing:.5px}
+  .auth-head p{margin:6px 0 0;font-size:13px;color:#cfd6e8}
+  .auth-body{padding:24px 28px 28px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#333}
+  .field input{width:100%;padding:11px 13px;border:1px solid #d6d8de;border-radius:9px;font-size:14px;outline:none}
+  .field input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,159,74,.18)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:9px;border:0;cursor:pointer;font-weight:600;font-size:14px;text-decoration:none;transition:.15s}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#fff;width:100%;padding:12px}
+  .btn-gold:hover{filter:brightness(1.08)}
+  .btn-outline{background:#fff;border:1px solid var(--border);color:var(--ink)}
+  .btn-outline:hover{border-color:var(--navy)}
+  .btn-danger{background:#fee2e2;color:#991b1b}
+  .btn-danger:hover{background:#fecaca}
+  .err{background:#fee2e2;border:1px solid #fca5a5;color:#991b1b;padding:10px 12px;border-radius:8px;font-size:13px;margin-bottom:12px;display:none}
+  .err.show{display:block}
+  .note{background:#fff8e6;border:1px solid #f0d894;color:#7a5a10;padding:10px 12px;border-radius:8px;font-size:12px;margin-bottom:14px}
+  /* ===== DASHBOARD ===== */
+  .dash{display:none}
+  .dash.show{display:block}
+  .topbar{background:var(--navy);color:#fff;padding:14px 24px;display:flex;align-items:center;gap:16px;box-shadow:0 2px 10px rgba(0,0,0,.15);position:sticky;top:0;z-index:20}
+  .topbar h1{margin:0;font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);letter-spacing:.5px}
+  .topbar .sp{flex:1}
+  .topbar .who{font-size:13px;color:#cfd6e8}
+  .topbar .who b{color:#fff}
+  .topbar button{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);padding:7px 12px;border-radius:8px;font-size:13px;cursor:pointer}
+  .topbar button:hover{border-color:var(--gold);color:var(--gold)}
+  .wrap{max-width:1200px;margin:0 auto;padding:24px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+  .stat{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+  .stat .lab{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.7px}
+  .stat .val{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--navy);margin-top:4px}
+  .stat .ico{float:right;color:var(--gold);font-size:22px;opacity:.7}
+  .tabs{display:flex;gap:6px;border-bottom:2px solid var(--border);margin-bottom:18px;flex-wrap:wrap}
+  .tab{background:transparent;border:0;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px}
+  .tab.active{color:var(--navy);border-bottom-color:var(--gold)}
+  .panel{display:none}.panel.active{display:block}
+  .toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+  .search{padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;min-width:240px;outline:none}
+  .search:focus{border-color:var(--gold)}
+  .card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  thead th{background:#f8fafc;text-align:left;padding:11px 14px;font-weight:600;color:#475569;border-bottom:1px solid var(--border);font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+  tbody td{padding:12px 14px;border-bottom:1px solid #f1f3f8;vertical-align:top}
+  tbody tr:hover{background:#fafbfd}
+  tbody tr:last-child td{border-bottom:0}
+  .badge{display:inline-block;padding:3px 9px;border-radius:99px;font-size:11px;font-weight:600;text-transform:uppercase}
+  .b-new{background:#dbeafe;color:#1e40af}
+  .b-handled{background:#dcfce7;color:#166534}
+  .b-cancel{background:#fee2e2;color:#991b1b}
+  .row-acts{display:flex;gap:6px}
+  .row-acts button{padding:5px 9px;font-size:12px;border-radius:6px;border:1px solid var(--border);background:#fff;cursor:pointer}
+  .row-acts button:hover{border-color:var(--navy)}
+  .row-acts .del{color:var(--bad);border-color:#fecaca}
+  .row-acts .del:hover{background:#fee2e2}
+  .empty{padding:50px 20px;text-align:center;color:var(--muted)}
+  .empty i{font-size:38px;color:var(--gold);opacity:.4;margin-bottom:10px;display:block}
+  .loading{padding:40px;text-align:center;color:var(--muted)}
+  pre.notes{margin:0;font-family:inherit;white-space:pre-wrap;font-size:12px;color:#475569;max-width:280px}
+  @media(max-width:720px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .wrap{padding:14px}
+    table{font-size:12px}
+    thead th,tbody td{padding:8px 10px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN VIEW ============ -->
+<div class="auth-wrap" id="authView">
+  <div class="auth-card">
+    <div class="auth-head">
+      <div class="badge"><i class="fa-solid fa-shield-halved"></i></div>
+      <h1>Admin Login</h1>
+      <p>Royal Pearl Hyderabad — Restricted Access</p>
+    </div>
+    <div class="auth-body">
+      <div class="note"><i class="fa-solid fa-circle-info"></i> Enter your admin email & password. If the account doesn't exist, it will be created and admin access granted automatically (allowlisted emails only).</div>
+      <div class="err" id="authErr"></div>
+      <form id="authForm">
+        <div class="field"><label>Admin Email</label><input type="email" name="email" required autocomplete="email" placeholder="admin@royalpearlhyderabad.com"></div>
+        <div class="field"><label>Password</label><input type="password" name="password" required minlength="6" autocomplete="current-password" placeholder="••••••••"></div>
+        <button type="submit" class="btn btn-gold" id="authBtn"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+      </form>
+      <div style="text-align:center;margin-top:12px;font-size:13px">
+        <a href="#" id="forgotLink" style="color:var(--navy);text-decoration:none;font-weight:600">Forgot password?</a>
+      </div>
+      <div style="text-align:center;margin-top:10px;font-size:13px"><a href="home" style="color:var(--navy);text-decoration:none;font-weight:600">&larr; Back to website</a></div>
+
+      <!-- Forgot Password (hidden by default) -->
+      <div id="forgotPanel" style="display:none;margin-top:16px;padding-top:14px;border-top:1px dashed var(--border)">
+        <h3 style="margin:0 0 8px;font-size:15px;color:var(--navy)"><i class="fa-solid fa-key"></i> Reset Password</h3>
+        <p style="margin:0 0 10px;font-size:12px;color:var(--muted)">Enter your admin email. We'll send a reset link.</p>
+        <div class="err" id="forgotErr"></div>
+        <div id="forgotOk" style="display:none;background:#dcfce7;border:1px solid #86efac;color:#166534;padding:10px 12px;border-radius:8px;font-size:13px;margin-bottom:10px"></div>
+        <form id="forgotForm">
+          <div class="field"><input type="email" name="email" required placeholder="your email" autocomplete="email"></div>
+          <button type="submit" class="btn btn-gold" id="forgotBtn"><i class="fa-solid fa-paper-plane"></i> Send Reset Link</button>
+        </form>
+        <div style="text-align:center;margin-top:10px;font-size:12px"><a href="#" id="backToLogin" style="color:var(--navy);font-weight:600;text-decoration:none">&larr; Back to login</a></div>
+      </div>
+
+      <!-- Set New Password (shown when arriving via recovery link) -->
+      <div id="resetPanel" style="display:none">
+        <h3 style="margin:0 0 8px;font-size:16px;color:var(--navy)"><i class="fa-solid fa-lock"></i> Set New Password</h3>
+        <p style="margin:0 0 12px;font-size:12px;color:var(--muted)">You've arrived via the password-reset link. Choose a new password.</p>
+        <div class="err" id="resetErr"></div>
+        <form id="resetForm">
+          <div class="field"><label>New Password</label><input type="password" name="password" required minlength="6" placeholder="At least 6 characters"></div>
+          <div class="field"><label>Confirm Password</label><input type="password" name="confirm" required minlength="6" placeholder="Repeat password"></div>
+          <button type="submit" class="btn btn-gold" id="resetBtn"><i class="fa-solid fa-check"></i> Update Password</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DASHBOARD VIEW ============ -->
+<div class="dash" id="dashView">
+  <div class="topbar">
+    <h1><i class="fa-solid fa-crown"></i> Royal Pearl Admin</h1>
+    <div class="sp"></div>
+    <div class="who">Signed in as <b id="whoEmail">—</b></div>
+    <button id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+  </div>
+
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><i class="ico fa-solid fa-users"></i><div class="lab">Users</div><div class="val" id="stUsers">—</div></div>
+      <div class="stat"><i class="ico fa-solid fa-bed"></i><div class="lab">Bookings</div><div class="val" id="stBook">—</div></div>
+      <div class="stat"><i class="ico fa-solid fa-utensils"></i><div class="lab">Reservations</div><div class="val" id="stRes">—</div></div>
+      <div class="stat"><i class="ico fa-solid fa-envelope"></i><div class="lab">Messages</div><div class="val" id="stMsg">—</div></div>
+      <div class="stat"><i class="ico fa-solid fa-newspaper"></i><div class="lab">Subscribers</div><div class="val" id="stSub">—</div></div>
+    </div>
+
+    <!-- ============ RAW ADMIN DATA OUTPUT ============ -->
+    <div class="card" style="margin-bottom:22px;padding:0;overflow:hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:linear-gradient(135deg,#0b1737,#152a5c);color:#fff">
+        <div>
+          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold)"><i class="fa-solid fa-database"></i> Admin Data Output</h2>
+          <p style="margin:2px 0 0;font-size:12px;color:#cfd6e8">Latest records from every table — IDs, timestamps & all fields</p>
+        </div>
+        <button class="btn" id="rawRefresh" style="background:var(--gold);color:#fff;padding:8px 14px"><i class="fa-solid fa-rotate"></i> Reload</button>
+      </div>
+      <div id="rawOutput" style="padding:18px;background:#f8fafc;max-height:600px;overflow:auto">
+        <div class="loading">Loading raw data…</div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="users"><i class="fa-solid fa-users"></i> Users</button>
+      <button class="tab" data-tab="bookings"><i class="fa-solid fa-bed"></i> Bookings</button>
+      <button class="tab" data-tab="reservations"><i class="fa-solid fa-utensils"></i> Restaurant Orders</button>
+      <button class="tab" data-tab="messages"><i class="fa-solid fa-envelope"></i> Contact Messages</button>
+      <button class="tab" data-tab="newsletter"><i class="fa-solid fa-newspaper"></i> Newsletter</button>
+    </div>
+
+    <!-- USERS -->
+    <div class="panel active" data-panel="users">
+      <div class="toolbar">
+        <input class="search" placeholder="Search by name, email, provider…" data-search="users">
+        <button class="btn btn-outline" data-reload="users"><i class="fa-solid fa-rotate"></i> Refresh</button>
+      </div>
+      <div class="card"><div id="tblUsers"><div class="loading">Loading…</div></div></div>
+    </div>
+
+    <!-- BOOKINGS -->
+    <div class="panel" data-panel="bookings">
+      <div class="toolbar">
+        <input class="search" placeholder="Search by name, email, room…" data-search="bookings">
+        <button class="btn btn-outline" data-reload="bookings"><i class="fa-solid fa-rotate"></i> Refresh</button>
+      </div>
+      <div class="card"><div id="tblBookings"><div class="loading">Loading…</div></div></div>
+    </div>
+
+    <!-- RESERVATIONS -->
+    <div class="panel" data-panel="reservations">
+      <div class="toolbar">
+        <input class="search" placeholder="Search by name, phone…" data-search="reservations">
+        <button class="btn btn-outline" data-reload="reservations"><i class="fa-solid fa-rotate"></i> Refresh</button>
+      </div>
+      <div class="card"><div id="tblReservations"><div class="loading">Loading…</div></div></div>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="panel" data-panel="messages">
+      <div class="toolbar">
+        <input class="search" placeholder="Search messages…" data-search="messages">
+        <button class="btn btn-outline" data-reload="messages"><i class="fa-solid fa-rotate"></i> Refresh</button>
+      </div>
+      <div class="card"><div id="tblMessages"><div class="loading">Loading…</div></div></div>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="panel" data-panel="newsletter">
+      <div class="toolbar">
+        <input class="search" placeholder="Search email…" data-search="newsletter">
+        <button class="btn btn-outline" data-reload="newsletter"><i class="fa-solid fa-rotate"></i> Refresh</button>
+      </div>
+      <div class="card"><div id="tblNewsletter"><div class="loading">Loading…</div></div></div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/api.js"></script>
+<script>
+(function(){
+  const authView=document.getElementById('authView');
+  const dashView=document.getElementById('dashView');
+  const authForm=document.getElementById('authForm');
+  const authErr=document.getElementById('authErr');
+  const authBtn=document.getElementById('authBtn');
+
+  function showErr(m){authErr.textContent=m;authErr.classList.add('show');}
+  function clrErr(){authErr.classList.remove('show');}
+
+  const ALLOWED_ADMIN_EMAIL='bashamahemood579@gmail.com';
+  async function checkAccess(){
+    const s=RP_API.session();
+    if(!s||!s.user)return false;
+    const email=(s.user.email||'').toLowerCase();
+    if(email!==ALLOWED_ADMIN_EMAIL)return 'denied';
+    // Owner email — try to ensure admin role in background, but allow in either way.
+    try{await RP_API.claimAdmin();}catch(_){}
+    return true;
+  }
+  async function gate(){
+    // Detect recovery link hash from Supabase: #access_token=...&type=recovery
+    const hash=location.hash||'';
+    if(hash.includes('type=recovery')){
+      const p=new URLSearchParams(hash.replace(/^#/,''));
+      const at=p.get('access_token'),rt=p.get('refresh_token'),ex=p.get('expires_in');
+      if(at){RP_API.setSessionFromTokens(at,rt,ex);}
+      showResetPanel();
+      return;
+    }
+    const access=await checkAccess();
+    if(access===true){enterDash();}
+    else if(access==='denied'){enterDenied();}
+    else{enterAuth();}
+  }
+  function enterDenied(){
+    authView.style.display='none';
+    dashView.classList.remove('show');
+    let d=document.getElementById('deniedView');
+    if(!d){
+      d=document.createElement('div');
+      d.id='deniedView';
+      d.style.cssText='min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(135deg,#0b1737,#152a5c);color:#fff;font-family:Arial,sans-serif;text-align:center';
+      const s=RP_API.session();
+      const who=s&&s.user?s.user.email:'this account';
+      d.innerHTML='<div style="max-width:460px;background:rgba(255,255,255,.06);padding:36px 28px;border-radius:16px;border:1px solid rgba(255,255,255,.12)">'
+        +'<div style="font-size:48px;color:#f0c674;margin-bottom:12px"><i class="fa-solid fa-lock"></i></div>'
+        +'<h1 style="margin:0 0 10px;color:#f0c674;font-family:\'Cormorant Garamond\',serif;font-size:32px">Access Denied</h1>'
+        +'<p style="margin:0 0 8px;color:#cfd6e8">You are signed in as <b style="color:#fff">'+who+'</b>.</p>'
+        +'<p style="margin:0 0 22px;color:#cfd6e8">Only the site owner can access the admin dashboard.</p>'
+        +'<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">'
+        +'<button id="deniedSignOut" style="background:linear-gradient(135deg,#c89f4a,#a07a2c);color:#fff;border:0;padding:10px 18px;border-radius:8px;font-weight:700;cursor:pointer">Sign out & try another account</button>'
+        +'<a href="home" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);padding:10px 18px;border-radius:8px;font-weight:600;text-decoration:none">← Back to site</a>'
+        +'</div></div>';
+      document.body.appendChild(d);
+      document.getElementById('deniedSignOut').addEventListener('click',async function(){
+        await RP_API.signOut();location.reload();
+      });
+    }
+  }
+
+  // Forgot / Reset UI
+  const forgotLink=document.getElementById('forgotLink');
+  const forgotPanel=document.getElementById('forgotPanel');
+  const backToLogin=document.getElementById('backToLogin');
+  const forgotForm=document.getElementById('forgotForm');
+  const forgotBtn=document.getElementById('forgotBtn');
+  const forgotErr=document.getElementById('forgotErr');
+  const forgotOk=document.getElementById('forgotOk');
+  const resetPanel=document.getElementById('resetPanel');
+  const resetForm=document.getElementById('resetForm');
+  const resetBtn=document.getElementById('resetBtn');
+  const resetErr=document.getElementById('resetErr');
+
+  function showResetPanel(){
+    authView.style.display='flex';
+    authForm.style.display='none';
+    forgotPanel.style.display='none';
+    document.getElementById('forgotLink').style.display='none';
+    resetPanel.style.display='block';
+  }
+  forgotLink.addEventListener('click',function(e){
+    e.preventDefault();
+    authForm.style.display='none';
+    forgotLink.style.display='none';
+    forgotPanel.style.display='block';
+    forgotErr.classList.remove('show');forgotOk.style.display='none';
+  });
+  backToLogin.addEventListener('click',function(e){
+    e.preventDefault();
+    forgotPanel.style.display='none';
+    authForm.style.display='block';
+    forgotLink.style.display='inline';
+  });
+  forgotForm.addEventListener('submit',async function(e){
+    e.preventDefault();forgotErr.classList.remove('show');forgotOk.style.display='none';
+    const email=new FormData(forgotForm).get('email').trim();
+    forgotBtn.disabled=true;forgotBtn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Sending…';
+    try{
+      await RP_API.sendPasswordReset(email, location.origin + location.pathname);
+      forgotOk.innerHTML='<i class="fa-solid fa-circle-check"></i> Reset link sent to <b>'+email+'</b>. Check your inbox (and spam folder).';
+      forgotOk.style.display='block';
+    }catch(err){
+      forgotErr.textContent=err.message||'Could not send reset email';
+      forgotErr.classList.add('show');
+    }finally{
+      forgotBtn.disabled=false;forgotBtn.innerHTML='<i class="fa-solid fa-paper-plane"></i> Send Reset Link';
+    }
+  });
+  resetForm.addEventListener('submit',async function(e){
+    e.preventDefault();resetErr.classList.remove('show');
+    const fd=new FormData(resetForm);
+    const pw=fd.get('password'),cf=fd.get('confirm');
+    if(pw!==cf){resetErr.textContent='Passwords do not match';resetErr.classList.add('show');return;}
+    if(pw.length<6){resetErr.textContent='Password must be at least 6 characters';resetErr.classList.add('show');return;}
+    const s=RP_API.session();
+    if(!s||!s.access_token){resetErr.textContent='Reset link expired. Please request a new one.';resetErr.classList.add('show');return;}
+    resetBtn.disabled=true;resetBtn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Updating…';
+    try{
+      await RP_API.updatePassword(pw, s.access_token);
+      await RP_API.signOut();
+      history.replaceState(null,'',location.pathname);
+      alert('Password updated. Please log in with your new password.');
+      location.reload();
+    }catch(err){
+      resetErr.textContent=err.message||'Update failed';
+      resetErr.classList.add('show');
+    }finally{
+      resetBtn.disabled=false;resetBtn.innerHTML='<i class="fa-solid fa-check"></i> Update Password';
+    }
+  });
+  function enterAuth(){authView.style.display='flex';dashView.classList.remove('show');}
+  function enterDash(){
+    authView.style.display='none';
+    dashView.classList.add('show');
+    const s=RP_API.session();
+    document.getElementById('whoEmail').textContent=s&&s.user?s.user.email:'admin';
+    loadAll();
+  }
+
+  authForm.addEventListener('submit',async function(e){
+    e.preventDefault();clrErr();
+    const fd=new FormData(authForm);
+    const email=(fd.get('email')||'').trim();
+    const password=fd.get('password')||'';
+    authBtn.disabled=true;authBtn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Signing in…';
+    try{
+      // Inline validation
+      if(!email){throw new Error('Please enter your admin email.');}
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){throw new Error('That email address doesn\u2019t look valid.');}
+      if(!password){throw new Error('Please enter your password.');}
+      if(password.length<6){throw new Error('Password must be at least 6 characters.');}
+      if(email.toLowerCase()!==ALLOWED_ADMIN_EMAIL){
+        throw new Error('Access denied. Only '+ALLOWED_ADMIN_EMAIL+' can sign in here.');
+      }
+
+      // Try sign-in
+      try{
+        await RP_API.signIn(email,password);
+      }catch(signInErr){
+        const msg=(signInErr.message||'').toLowerCase();
+        console.error('[admin signIn]',signInErr);
+        if(msg.includes('invalid')||msg.includes('credentials')){
+          throw new Error('Wrong password for '+email+'. Click "Forgot Password?" below to reset it.');
+        }
+        if(msg.includes('not found')||msg.includes('user does not exist')){
+          // Account doesn\u2019t exist — create it now
+          try{
+            await RP_API.signUp(email,password);
+            if(!RP_API.session()){try{await RP_API.signIn(email,password);}catch(_){}}
+            if(!RP_API.session()){throw new Error('Account created. Please log in again.');}
+          }catch(suErr){
+            const sm=(suErr.message||'').toLowerCase();
+            if(sm.includes('registered')||sm.includes('exists')){
+              throw new Error('Wrong password for '+email+'. Click "Forgot Password?" below to reset it.');
+            }
+            throw new Error('Could not create account: '+(suErr.message||suErr));
+          }
+        }else if(msg.includes('email not confirmed')||msg.includes('not confirmed')){
+          throw new Error('Email not confirmed yet. Check your inbox for the confirmation link.');
+        }else if(msg.includes('rate')||msg.includes('too many')){
+          throw new Error('Too many login attempts. Please wait a minute and try again.');
+        }else if(msg.includes('network')||msg.includes('fetch')||msg.includes('failed to fetch')){
+          throw new Error('Network problem reaching the server. Check your internet connection and try again.');
+        }else{
+          throw new Error('Sign-in failed: '+(signInErr.message||signInErr));
+        }
+      }
+
+      // Confirm session was really set
+      if(!RP_API.session()){
+        throw new Error('Sign-in didn\u2019t establish a session. Please try again.');
+      }
+
+      // Owner email matched — grant admin role in background (ignore failures) and enter.
+      try{await RP_API.claimAdmin();}catch(err){console.warn('[admin claimAdmin]',err);}
+      enterDash();
+    }catch(err){
+      console.error('[admin login]',err);
+      showErr(err.message||'Login failed. Please try again.');
+    }
+    finally{authBtn.disabled=false;authBtn.innerHTML='<i class="fa-solid fa-right-to-bracket"></i> Login';}
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click',async function(){
+    await RP_API.signOut();location.reload();
+  });
+
+  // ===== Tabs =====
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===t));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.dataset.panel===t.dataset.tab));
+  }));
+  document.querySelectorAll('[data-reload]').forEach(b=>b.addEventListener('click',()=>load(b.dataset.reload)));
+  document.querySelectorAll('[data-search]').forEach(inp=>inp.addEventListener('input',()=>renderCache(inp.dataset.search,inp.value.trim().toLowerCase())));
+
+  // ===== Data =====
+  const cache={};
+  const esc=s=>(s==null?'':String(s)).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const fmt=d=>d?new Date(d).toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'}):'—';
+  const fmtD=d=>d?new Date(d).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}):'—';
+  const stBadge=s=>'<span class="badge b-'+(s==='handled'?'handled':s==='cancelled'?'cancel':'new')+'">'+esc(s||'new')+'</span>';
+
+  async function loadAll(){
+    load('users');load('bookings');load('reservations');load('messages');load('newsletter');
+    loadRawOutput();
+  }
+
+  // ===== RAW DATA OUTPUT =====
+  document.getElementById('rawRefresh').addEventListener('click',loadRawOutput);
+
+  async function loadRawOutput(){
+    const out=document.getElementById('rawOutput');
+    out.innerHTML='<div class="loading"><i class="fa-solid fa-spinner fa-spin"></i> Loading raw data…</div>';
+    const tables=[
+      {key:'bookings',label:'Bookings',icon:'fa-bed',q:'select=*&order=created_at.desc&limit=10'},
+      {key:'table_reservations',label:'Restaurant Reservations',icon:'fa-utensils',q:'select=*&order=created_at.desc&limit=10'},
+      {key:'contact_messages',label:'Contact Messages',icon:'fa-envelope',q:'select=*&order=created_at.desc&limit=10'},
+      {key:'newsletter_subscribers',label:'Newsletter Subscribers',icon:'fa-newspaper',q:'select=*&order=created_at.desc&limit=10'},
+      {key:'user_roles',label:'User Roles',icon:'fa-shield-halved',q:'select=*&order=created_at.desc&limit=10'},
+    ];
+    let html='';
+    for(const t of tables){
+      try{
+        const rows=await RP_API.select(t.key,t.q);
+        html+=renderRawSection(t,rows);
+      }catch(err){
+        html+=renderRawSection(t,null,err.message);
+      }
+    }
+    // Also include users from edge function
+    try{
+      const s=RP_API.session();
+      const r=await fetch('https://blrkxhxtkqcogxispuxu.supabase.co/functions/v1/admin-list-users',{
+        headers:{'Authorization':'Bearer '+(s&&s.access_token)}
+      });
+      const data=await r.json();
+      const usersHtml=renderRawSection({key:'auth.users',label:'Registered Users (Auth)',icon:'fa-users'},data.users||[]);
+      html=usersHtml+html;
+    }catch(_){}
+    out.innerHTML=html||'<div class="empty">No data to show.</div>';
+  }
+
+  function renderRawSection(t,rows,err){
+    const count=rows?rows.length:0;
+    let body='';
+    if(err){
+      body='<div style="padding:12px;color:#991b1b;background:#fee2e2;border-radius:6px;font-size:12px">Error: '+esc(err)+'</div>';
+    }else if(!rows||!rows.length){
+      body='<div style="padding:14px;color:#6b7388;font-size:13px;font-style:italic">No records in this table yet.</div>';
+    }else{
+      body='<div style="display:grid;gap:10px">'+rows.map((row,i)=>renderRawRecord(row,i+1)).join('')+'</div>';
+    }
+    return ''+
+      '<div style="margin-bottom:18px;background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden">'+
+        '<div style="padding:10px 14px;background:#f1f5f9;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">'+
+          '<b style="color:var(--navy);font-size:14px"><i class="fa-solid '+t.icon+'" style="color:var(--gold);margin-right:6px"></i>'+esc(t.label)+'</b>'+
+          '<span class="badge b-new">'+count+' record'+(count===1?'':'s')+'</span>'+
+        '</div>'+
+        '<div style="padding:12px 14px">'+body+'</div>'+
+      '</div>';
+  }
+
+  function renderRawRecord(row,n){
+    const keys=Object.keys(row);
+    let kv='';
+    for(const k of keys){
+      let v=row[k];
+      if(v===null||v===undefined){v='<span style="color:#94a3b8">null</span>';}
+      else if(typeof v==='object'){v='<code style="font-size:11px;background:#f1f5f9;padding:1px 5px;border-radius:3px">'+esc(JSON.stringify(v))+'</code>';}
+      else if(typeof v==='string'&&/_at$|_date$/.test(k)){v=esc(fmt(v))+' <span style="color:#94a3b8;font-size:10px">('+esc(v)+')</span>';}
+      else{v=esc(v);}
+      kv+='<div style="display:grid;grid-template-columns:160px 1fr;gap:8px;padding:3px 0;border-bottom:1px dotted #e5e7eb">'+
+            '<span style="color:#6b7388;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.3px">'+esc(k)+'</span>'+
+            '<span style="font-size:12px;color:#1a2238;word-break:break-all">'+v+'</span>'+
+          '</div>';
+    }
+    return ''+
+      '<div style="background:#fafbfd;border:1px solid #e5e7eb;border-radius:6px;padding:10px 12px">'+
+        '<div style="font-size:11px;color:var(--gold);font-weight:700;margin-bottom:6px">RECORD #'+n+'</div>'+
+        kv+
+      '</div>';
+  }
+  async function loadUsers(){
+    const target=document.getElementById('tblUsers');
+    target.innerHTML='<div class="loading"><i class="fa-solid fa-spinner fa-spin"></i> Loading…</div>';
+    try{
+      const s=RP_API.session();
+      const r=await fetch('https://blrkxhxtkqcogxispuxu.supabase.co/functions/v1/admin-list-users',{
+        headers:{'Authorization':'Bearer '+(s&&s.access_token)}
+      });
+      const data=await r.json();
+      if(!r.ok)throw new Error(data.error||'Failed to load users');
+      cache.users=data.users||[];
+      updateStat('users',cache.users.length);
+      renderCache('users','');
+    }catch(err){
+      target.innerHTML='<div class="empty"><i class="fa-solid fa-triangle-exclamation"></i>'+esc(err.message)+'</div>';
+    }
+  }
+  async function load(name){
+    if(name==='users')return loadUsers();
+    const map={bookings:'bookings',reservations:'table_reservations',messages:'contact_messages',newsletter:'newsletter_subscribers'};
+    const target=document.getElementById('tbl'+name.charAt(0).toUpperCase()+name.slice(1));
+    target.innerHTML='<div class="loading"><i class="fa-solid fa-spinner fa-spin"></i> Loading…</div>';
+    try{
+      const rows=await RP_API.select(map[name],'select=*&order=created_at.desc&limit=500');
+      cache[name]=rows;
+      updateStat(name,rows.length);
+      renderCache(name,'');
+    }catch(err){
+      target.innerHTML='<div class="empty"><i class="fa-solid fa-triangle-exclamation"></i>'+esc(err.message)+'</div>';
+    }
+  }
+  function updateStat(name,n){
+    const map={users:'stUsers',bookings:'stBook',reservations:'stRes',messages:'stMsg',newsletter:'stSub'};
+    if(map[name])document.getElementById(map[name]).textContent=n;
+  }
+  function filter(rows,q){
+    if(!q)return rows;
+    return rows.filter(r=>JSON.stringify(r).toLowerCase().includes(q));
+  }
+  function renderCache(name,q){
+    const rows=filter(cache[name]||[],q);
+    const target=document.getElementById('tbl'+name.charAt(0).toUpperCase()+name.slice(1));
+    if(!rows.length){target.innerHTML='<div class="empty"><i class="fa-solid fa-inbox"></i>No records found.</div>';return;}
+    target.innerHTML=({users:usersTbl,bookings:bookingsTbl,reservations:reservationsTbl,messages:messagesTbl,newsletter:newsletterTbl})[name](rows);
+    bindRowActions(name);
+  }
+  function provBadge(p){
+    const c=p==='google'?'#dbeafe;color:#1e40af':p==='facebook'?'#e0e7ff;color:#3730a3':p==='phone'?'#dcfce7;color:#166534':'#f1f5f9;color:#475569';
+    return '<span class="badge" style="background:'+c+'">'+esc(p||'email')+'</span>';
+  }
+  function usersTbl(rows){
+    return '<table><thead><tr><th>User</th><th>Email</th><th>Phone</th><th>Provider</th><th>Joined</th><th>Last sign-in</th></tr></thead><tbody>'+
+      rows.map(r=>{
+        const displayName = r.name || r.email || r.phone || ('User '+String(r.id||'').slice(0,8));
+        const initial = (r.name||r.email||r.phone||'?').toString().charAt(0).toUpperCase();
+        const av=r.avatar_url?'<img src="'+esc(r.avatar_url)+'" style="width:34px;height:34px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:8px">':'<span style="display:inline-flex;width:34px;height:34px;border-radius:50%;background:#152a5c;color:#c89f4a;align-items:center;justify-content:center;margin-right:8px;font-weight:700">'+esc(initial)+'</span>';
+        const provs = (r.providers && r.providers.length ? r.providers : [r.provider||'email']);
+        const provHtml = provs.map(provBadge).join(' ');
+        return '<tr>'+
+        '<td style="white-space:nowrap">'+av+'<b>'+esc(displayName)+'</b></td>'+
+        '<td>'+esc(r.email||'—')+(r.email_confirmed_at?' <i class="fa-solid fa-circle-check" style="color:#16a34a" title="Verified"></i>':'')+'</td>'+
+        '<td>'+esc(r.phone||'—')+'</td>'+
+        '<td>'+provHtml+'</td>'+
+        '<td><small>'+fmt(r.created_at)+'</small></td>'+
+        '<td><small>'+fmt(r.last_sign_in_at)+'</small></td>'+
+      '</tr>';}).join('')+'</tbody></table>';
+  }
+  function bindRowActions(name){
+    const map={bookings:'bookings',reservations:'table_reservations',messages:'contact_messages',newsletter:'newsletter_subscribers'};
+    document.querySelectorAll('#tbl'+name.charAt(0).toUpperCase()+name.slice(1)+' [data-act]').forEach(b=>{
+      b.addEventListener('click',async()=>{
+        const id=b.dataset.id,act=b.dataset.act;
+        try{
+          if(act==='handled'){await RP_API.update(map[name],id,{status:'handled'});}
+          else if(act==='new'){await RP_API.update(map[name],id,{status:'new'});}
+          else if(act==='delete'){if(!confirm('Delete this record?'))return;await RP_API.remove(map[name],id);}
+          load(name);
+        }catch(e){alert('Failed: '+e.message);}
+      });
+    });
+  }
+  function actBtns(id,status,allowStatus){
+    let s='<div class="row-acts">';
+    if(allowStatus){
+      if(status==='handled')s+='<button data-act="new" data-id="'+id+'" title="Mark new"><i class="fa-solid fa-rotate-left"></i></button>';
+      else s+='<button data-act="handled" data-id="'+id+'" title="Mark handled"><i class="fa-solid fa-check"></i></button>';
+    }
+    s+='<button class="del" data-act="delete" data-id="'+id+'" title="Delete"><i class="fa-solid fa-trash"></i></button>';
+    s+='</div>';return s;
+  }
+
+  function bookingsTbl(rows){
+    return '<table><thead><tr><th>Guest</th><th>Contact</th><th>Room</th><th>Stay</th><th>Guests</th><th>Status</th><th>Received</th><th></th></tr></thead><tbody>'+
+      rows.map(r=>'<tr>'+
+        '<td><b>'+esc(r.full_name)+'</b><br><small style="color:#888">'+esc(r.notes||'')+'</small></td>'+
+        '<td>'+esc(r.email)+'<br><small>'+esc(r.phone)+'</small></td>'+
+        '<td>'+esc(r.room_name||'—')+'<br><small>'+esc(r.arrival||'')+'</small></td>'+
+        '<td>'+fmtD(r.check_in)+' →<br>'+fmtD(r.check_out)+'</td>'+
+        '<td>'+esc(r.guests||'—')+'</td>'+
+        '<td>'+stBadge(r.status)+'</td>'+
+        '<td><small>'+fmt(r.created_at)+'</small></td>'+
+        '<td>'+actBtns(r.id,r.status,true)+'</td>'+
+      '</tr>').join('')+'</tbody></table>';
+  }
+  function reservationsTbl(rows){
+    return '<table><thead><tr><th>Guest</th><th>Phone</th><th>Type / Time</th><th>Items</th><th>Total</th><th>Status</th><th>Received</th><th></th></tr></thead><tbody>'+
+      rows.map(r=>'<tr>'+
+        '<td><b>'+esc(r.name)+'</b><br><small style="color:#888">'+esc(r.address||'')+'</small></td>'+
+        '<td>'+esc(r.phone)+'</td>'+
+        '<td>'+esc(r.order_type||'—')+'<br><small>'+esc(r.preferred_time||'')+'</small></td>'+
+        '<td><pre class="notes">'+esc(Array.isArray(r.items)?r.items.map(i=>(i.qty||1)+'× '+(i.name||'item')).join('\n'):'')+'</pre></td>'+
+        '<td>'+(r.total?'₹'+r.total:'—')+'</td>'+
+        '<td>'+stBadge(r.status)+'</td>'+
+        '<td><small>'+fmt(r.created_at)+'</small></td>'+
+        '<td>'+actBtns(r.id,r.status,true)+'</td>'+
+      '</tr>').join('')+'</tbody></table>';
+  }
+  function messagesTbl(rows){
+    return '<table><thead><tr><th>From</th><th>Contact</th><th>Subject</th><th>Message</th><th>Status</th><th>Received</th><th></th></tr></thead><tbody>'+
+      rows.map(r=>'<tr>'+
+        '<td><b>'+esc(r.name)+'</b></td>'+
+        '<td>'+esc(r.email)+'<br><small>'+esc(r.phone||'')+'</small></td>'+
+        '<td>'+esc(r.subject||'—')+'</td>'+
+        '<td><pre class="notes">'+esc(r.message)+'</pre></td>'+
+        '<td>'+stBadge(r.status)+'</td>'+
+        '<td><small>'+fmt(r.created_at)+'</small></td>'+
+        '<td>'+actBtns(r.id,r.status,true)+'</td>'+
+      '</tr>').join('')+'</tbody></table>';
+  }
+  function newsletterTbl(rows){
+    return '<table><thead><tr><th>Email</th><th>Subscribed</th><th></th></tr></thead><tbody>'+
+      rows.map(r=>'<tr>'+
+        '<td><b>'+esc(r.email)+'</b></td>'+
+        '<td><small>'+fmt(r.created_at)+'</small></td>'+
+        '<td>'+actBtns(r.id,null,false)+'</td>'+
+      '</tr>').join('')+'</tbody></table>';
+  }
+
+  gate();
+})();
+</script>
+</body>
+</html>
+

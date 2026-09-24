@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Profile — Royal Pearl</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .card {
+    background: #fff;
+    color: #222;
+    border-radius: 20px;
+    max-width: 720px;
+    width: 100%;
+    padding: 40px 32px;
+    box-shadow: 0 25px 60px rgba(0,0,0,.35);
+    text-align: center;
+  }
+  .logo { color: #c9a227; font-size: 14px; letter-spacing: 3px; font-weight: 700; margin-bottom: 8px; }
+  h1 { font-size: 22px; margin-bottom: 24px; color: #1a1a2e; }
+  h2 { font-size: 16px; color: #1a1a2e; margin: 30px 0 14px; text-align: left; display:flex; align-items:center; gap:8px;}
+  h2 i { color:#c9a227; }
+  .avatar {
+    width: 110px; height: 110px; border-radius: 50%;
+    background: linear-gradient(135deg, #c9a227, #e8c468);
+    color: #fff; font-size: 44px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; overflow: hidden;
+    box-shadow: 0 8px 20px rgba(201,162,39,.35);
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .name { font-size: 22px; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
+  .email { color: #666; font-size: 14px; margin-bottom: 24px; word-break: break-all; }
+  .info { background: #f7f7fa; border-radius: 12px; padding: 16px; text-align: left; margin-bottom: 10px; }
+  .info-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #ececec; font-size: 14px; }
+  .info-row:last-child { border-bottom: none; }
+  .info-row span:first-child { color: #888; }
+  .info-row span:last-child { color: #1a1a2e; font-weight: 600; word-break: break-all; text-align: right; margin-left: 10px; }
+  .booking {
+    background:#fff; border:1px solid #ececec; border-radius:12px;
+    padding:14px 16px; margin-bottom:10px; text-align:left;
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    transition: box-shadow .15s, transform .15s;
+  }
+  .booking:hover { box-shadow:0 6px 16px rgba(0,0,0,.08); transform: translateY(-1px); }
+  .booking .b-room { font-weight:700; color:#1a1a2e; font-size:15px; margin-bottom:4px; }
+  .booking .b-dates { color:#666; font-size:13px; }
+  .booking .b-status {
+    display:inline-block; padding:3px 9px; border-radius:99px; font-size:11px;
+    font-weight:700; text-transform:uppercase; letter-spacing:.5px; margin-left:6px;
+  }
+  .s-pending { background:#fff4d6; color:#a07800; }
+  .s-confirmed { background:#d6f5d6; color:#1e7a1e; }
+  .s-cancelled { background:#fad6d6; color:#a01e1e; }
+  .btn-view {
+    background:#1a1a2e; color:#fff; border:none; padding:8px 14px;
+    border-radius:8px; font-size:13px; cursor:pointer; font-weight:600;
+    white-space:nowrap;
+  }
+  .btn-view:hover { background:#c9a227; }
+  .no-bookings { padding:24px; color:#888; font-size:14px; background:#f7f7fa; border-radius:12px; }
+  .no-bookings i { font-size:32px; color:#c9a227; display:block; margin-bottom:8px; }
+
+  .btn {
+    display: inline-block; width: 100%; padding: 13px;
+    border: none; border-radius: 10px; cursor: pointer;
+    font-size: 15px; font-weight: 600; margin-top: 10px;
+    transition: transform .15s, box-shadow .15s;
+    text-decoration: none; text-align: center;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,.18); }
+  .btn-primary { background: #1a1a2e; color: #fff; }
+  .btn-logout { background: #e53935; color: #fff; }
+  .btn-ghost { background: #f0f0f5; color: #1a1a2e; }
+  .loading, .empty { padding: 40px 0; color: #666; }
+  .empty i { font-size: 48px; color: #c9a227; margin-bottom: 14px; }
+  .back { display: inline-block; margin-top: 18px; color: #c9a227; font-size: 13px; text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="card" id="card">
+    <div class="logo">ROYAL PEARL</div>
+    <h1>My Profile</h1>
+    <div id="content" class="loading">
+      <i class="fa-solid fa-spinner fa-spin" style="font-size:32px;color:#c9a227;"></i>
+      <p style="margin-top:12px;">Loading your profile…</p>
+    </div>
+  </div>
+
+<script src="assets/api.js"></script>
+<script>
+  function initial(name, email) {
+    var src = (name || email || "?").trim();
+    return src.charAt(0).toUpperCase();
+  }
+  function fmtDate(s) {
+    if (!s) return "—";
+    try { return new Date(s).toLocaleString(); } catch(e) { return s; }
+  }
+
+  function renderEmpty() {
+    document.getElementById("content").innerHTML =
+      '<div class="empty">' +
+        '<i class="fa-solid fa-user-lock"></i>' +
+        '<p style="margin-bottom:18px;">You are not signed in.</p>' +
+        '<a href="home" class="btn btn-primary">Go to Home & Login</a>' +
+      '</div>';
+  }
+
+  function renderProfile(user) {
+    var meta = user.user_metadata || {};
+    var name = meta.full_name || meta.name || (user.email || "Guest").split("@")[0];
+    var avatar = meta.avatar_url || meta.picture;
+    var provider = (user.app_metadata && user.app_metadata.provider) || "email";
+
+    var avatarHtml = avatar
+      ? '<img src="' + avatar + '" alt="' + name + '" onerror="this.replaceWith(document.createTextNode(\'' + initial(name, user.email) + '\'))" />'
+      : initial(name, user.email);
+
+    document.getElementById("content").innerHTML =
+      '<div class="avatar">' + avatarHtml + '</div>' +
+      '<div class="name">' + name + '</div>' +
+      '<div class="email"><i class="fa-solid fa-envelope"></i> ' + (user.email || "") + '</div>' +
+      '<div class="info">' +
+        '<div class="info-row"><span>Sign-in method</span><span>' + provider.charAt(0).toUpperCase() + provider.slice(1) + '</span></div>' +
+        '<div class="info-row"><span>Account created</span><span>' + fmtDate(user.created_at) + '</span></div>' +
+        '<div class="info-row"><span>Last sign-in</span><span>' + fmtDate(user.last_sign_in_at) + '</span></div>' +
+        '<div class="info-row"><span>User ID</span><span style="font-size:11px;">' + (user.id || "").slice(0,8) + '…</span></div>' +
+      '</div>' +
+      '<h2><i class="fa-solid fa-calendar-check"></i> My Recent Bookings</h2>' +
+      '<div id="bookingsList"><div style="padding:20px;color:#888;"><i class="fa-solid fa-spinner fa-spin"></i> Loading bookings…</div></div>' +
+      '<a href="booking" class="btn btn-ghost"><i class="fa-solid fa-plus"></i> New Booking</a>' +
+      '<a href="home" class="btn btn-ghost"><i class="fa-solid fa-house"></i> Back to Home</a>' +
+      '<button class="btn btn-logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>';
+
+    document.getElementById("logoutBtn").addEventListener("click", async function () {
+      this.disabled = true;
+      this.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Signing out…';
+      try { await window.RP_API.signOut(); } catch(_) {}
+      window.location.href = "home.html";
+    });
+
+    loadBookings(user.email);
+  }
+
+  function fmtDay(s){ if(!s) return "—"; try { return new Date(s).toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}); } catch(e){ return s; } }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];}); }
+
+  async function loadBookings(email) {
+    var box = document.getElementById("bookingsList");
+    try {
+      var q = "email=eq." + encodeURIComponent(email) + "&order=created_at.desc&limit=10";
+      var rows = await window.RP_API.select("bookings", q);
+      if (!rows.length) {
+        box.innerHTML = '<div class="no-bookings"><i class="fa-solid fa-bed"></i>No bookings yet. Book your first stay!</div>';
+        return;
+      }
+      box.innerHTML = rows.map(function(b){
+        var status = (b.status||'pending').toLowerCase();
+        var cls = status==='confirmed'?'s-confirmed':status==='cancelled'?'s-cancelled':'s-pending';
+        return '<div class="booking">'+
+          '<div>'+
+            '<div class="b-room">'+esc(b.room_name||'Room')+
+              '<span class="b-status '+cls+'">'+esc(status)+'</span>'+
+            '</div>'+
+            '<div class="b-dates"><i class="fa-solid fa-calendar"></i> '+fmtDay(b.check_in)+' → '+fmtDay(b.check_out)+
+              ' &nbsp;·&nbsp; <i class="fa-solid fa-user"></i> '+esc(b.guests||1)+' guest(s)</div>'+
+          '</div>'+
+          '<button class="btn-view" data-id="'+esc(b.id)+'">View Details</button>'+
+        '</div>';
+      }).join('');
+
+      // Stash for modal lookup
+      window.__bookings = {};
+      rows.forEach(function(b){ window.__bookings[b.id] = b; });
+
+      box.querySelectorAll('.btn-view').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          showBookingDetails(window.__bookings[btn.getAttribute('data-id')]);
+        });
+      });
+    } catch (e) {
+      box.innerHTML = '<div class="no-bookings" style="color:#a01e1e;"><i class="fa-solid fa-triangle-exclamation"></i>Couldn\'t load bookings.<br><small>'+esc(e.message||e)+'</small></div>';
+    }
+  }
+
+  function showBookingDetails(b){
+    if(!b) return;
+    var html = ''+
+      '<div style="position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px;" id="bkModal">'+
+        '<div style="background:#fff;color:#222;border-radius:16px;max-width:480px;width:100%;padding:28px;box-shadow:0 25px 60px rgba(0,0,0,.4);text-align:left;">'+
+          '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">'+
+            '<h3 style="color:#1a1a2e;font-size:18px;">Booking Details</h3>'+
+            '<button id="bkClose" style="background:none;border:none;font-size:24px;cursor:pointer;color:#888;">&times;</button>'+
+          '</div>'+
+          '<div style="background:#f7f7fa;border-radius:10px;padding:14px;">'+
+            row('Room', b.room_name)+
+            row('Status', (b.status||'pending').toUpperCase())+
+            row('Guest', b.full_name)+
+            row('Email', b.email)+
+            row('Phone', b.phone || '—')+
+            row('Check-in', fmtDay(b.check_in))+
+            row('Check-out', fmtDay(b.check_out))+
+            row('Guests', b.guests)+
+            row('Arrival time', b.arrival || '—')+
+            row('Notes', b.notes || '—')+
+            row('Booked on', fmtDate(b.created_at))+
+            row('Booking ID', (b.id||'').slice(0,8)+'…')+
+          '</div>'+
+        '</div>'+
+      '</div>';
+    var d = document.createElement('div'); d.innerHTML = html; document.body.appendChild(d.firstChild);
+    document.getElementById('bkClose').onclick = function(){ document.getElementById('bkModal').remove(); };
+    document.getElementById('bkModal').addEventListener('click', function(e){ if(e.target.id==='bkModal') this.remove(); });
+  }
+  function row(k,v){ return '<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #ececec;font-size:14px;"><span style="color:#888;">'+esc(k)+'</span><span style="color:#1a1a2e;font-weight:600;text-align:right;margin-left:10px;word-break:break-all;">'+esc(v)+'</span></div>'; }
+
+  (function () {
+    var s = window.RP_API.session();
+    if (!s || !s.user) { renderEmpty(); return; }
+    renderProfile(s.user);
+  })();
+
+</script>
+</body>
+</html>
+
